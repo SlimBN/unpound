@@ -1,0 +1,86 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @journal.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @journal.description %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= link_to @journal.user.username, user_path(@journal.user) %>
+</p>
+
+
+<!-- LIST JOURNAL'S PUBLISHED ISSUES -->
+Numeros publiés
+<ul>
+  <% Issue.where("journal_id = ? AND draft = ?", @journal.id, false).order('created_at DESC').each do |issue| %>
+    
+    <li>
+      <%= link_to issue.theme, issue %>
+    </li>
+
+  <% end %>
+</ul>
+<!-- LIST JOURNAL'S PUBLISHED ISSUES END -->
+
+
+<!-- LIST JOURNAL'S UNPUBLISHED ISSUES -->
+Numéro en cour de preparation
+<ul>
+  <% Issue.where("journal_id = ? AND draft = ?", @journal.id, true).order('created_at DESC').each do |issue| %>
+    
+    <li>
+      <%= link_to issue.theme, issue %>
+    </li>
+
+  <% end %>
+</ul>
+<!-- LIST JOURNAL'S UNPUBLISHED ISSUES END -->
+
+
+<!-- ADD A NEW ISSUE MODULE -->
+<% unless Issue.where("journal_id = ? AND draft = ?", @journal.id, true).order('created_at DESC').count > 0 %>
+
+  <a data-toggle="modal" href="#add-issue-to-journal-ajax" class="btn btn-primary btn-lg">Add un issue</a>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="add-issue-to-journal-ajax" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Nouveau Numéro</h4>
+        </div>
+        <div class="modal-body">
+
+          <!-- ADD A NEW JOURNAL AJAX -->
+          <div id="new-journal">
+            <%= form_for(Issue.new) do |f| %>
+              <%= f.hidden_field :journal_id, :value => @journal.id %>
+              <%= f.text_field :number, :placeholder => "Numéro" %>
+              <%= f.text_field :theme, :placeholder => "Thème" %>
+              <%= f.check_box :draft %>
+              <%= f.submit %>
+            <% end %>
+          </div>
+          <!-- ADD A NEW JOURNAL AJAX END -->
+
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+<% end %>
+
+
+
+
+<%= link_to 'Edit', edit_journal_path(@journal) %> |
+<%= link_to 'Back', journals_path %>

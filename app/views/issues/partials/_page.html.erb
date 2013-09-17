@@ -1,0 +1,34 @@
+	<ul>		
+		
+	
+	
+		<% Page.where("issue_id = ?", @issue.id).order("classement").each do |page| %>
+
+
+			
+			<li>
+				<%= link_to page.name, page %>
+
+				<%= form_for(Page.find(page.id), :remote => true) do |f| %>
+					<%= f.text_field :classement, value: page.classement %>
+					<%= f.submit %>
+				<% end %>
+
+				
+<!-- 				<ul>
+
+					<% ArticlesAndPage.where("page_id = ?", page.id).each do |article| %>
+					<li>
+						<%= Article.find(article.article_id).title %>
+					</li>		
+					<% end %> 
+
+				</ul> -->
+
+			</li>
+
+
+		<% end %>
+
+		
+	</ul>

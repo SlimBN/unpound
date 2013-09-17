@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  journal_id: 1
+  theme: MyString
+  number: 1
+  picu: MyString
+
+two:
+  journal_id: 1
+  theme: MyString
+  number: 1
+  picu: MyString

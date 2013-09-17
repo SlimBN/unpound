@@ -1,0 +1,13 @@
+
+            <%= form_for(ArticlesAndPage.new, :remote => true) do |f| %>
+              <%= f.hidden_field :user_id, :value => current_user.id %>
+
+              <select id="articles_and_page_journal_id" name="articles_and_page[journal_id]" >
+                <% Journal.where("user_id = ?", current_user.id).all.each do |journal| %>
+                  <option value="<%= journal.id %>"><%= journal.name %></option>
+                <% end %>
+              </select>
+
+              <%= f.submit %>
+            <% end %>
+            

@@ -1,0 +1,29 @@
+<h1>Listing articles_and_pages</h1>
+
+<table>
+  <tr>
+    <th>Article</th>
+    <th>Page</th>
+    <th>User</th>
+    <th>Style</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @articles_and_pages.each do |articles_and_page| %>
+  <tr>
+    <td><%= articles_and_page.article_id %></td>
+    <td><%= articles_and_page.page_id %></td>
+    <td><%= articles_and_page.user_id %></td>
+    <td><%= articles_and_page.style %></td>
+    <td><%= link_to 'Show', articles_and_page %></td>
+    <td><%= link_to 'Edit', edit_articles_and_page_path(articles_and_page) %></td>
+    <td><%= link_to 'Destroy', articles_and_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Articles and page', new_articles_and_page_path %>

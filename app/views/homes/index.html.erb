@@ -1,0 +1,27 @@
+
+<div id="newspaper" class="paper paper-curve-vert">
+  
+  <% Article.all.each do |article| %>
+
+    <div id="articles">
+      <%= link_to article.title, article %>
+
+      <!-- CHECKING OUT IF THE ARTICLE IS READ -->
+      <% if user_signed_in? %>
+        <% is_read =  Read.all(:conditions => ['user_id = ? AND article_id = ?', current_user.id, article.id]).count %>
+        <% if is_read < 1 %>
+          <span class="glyphicon glyphicon-eye-close"></span>
+        <% else %>
+           <span class="glyphicon glyphicon-eye-open"></span>
+        <% end %>
+      <% end %>
+      <!-- CHECKING OUT IF THE ARTICLE IS READ END -->
+
+    </br>
+
+      <%= article.content.truncate(150) %>
+    </div>
+
+  <% end %>
+
+</div>

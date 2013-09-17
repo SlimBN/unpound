@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Article:</b>
+  <%= @articles_and_page.article_id %>
+</p>
+
+<p>
+  <b>Page:</b>
+  <%= @articles_and_page.page_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @articles_and_page.user_id %>
+</p>
+
+<p>
+  <b>Style:</b>
+  <%= @articles_and_page.style %>
+</p>
+
+
+<%= link_to 'Edit', edit_articles_and_page_path(@articles_and_page) %> |
+<%= link_to 'Back', articles_and_pages_path %>

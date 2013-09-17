@@ -1,0 +1,22 @@
+<% is_read =  Follow.all(:conditions => ['user_id = ? AND followee_id = ?', current_user.id, @article.user_id]).count %>
+
+<% if is_read < 1 %>
+
+
+    <%= form_for(Follow.new, :remote => true) do |f| %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :followee_id, :value => @article.user.id %>
+
+      <button type="submit" type="button" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-star"></span> S'abonner a l'utilisateur
+      </button>
+  
+    <% end %>
+
+  <% else %>
+      <button href="submit" type="button" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-star-empty"></span> <%= link_to 'Destroy', Follow.all(:conditions => ['user_id = ? AND followee_id = ?', current_user.id, @article.user.id]), method: :delete %>
+      </button>
+  <% end %>
+
+

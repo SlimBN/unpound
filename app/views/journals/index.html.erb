@@ -1,0 +1,82 @@
+<h1>Listing journals</h1>
+
+My journals
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Slug</th>
+    <th>Logo</th>
+    <th>Cover</th>
+    <th>User</th>
+    <th>Country</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% Journal.where('user_id = ?', current_user.id).each do |journal| %>
+
+    <tr>
+        <td><%= link_to journal.name, journal %></td>
+        <td><%= journal.description %></td>
+        <td><%= journal.slug %></td>
+        <td><%= journal.logo %></td>
+        <td><%= journal.cover %></td>
+        <td><%= journal.user.username %></td>
+        <td><%= journal.country_id %></td>
+
+        <% if user_signed_in? %>
+            <% if journal.user_id == current_user.id %>
+
+                <td><%= link_to 'Edit', edit_journal_path(journal) %></td>
+                <td><%= link_to 'Destroy', journal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                
+            <% end %>
+        <% end %>
+    </tr>
+
+<% end %>
+
+Others journals
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Slug</th>
+    <th>Logo</th>
+    <th>Cover</th>
+    <th>User</th>
+    <th>Country</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% Journal.where('user_id != ?', current_user.id).each do |journal| %>
+
+    <tr>
+        <td><%= link_to journal.name, journal %></td>
+        <td><%= journal.description %></td>
+        <td><%= journal.slug %></td>
+        <td><%= journal.logo %></td>
+        <td><%= journal.cover %></td>
+        <td><%= journal.user.username %></td>
+        <td><%= journal.country_id %></td>
+
+        <% if user_signed_in? %>
+            <% if journal.user_id == current_user.id %>
+
+                <td><%= link_to 'Edit', edit_journal_path(journal) %></td>
+                <td><%= link_to 'Destroy', journal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                
+            <% end %>
+        <% end %>
+    </tr>
+
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Journal', new_journal_path %>

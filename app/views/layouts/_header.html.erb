@@ -1,0 +1,25 @@
+<header>
+	<div class="logo">
+		<%= link_to "Unbound", root_path() %>
+	</div>
+
+	<% if user_signed_in? %>
+
+		<%= link_to "logout", logout_path() %>
+
+	<% else %>
+
+		<%= link_to "Se connecter", login_path() %>
+		<%= link_to "S'enregistrer", register_path() %>
+
+	<% end %>
+</header>
+
+<div id="sidemenu">
+	<ul>
+		<li>
+			<span class="glyphicon glyphicon-th-list"></span>
+		</li>
+	</ul>
+
+</div>

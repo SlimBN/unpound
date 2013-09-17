@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Journal:</b>
+  <%= @issue.journal_id %>
+</p>
+
+<p>
+  <b>Theme:</b>
+  <%= @issue.theme %>
+</p>
+
+<p>
+  <b>Number:</b>
+  <%= @issue.number %>
+</p>
+
+<p>
+  <b>Picu:</b>
+  <%= @issue.picture %>
+</p>
+
+<!-- ADD A NEW PAGE TO AJAX -->
+<div id="new-page-for-issue">
+	<%= form_for(Page.new, :remote => true) do |f| %>
+		<%= f.hidden_field :issue_id, :value => @issue.id %>
+		<%= f.text_field :name %>
+		<%= f.text_field :classement %>
+		<%= f.submit %>
+	<% end %>
+</div>
+<!-- ADD A NEW PAGE TO AJAX END -->
+
+
+<!-- LISTING THE PAGES MODULE -->
+<div id="pages-list-for-issue">
+
+	<%= render partial: "issues/partials/page", locals: { issue: @issue } %>
+
+</div>
+<!-- LISTING THE PAGES MODULE END -->
+
+
+<%= link_to 'Edit', edit_issue_path(@issue) %> |
+<%= link_to 'Back', issues_path %>
