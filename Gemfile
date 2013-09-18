@@ -7,6 +7,9 @@ gem 'rails', '3.2.14'
 
 gem 'sqlite3'
 
+gem 'carrierwave'
+gem 'mini_magick'
+
 
 # Used for authentication
 gem 'devise'

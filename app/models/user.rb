@@ -12,4 +12,6 @@ class User < ActiveRecord::Base
   has_many :journals
   has_many :articlesandpage
   has_many :articles
+  has_many :follows
+
 end

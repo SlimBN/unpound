@@ -1,0 +1,41 @@
+#abonnement_header {
+	width: 100%;
+	height: 360px;
+
+	padding-top: 120px;
+
+	text-align: center;
+	vertical-align: middle;
+
+	.label {
+		width: 492px;
+		height: 135px;
+
+		margin: 0 auto;
+		padding-top: 200px;
+		vertical-align: middle;
+	}
+
+
+}
+
+#abonnement_container {
+	margin: 0px;
+	padding: 0px;
+	
+	#abonnement_journal {
+		width: 300px;
+		height: 400px;
+
+		background-repeat: no-repeat;
+
+		border-radius: 5px;
+
+		margin-left: 1px;
+		margin-top: 1px;
+		margin-right: -3px;
+
+		display: inline-block;
+	}
+
+}

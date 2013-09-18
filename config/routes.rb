@@ -1,4 +1,9 @@
 Unbound::Application.routes.draw do
+
+
+# Manipulation de Journaux
+  match 'journals/abonnements' => 'journals#abonnements', :as => :abonnements
+
   resources :follows
 
 
@@ -30,7 +35,6 @@ Unbound::Application.routes.draw do
 
 
   resources :articles
-
 
   resources :journals
 

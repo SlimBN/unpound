@@ -3,23 +3,63 @@
 		<%= link_to "Unbound", root_path() %>
 	</div>
 
-	<% if user_signed_in? %>
-
-		<%= link_to "logout", logout_path() %>
-
-	<% else %>
-
-		<%= link_to "Se connecter", login_path() %>
-		<%= link_to "S'enregistrer", register_path() %>
-
-	<% end %>
 </header>
 
 <div id="sidemenu">
-	<ul>
-		<li>
-			<span class="glyphicon glyphicon-th-list"></span>
-		</li>
-	</ul>
+
+	<div class="menu">
+		
+		<ul class="titles">
+			<li>
+
+				Mon Panneau
+
+				<% if user_signed_in? %>
+				<ul class="subtitles">
+					<li><%= link_to "Mon Profil", current_user %></li>
+					<li><%= link_to "Me Deconnecter", logout_path() %></li>
+				</ul>
+				
+				<% else %>
+
+				<ul class="subtitles">
+					<li><%= link_to "Me Connecter", login_path() %></li>
+					<li><%= link_to "M'enregistrer", register_path() %></li>
+				</ul>
+				<% end %>
+
+			</li>
+
+			<% if user_signed_in? %>
+			
+			<li class="items">
+
+				Mon Kiosque
+
+				<ul class="subtitles">
+					<li><%= link_to "Mes Abonnements", abonnements_path() %></li>
+					<li><%= link_to "Mes Auteurs Favoris", logout_path() %></li>
+					<li><%= link_to "Journaux", journals_path() %></li>
+				</ul>
+
+			</li>
+
+
+			<li class="items">Mon Bureau
+
+				<ul class="subtitles">
+					<li><%= link_to "Mes Journaux", current_user %></li>
+					<li><%= link_to "Mes Auteurs Favoris", logout_path() %></li>
+					<li><%= link_to "Journaux", journals_path() %></li>
+				</ul>
+			
+			</li>
+
+			<% end %>
+			
+		</ul>
+
+	</div>
+
 
 </div>

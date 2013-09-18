@@ -1,0 +1,65 @@
+<%= render "journals/abonnements/header" %>
+
+<div id="abonnement_container">
+	
+	<% @follows.each do |journal| %>
+
+		<!-- CHECKING OUT IF THE ARTICLE IS READ -->
+	      	<% if user_signed_in? %>
+	        	<% is_read =  Read.all(:conditions => ['user_id = ? AND journal_id = ?', current_user.id, Journal.find(journal).id]).count %>
+	        	<% if is_read < 1 %>
+	          		<span class="glyphicon glyphicon-eye-close"></span>
+	        	<% else %>
+	           		<span class="glyphicon glyphicon-eye-open"></span>
+	        	<% end %>
+	      	<% end %>
+	    <!-- CHECKING OUT IF THE ARTICLE IS READ END -->
+
+	    <% count = Read.where('journal_id = ?', Journal.find(journal).id).count %>
+
+	    <% if count < 6 %>
+
+			<div id="abonnement_journal" class="box size11" style="background-image: url(<%= Journal.find(journal).cover_url(:abonnement11).to_s %>);">
+				<%= link_to Journal.find(journal).name, Journal.find(journal) %></br>
+				<%= Journal.find(journal).description %>
+
+			</div>
+
+	    <% end %>
+
+	    <% if (count > 5) and (count < 11) %>
+
+			<div id="abonnement_journal" class="box size21" style="background-image: url(<%= Journal.find(journal).cover_url(:abonnement21).to_s %>);">
+				<%= link_to Journal.find(journal).name, Journal.find(journal) %></br>
+				<%= Journal.find(journal).description %>
+
+			</div>
+
+	    <% end %>
+
+	    <% if count > 10 %>
+
+			<div id="abonnement_journal" class="box size22" style="background-image: url(<%= Journal.find(journal).cover_url(:abonnement22).to_s %>);">
+				<%= link_to Journal.find(journal).name, Journal.find(journal) %></br>
+				<%= Journal.find(journal).description %>
+
+			</div>
+
+	    <% end %>
+
+		
+	<% end %>
+
+</div>
+
+
+<script type="text/javascript" >
+  
+  $(function() { 
+   
+    $('#abonnement_container').nested(); 
+ 
+  });
+  
+  
+</script>

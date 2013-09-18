@@ -10,10 +10,23 @@ class JournalsController < ApplicationController
     end
   end
 
+  def abonnements
+    @follows = Follow.where('user_id = ?', current_user.id).all
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
   # GET /journals/1
   # GET /journals/1.json
   def show
     @journal = Journal.find(params[:id])
+
+    is_read =  Read.all(:conditions => ['user_id = ? AND journal_id = ?', current_user.id, @journal.id]).count
+    
+      read_it = Read.new(:user_id => current_user.id, :journal_id => @journal.id)
+      read_it.save
 
     respond_to do |format|
       format.html # show.html.erb
