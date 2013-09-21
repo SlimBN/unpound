@@ -1,81 +1,98 @@
-<h1>Listing journals</h1>
+<div id="journaux_index">
+    
+<!-- 
+Journal.where('user_id != ?', current_user.id).each do |journal| %> -->
+<% Journal.order('created_at DESC').all.each do |journal| %>
 
-My journals
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Slug</th>
-    <th>Logo</th>
-    <th>Cover</th>
-    <th>User</th>
-    <th>Country</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% Journal.where('user_id = ?', current_user.id).each do |journal| %>
 
-    <tr>
-        <td><%= link_to journal.name, journal %></td>
-        <td><%= journal.description %></td>
-        <td><%= journal.slug %></td>
-        <td><%= journal.logo %></td>
-        <td><%= journal.cover %></td>
-        <td><%= journal.user.username %></td>
-        <td><%= journal.country_id %></td>
+        <% count = Read.where('journal_id = ?', journal).count %>
 
-        <% if user_signed_in? %>
-            <% if journal.user_id == current_user.id %>
+        <% if count < 6 %>
 
-                <td><%= link_to 'Edit', edit_journal_path(journal) %></td>
-                <td><%= link_to 'Destroy', journal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                
-            <% end %>
+            <div id="index_journal" class="box size11">
+
+                <div class="title">
+                    <%= link_to journal.name, see_journal_path(journal) %>
+                </div>
+
+                <%= image_tag journal.cover_url(:abonnement11).to_s %>
+
+                <% if Read.where('journal_id = ? AND user_id = ?', journal, current_user.id).count < 1 %>
+
+                    <div class="unread">
+                        <%= image_tag 'corner_triangle.png' %>
+                    </div>
+
+                <% end %>
+
+            </div>
+
         <% end %>
-    </tr>
+
+        <% if (count > 5) and (count < 11) %>
+
+            <div id="index_journal" class="box size21" >
+
+                <div class="title">
+                    <%= link_to journal.name, see_journal_path(journal) %>
+                </div>
+
+                <%= image_tag journal.cover_url(:abonnement21).to_s %>
+
+                <% if Read.where('journal_id = ? AND user_id = ?', journal, current_user.id).count < 1 %>
+
+                    <div class="unread">
+                        <%= image_tag 'corner_triangle.png' %>
+                    </div>
+
+                <% end %>
+
+            </div>
+
+        <% end %>
+
+        <% if count > 10 %>
+
+            <div id="index_journal" class="box size22" >
+
+                <div class="title">
+                    <%= link_to journal.name, see_journal_path(journal) %>
+                </div>
+
+                <%= image_tag journal.cover_url(:abonnement22).to_s %>
+
+                <% if Read.where('journal_id = ? AND user_id = ?', journal, current_user.id).count < 1 %>
+
+                    <div class="unread">
+                        <%= image_tag 'corner_triangle.png' %>
+                    </div>
+
+                <% end %>
+
+            </div>
+
+        <% end %>
+
+        
+
+
+
+<script type="text/javascript" >
+  
+  $(function() { 
+   
+    $('#journaux_index').nested(); 
+ 
+  });
+  
+  
+</script>
 
 <% end %>
 
-Others journals
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Slug</th>
-    <th>Logo</th>
-    <th>Cover</th>
-    <th>User</th>
-    <th>Country</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% Journal.where('user_id != ?', current_user.id).each do |journal| %>
-
-    <tr>
-        <td><%= link_to journal.name, journal %></td>
-        <td><%= journal.description %></td>
-        <td><%= journal.slug %></td>
-        <td><%= journal.logo %></td>
-        <td><%= journal.cover %></td>
-        <td><%= journal.user.username %></td>
-        <td><%= journal.country_id %></td>
-
-        <% if user_signed_in? %>
-            <% if journal.user_id == current_user.id %>
-
-                <td><%= link_to 'Edit', edit_journal_path(journal) %></td>
-                <td><%= link_to 'Destroy', journal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                
-            <% end %>
-        <% end %>
-    </tr>
-
-<% end %>
-</table>
+</div>
 
 <br />
 

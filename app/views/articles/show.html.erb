@@ -1,4 +1,13 @@
-<p id="notice"><%= notice %></p>
+<div id="article-show">
+  
+  <div class="title">
+    <%= @article.title %>
+  </div>
+
+  <div class="photo">
+    <%= image_tag @article.photo_url().to_s %>
+  </div>
+</div>
 
 <p>
   <b>Title:</b>

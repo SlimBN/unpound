@@ -1,10 +1,32 @@
 <header>
 	<div class="logo">
-		<%= link_to "Unbound", root_path() %>
+		<%= link_to "Wireald", root_path() %>
+	</div>
+
+	<div class="subtle">
+		<ul>
+			<li><%= Date.today.to_formatted_s(:long_ordinal) %></li>
+
+			<li>
+				<% if user_signed_in? %>
+					Bonjours <%= current_user.username %>
+				<% end %>				
+			</li>
+
+			<li>
+				<% if Notification.all(:conditions => ['user_id = ?', current_user.id]).count != 0 %>
+				<%= Notification.all(:conditions => ['user_id = ?', current_user.id]).count %> <% end %>Notifications
+			</li>
+
+			<li></li>
+
+		</ul>
+		
+
 	</div>
 
 </header>
-
+<!-- 
 <div id="sidemenu">
 
 	<div class="menu">
@@ -60,6 +82,6 @@
 		</ul>
 
 	</div>
-
+ -->
 
 </div>

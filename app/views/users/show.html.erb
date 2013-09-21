@@ -1,3 +1,33 @@
+<div id="user_show">
+  
+  <div id="avatar" class="box size22">
+    <%= image_tag @user.avatar_url(:profile).to_s %>
+  </div>
+
+  <div id="about" class="box size31" style="background-color: #E54E2E; text-align: center;">
+
+    <div class="name">Bonjours, je suis <%= @user.username %></div>
+
+    <div class="content"><%= @user.about %></div>
+    
+  </div>
+
+</div>
+
+
+
+
+<script type="text/javascript" >
+  
+  $(function() { 
+   
+    $('#user_show').nested(); 
+ 
+  });
+  
+  
+</script>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -22,7 +52,7 @@
 
 <p>
   <b>Avatar:</b>
-  <%= @user.avatar %>
+  
 </p>
 
 

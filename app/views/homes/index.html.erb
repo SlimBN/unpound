@@ -1,27 +1,93 @@
 
-<div id="newspaper" class="paper paper-curve-vert">
+<div id="newspaper">
   
   <% Article.all.each do |article| %>
 
-    <div id="articles">
-      <%= link_to article.title, article %>
-
-      <!-- CHECKING OUT IF THE ARTICLE IS READ -->
       <% if user_signed_in? %>
-        <% is_read =  Read.all(:conditions => ['user_id = ? AND article_id = ?', current_user.id, article.id]).count %>
-        <% if is_read < 1 %>
-          <span class="glyphicon glyphicon-eye-close"></span>
-        <% else %>
-           <span class="glyphicon glyphicon-eye-open"></span>
-        <% end %>
+        <% reads = Read.where('article_id = ? AND user_id = ?', article, current_user.id).count %>
       <% end %>
-      <!-- CHECKING OUT IF THE ARTICLE IS READ END -->
 
-    </br>
+    <% if reads < 6 %>
 
-      <%= article.content.truncate(150) %>
-    </div>
+      <div id="article" class="box size11">
+
+        <% if article.photo.present? %>
+        <div class="photo">
+          <%= image_tag article.photo_url(:home11).to_s %>
+        </div>
+        <% end %>
+        
+        <div class="title" style="font-size: 16px;">
+          <%= link_to article.title, article %>
+        </div>
+        
+
+        <!-- CHECKING OUT IF THE ARTICLE IS READ -->
+        <% if user_signed_in? %>
+          <% if Read.where('article_id = ? AND user_id = ?', article, current_user.id).count < 1 %>
+
+            <div class="unread">
+              <%= image_tag 'corner_triangle.png' %>
+            </div>
+
+          <% end %>
+        <% end %>
+        <!-- CHECKING OUT IF THE ARTICLE IS READ END -->
+
+
+        <%= article.content.truncate(150) %>
+      </div>
+
+    <% end %>
+
+    
+    <% if reads > 5 %>
+
+      <div id="article" class="box size22">
+        <div class="photo">
+          <%= image_tag article.photo_url(:home22).to_s %>
+        </div>
+        
+        <div class="title" style="font-size: 22px;">
+          <%= link_to article.title, article %>
+        </div>
+        
+
+        <!-- CHECKING OUT IF THE ARTICLE IS READ -->
+        <% if user_signed_in? %>
+          <% if Read.where('article_id = ? AND user_id = ?', article, current_user.id).count < 1 %>
+
+            <div class="unread">
+              <%= image_tag 'corner_triangle.png' %>
+            </div>
+
+          <% end %>
+        <% end %>
+        <!-- CHECKING OUT IF THE ARTICLE IS READ END -->
+
+
+        <%= article.content.truncate(350) %>
+      </div>
+
+    <% end %>
+
+
 
   <% end %>
 
 </div>
+
+
+
+
+<script type="text/javascript" >
+  
+  $(function() { 
+   
+    $('#newspaper').nested(); 
+ 
+  });
+  
+  
+</script>
+

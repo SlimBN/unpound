@@ -23,10 +23,12 @@ class JournalsController < ApplicationController
   def show
     @journal = Journal.find(params[:id])
 
-    is_read =  Read.all(:conditions => ['user_id = ? AND journal_id = ?', current_user.id, @journal.id]).count
+    if user_signed_in?
+      is_read =  Read.all(:conditions => ['user_id = ? AND journal_id = ?', current_user.id, @journal.id]).count
     
       read_it = Read.new(:user_id => current_user.id, :journal_id => @journal.id)
       read_it.save
+    end
 
     respond_to do |format|
       format.html # show.html.erb

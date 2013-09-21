@@ -1,0 +1,83 @@
+#journaux_index {
+	margin: 1px;
+	margin-top: 2px;
+
+	#index_journal {
+		border-radius: 5px;
+
+		overflow: hidden;
+
+		img {
+			border-radius: 3px;
+				filter: grayscale(100%);
+				-webkit-filter: grayscale(100%);
+				-moz-filter: grayscale(100%);
+				filter: grayscale(100%);
+
+			z-index: 10;
+
+			&:hover {
+				filter: grayscale(0%);
+				-webkit-filter: grayscale(0%);
+				-moz-filter: grayscale(0%);
+				filter: grayscale(0%);
+			}
+		}
+
+		.unread {
+			position: absolute;
+			top: 0px;
+			right: 0px;
+
+			img {
+				filter: grayscale(0%);
+				-webkit-filter: grayscale(0%);
+				-moz-filter: grayscale(0%);
+				filter: grayscale(0%);
+
+			}
+		}
+
+		.title {
+			position: absolute;
+			bottom: 20px;
+			right: 0px;
+
+			padding: 5px 15px 5px 15px;
+
+			z-index: 99990;
+
+			background-color: rgba(0, 0, 0, 0.4);
+
+			color: #fff;
+			font-size: 20px;
+			text-align: right;
+
+			a {
+				font-family: "lino";
+				color: #FFF;
+
+				&:hover {
+					text-decoration: none;
+				}
+			}
+
+			visibility: hidden;
+		}
+
+		&:hover > .title {
+			animation-name: slideLeft;
+			-webkit-animation-name: slideLeft;	
+
+			animation-duration: 1s;	
+			-webkit-animation-duration: 1s;
+
+			animation-timing-function: ease-in-out;	
+			-webkit-animation-timing-function: ease-in-out;		
+
+			visibility: visible !important;	
+		}
+
+	}
+
+}

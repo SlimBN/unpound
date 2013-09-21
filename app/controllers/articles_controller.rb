@@ -16,11 +16,10 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
 
     is_read =  Read.all(:conditions => ['user_id = ? AND article_id = ?', current_user.id, @article.id]).count
-    
-    if is_read < 1
+
       read_it = Read.new(:user_id => current_user.id, :article_id => @article.id)
       read_it.save
-    end
+
 
     respond_to do |format|
       format.html # show.html.erb

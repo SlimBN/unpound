@@ -3,6 +3,7 @@ Unbound::Application.routes.draw do
 
 # Manipulation de Journaux
   match 'journals/abonnements' => 'journals#abonnements', :as => :abonnements
+  match 'journal/issue/:id' => 'issues#show', :as => :numero
 
   resources :follows
 
@@ -57,7 +58,7 @@ Unbound::Application.routes.draw do
   match 'author/:id' => 'users#show'
 
 
-  match ':id' => 'journals#show'
+  match ':id' => 'journals#show', :as => :see_journal
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:

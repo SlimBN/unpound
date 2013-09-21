@@ -6,4 +6,5 @@ class Journal < ActiveRecord::Base
 
   has_many :reads
   has_many :follows
+  has_many :issues
 end

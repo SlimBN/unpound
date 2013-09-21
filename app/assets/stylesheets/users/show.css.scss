@@ -1,0 +1,23 @@
+#user_show {
+
+	margin-top: 2px;
+
+	#avatar {
+		width: 492px;
+		height: 492px;
+
+		margin: 1px;
+
+		border-radius: 5px;
+
+		img {
+			border-radius: 5px;
+		}
+	}
+
+	#about {
+		line-height: 40px;
+		vertical-align: middle;
+	}
+
+}

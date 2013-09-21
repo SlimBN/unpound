@@ -11,6 +11,37 @@
     </div>
   <% end %>
 
+  <div id="issue-form">
+
+    <% if @issue.picture.present? %>
+    <div class="cover">
+    
+    <span class="title">
+      <%= raw(@issue.theme) %>
+    </span>
+      <%= image_tag @issue.picture_url(:cover).to_s %>
+    </div>
+    <% end %>    
+
+  </div>
+
+    <script>
+      $('#issue-form').bigtext();
+    </script> 
+
+  <div class="row">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+      <span class="Order">@</span><%= f.number_field :journal_id, :class => "form-control" %>
+  </div>
+    <div class="col-lg-3">
+      <input type="text" class="form-control" placeholder=".col-lg-3"><%= f.text_field :theme, :class => "form-control" %>
+    </div>
+    <div class="col-lg-4">
+      <input type="text" class="form-control" placeholder=".col-lg-4">
+    </div>
+  </div>
+
   <div class="field">
     <%= f.label :journal_id %><br />
     <%= f.number_field :journal_id %>
@@ -27,11 +58,42 @@
     <%= f.label :draft %><br />
     <%= f.check_box :draft %>
   </div>
+
+  <div class="slideThree">  
+  <input type="checkbox" value="None" id="slideThree" name="issue[draft]" />
+  <label for="slideThree"></label>
+</div>
+
   <div class="field">
     <%= f.label :picture %><br />
-    <%= f.text_field :picture %>
+    <%= f.file_field :picture %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
+
+
+
+<!-- ADD A NEW PAGE TO AJAX -->
+<div id="new-page-for-issue">
+  <%= form_for(Page.new, :remote => true) do |f| %>
+    <%= f.hidden_field :issue_id, :value => @issue.id %>
+    <%= f.text_field :name %>
+    <%= f.text_field :classement %>
+    <%= f.submit %>
+  <% end %>
+</div>
+<!-- ADD A NEW PAGE TO AJAX END -->
+
+
+<!-- LISTING THE PAGES MODULE -->
+<div id="pages-list-for-issue">
+
+  <%= render partial: "issues/partials/page", locals: { issue: @issue } %>
+
+</div>
+<!-- LISTING THE PAGES MODULE END -->
+

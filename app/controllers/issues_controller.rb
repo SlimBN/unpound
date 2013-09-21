@@ -42,6 +42,11 @@ class IssuesController < ApplicationController
   def create
     @issue = Issue.new(params[:issue])
 
+    if Follow.all(:conditions => ['user_id = ? AND journal_id = ?', current_user.id, @issue.journal_id]).count != 0
+      notify_it = Notification.new(:user_id => current_user.id, :issue_id => @issue.id)
+      notify_it.save
+    end
+
     respond_to do |format|
       if @issue.save
         format.html { redirect_to @issue, notice: 'Issue was successfully created.' }

@@ -1,0 +1,42 @@
+#newspaper {
+	text-align: center;
+	#article {
+
+		text-align: left;
+
+		text-overflow: ellipsis;
+		.photo {
+			img {
+				border-radius: 3px;
+
+				filter: grayscale(100%);
+				-webkit-filter: grayscale(100%);
+				-moz-filter: grayscale(100%);
+				filter: grayscale(100%);
+
+				&:hover {
+					filter: grayscale(0%);
+					-webkit-filter: grayscale(0%);
+					-moz-filter: grayscale(0%);
+					filter: grayscale(0%);
+				}
+			}
+		}
+		.title {
+			font-family: Times, serif;
+			
+			text-align: center;
+			text-transform: uppercase;
+
+			a {
+				color: #000;
+			}
+		}
+
+		.unread {
+			position: absolute;
+			right: 0px;
+			top: 0px;
+		}
+	}  
+}

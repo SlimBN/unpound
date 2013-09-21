@@ -1,0 +1,107 @@
+#Last_and_about {
+	height: 380px;
+
+	background-image: url(image-path('paper.png'));
+		  -webkit-box-shadow: 
+		        1px 1px   0 rgba(0,   0,   0,   0.100), 
+		        3px 3px   0 rgba(255, 255, 255, 1.0), 
+		        4px 4px   0 rgba(0,   0,   0,   0.125), 
+		        6px 6px   0 rgba(255, 255, 255, 1.0),  
+		        7px 7px   0 rgba(0,   0,   0,   0.150), 
+		        9px 9px   0 rgba(255, 255, 255, 1.0),  
+		        10px 10px 0 rgba(0,   0,   0,   0.175);
+		  -moz-box-shadow: 
+		        1px 1px   0 rgba(0,   0,   0,   0.100), 
+		        3px 3px   0 rgba(255, 255, 255, 1.0), 
+		        4px 4px   0 rgba(0,   0,   0,   0.125), 
+		        6px 6px   0 rgba(255, 255, 255, 1.0),  
+		        7px 7px   0 rgba(0,   0,   0,   0.150), 
+		        9px 9px   0 rgba(255, 255, 255, 1.0),  
+		        10px 10px 0 rgba(0,   0,   0,   0.175);
+		  box-shadow: 
+		        1px 1px   0 rgba(0,   0,   0,   0.100), 
+		        3px 3px   0 rgba(255, 255, 255, 1.0), 
+		        4px 4px   0 rgba(0,   0,   0,   0.125), 
+		        6px 6px   0 rgba(255, 255, 255, 1.0),  
+		        7px 7px   0 rgba(0,   0,   0,   0.150), 
+		        9px 9px   0 rgba(255, 255, 255, 1.0),  
+		        10px 10px 0 rgba(0,   0,   0,   0.175);
+
+
+	#last_issue {
+		width: 300px;
+
+		display: inline-block;
+
+		margin: 2px 1px 1px 1px;
+
+		img {
+		  background-color: white;
+					filter: grayscale(100%);
+					-webkit-filter: grayscale(100%);
+					-moz-filter: grayscale(100%);
+					filter: grayscale(100%);
+		  padding: 1px;
+		  -webkit-box-shadow: 
+		        1px 1px   0 rgba(0,   0,   0,   0.100), 
+		        3px 3px   0 rgba(255, 255, 255, 1.0), 
+		        4px 4px   0 rgba(0,   0,   0,   0.125), 
+		        6px 6px   0 rgba(255, 255, 255, 1.0),  
+		        7px 7px   0 rgba(0,   0,   0,   0.150), 
+		        9px 9px   0 rgba(255, 255, 255, 1.0),  
+		        10px 10px 0 rgba(0,   0,   0,   0.175);
+		  -moz-box-shadow: 
+		        1px 1px   0 rgba(0,   0,   0,   0.100), 
+		        3px 3px   0 rgba(255, 255, 255, 1.0), 
+		        4px 4px   0 rgba(0,   0,   0,   0.125), 
+		        6px 6px   0 rgba(255, 255, 255, 1.0),  
+		        7px 7px   0 rgba(0,   0,   0,   0.150), 
+		        9px 9px   0 rgba(255, 255, 255, 1.0),  
+		        10px 10px 0 rgba(0,   0,   0,   0.175);
+		  box-shadow: 
+		        1px 1px   0 rgba(0,   0,   0,   0.100), 
+		        3px 3px   0 rgba(255, 255, 255, 1.0), 
+		        4px 4px   0 rgba(0,   0,   0,   0.125), 
+		        6px 6px   0 rgba(255, 255, 255, 1.0),  
+		        7px 7px   0 rgba(0,   0,   0,   0.150), 
+		        9px 9px   0 rgba(255, 255, 255, 1.0),  
+		        10px 10px 0 rgba(0,   0,   0,   0.175);
+		    
+		}
+	}
+
+	#journal_info {
+		margin-left: 20px;
+		margin-top: 10px;
+
+		width: 500px;
+
+		vertical-align: top;
+
+		display: inline-block;
+		
+		text-overflow: hidden;
+
+		.title {
+			font-family: "Carrington";
+			text-transform: uppercase;
+			font-size: 60px;
+
+			margin: 0px;
+		}
+		.when {
+			font-family: 'Roboto';
+			margin: 0px;
+			margin-top: -25px;
+
+			font-size: 20px;
+		}
+
+		.description {
+			width: 800px;
+			text-overflow: ellipsis;
+		}
+	}
+
+
+}

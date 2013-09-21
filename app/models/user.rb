@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :about, :avatar, :country_id, :town, :username
 
+  mount_uploader :avatar, AvatarUploader
+
   has_many :journals
   has_many :articlesandpage
   has_many :articles

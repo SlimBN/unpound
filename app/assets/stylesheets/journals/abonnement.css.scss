@@ -24,6 +24,8 @@
 	padding: 0px;
 	
 	#abonnement_journal {
+		position: relative;
+
 		width: 300px;
 		height: 400px;
 
@@ -36,6 +38,41 @@
 		margin-right: -3px;
 
 		display: inline-block;
+
+		.unread {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+
+			z-index: 10000;
+
+			height: 60px;
+			width: 60px;
+
+			background-image: url(image-path("unread.png"));
+			background-color: #EC5744;
+			background-repeat: no-repeat;
+		}
+
+		.title {
+			position: absolute;
+			top: 20px;
+			left: 0;
+			padding: 10px;
+
+			background-color: rgba(255, 255, 255, 0.6);
+
+			font-family: "lino";
+
+			a {
+				color: #000;
+				text-decoration: none;
+
+				&:hover {
+					color: #000;
+				}
+			}
+		}
 	}
 
 }

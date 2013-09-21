@@ -13,13 +13,47 @@ header {
 	text-align: center;
 	vertical-align: middle;
 
-	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 
 	.logo {
 		height: 60px;
 
 		line-height: 60px;
 		vertical-align: middle;
+		font-family: Times;
+		font-size: 50px;
+		font-weight: bold;
+		text-transform: uppercase;
+
+	}
+
+	.subtle {
+		width: 95%;
+		height: 30px;
+
+		margin: 0 auto;
+
+		border-bottom: 1px solid #000;
+		border-top: 1px solid #000;
+
+		padding-top: 1px;
+		padding-bottom: 1px;
+
+		line-height: 30px;
+		vertical-align: middle;
+
+		ul {
+			margin: 0px;
+			padding: 0px;
+
+			li {
+				margin: 0px;
+				padding: 0px;
+				margin-left: 10px;
+				margin-right: 10px;
+
+				display: inline-block;
+			}
+		}
 	}
 }
 

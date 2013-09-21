@@ -1,8 +1,29 @@
+<div id="Last_and_about">
+
+  <% last_issue = Issue.where('journal_id = ?', @journal.id).order('created_at ASC').last %>
+  
+
+
+  <div id="journal_info">
+    <div class="title">
+      <%= @journal.name %>
+    </div>
+    <div class="when">
+      Une création <%= link_to @journal.user.username, @journal.user %> depuis <%= @journal.created_at %>
+    </div>
+
+    <div class="description">
+      "<%= @journal.description %>"
+    </div>
+  </div>
+</div>
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
   <b>Name:</b>
-  <%= @journal.name %>
+  
 </p>
 
 <p>
