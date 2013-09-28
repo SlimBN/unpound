@@ -1,6 +1,9 @@
 Unbound::Application.routes.draw do
 
 
+  resources :credits
+
+
 # Manipulation de Journaux
   match 'journals/abonnements' => 'journals#abonnements', :as => :abonnements
   match 'journal/issue/:id' => 'issues#show', :as => :numero

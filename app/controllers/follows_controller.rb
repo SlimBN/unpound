@@ -44,6 +44,7 @@ class FollowsController < ApplicationController
 
     respond_to do |format|
       if @follow.save
+        @followee = User.find(@follow.followee_id)
         format.js { render :action => '../follows/ajax/follow_unfollow'}
       else
         format.html { render action: "new" }

@@ -1,0 +1,238 @@
+#article-show {
+	width: 60%;
+	min-width: 900px;
+
+	display: inline-block;
+
+	text-align: left;
+
+	.title {
+		margin-top: 20px;
+		margin-bottom: 10px;
+
+		font-size: 80px;
+		line-height: 60px;
+		font-family: 'base';
+	}
+
+	.photo {
+		img {
+			width: 900px;
+			height: auto;
+		}
+	}
+
+	.content {
+		margin-top: 15px;
+		margin-bottom: 20px;
+		padding-left: 10px;
+
+		font-family: 'lino';
+		font-weight: 100;
+		font-size: 24px;
+	}
+}
+
+#article-show-left-bar {
+	width: 30%;
+	min-width: 400px;
+
+	margin-left: 10px;
+
+	display: inline-block;
+	vertical-align: top;
+
+	#user {
+		border-radius: 5px;
+
+		figure {
+			position: relative;
+
+			width: 400px;
+			height: 500px;
+
+			img {
+				position: relative;
+
+				margin: 0 auto;
+
+				width: 400px;
+				height: 300px;
+
+				border-radius: 5px 5px 0px 0px;
+
+				display: block;
+			    
+			    z-index: 100;
+			}
+
+			figcaption {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+
+				text-align: left;
+				color: #FFF;
+
+				width: 100%;
+				height: 100%;
+
+				padding-top: 290px;
+				padding-left: 10px;
+
+				border-radius: 5px;
+
+				background-color: #2c3f52;
+
+				a {
+					text-align: center;
+				    padding: 5px 10px;
+				    border-radius: 2px;
+				    display: inline-block;
+				    // background: #ed4e6e;
+				    color: #fff;
+
+				    &:hover {
+				    	text-decoration: none;
+				    }
+				}
+
+				h3 a {
+					color: #FFF;
+					text-transform: uppercase;
+				}
+				
+				.stats {
+					text-align: center;
+
+					.data-stats {
+						width: 27%;
+
+						margin: 10px;
+
+						font-family: 'base';
+
+						display: inline-block;
+
+						.title {
+							color: rgba(255, 255, 255, 0.9);
+							font-size: 30px;
+							font-weight: 200;
+						}
+
+						.number {
+							color: rgba(255, 255, 255, 0.9);
+							margin-bottom: 12px;
+							font-size: 30px;
+							font-weight: 100;
+							font-family: 'Roboto';
+
+						}
+					}	
+									
+				}
+
+
+			}
+
+
+
+
+		}
+
+
+	}
+
+
+	#credibility {
+		position: relative;
+		border-radius: 5px;
+
+		width: 400px;
+		height: 330px;
+
+		margin-top: 10px;
+
+		background-color: #9c4274;
+
+		#preview {
+			margin-top: 20px;
+			padding-top: 20px;
+		}
+
+		#preview-textfield {
+			width: 100px;
+			height: 60px;
+
+			font-weight: bold;
+			font-size: 40px;
+			font-family: "base";
+			color: rgba(255, 255, 255, 0.6);
+
+			position: absolute;
+			left: 150px;
+			top: 140px;
+		}
+
+		.vote {
+			position: absolute;
+			top: 200px;
+			left: 25px;
+
+			width: 350px;
+
+		}
+
+	}
+
+	#list-publishing-journals {
+		position: relative;
+		border-radius: 5px;
+
+		width: 400px;
+
+		text-align: left;
+
+		margin-top: 10px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		padding-left: 20px;
+
+		background-color: #1AA1B8;
+
+		.journal {
+			margin-bottom: 10px;
+
+			.picture {
+
+				img {
+					width: 75px;
+					height: 75px;
+				}
+
+				display: inline-block;
+			}
+
+			.title {
+				margin-left: 10px;
+				height: 75px;
+				display: inline-block;
+				vertical-align: middle;
+
+				color: rgba(255, 255, 255, 0.7);
+				line-height: 75px;
+				font-size: 25px;
+				font-weight: 500;
+
+				a {
+					color: rgba(255, 255, 255, 0.7);
+					text-decoration: none;
+
+					&:hover {
+						text-decoration: none;
+					}
+				}
+			}
+		}
+	}
+}

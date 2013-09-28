@@ -7,116 +7,57 @@
   <div class="photo">
     <%= image_tag @article.photo_url().to_s %>
   </div>
+
+  <!-- SOCIAL SHARING MODULE -->
+    <%= render "articles/showmodules/share" %>
+  <!-- SOCIAL SHARING MODULE END -->
+
+
+  <div class="content">
+    <%= raw(@article.content) %>
+  </div>
+
+  <!-- FB COMMENTS MODULE -->
+    <%= render "articles/showmodules/fb_comments" %>
+  <!-- FB COMMENTS MODULE END -->
+
 </div>
 
-<p>
-  <b>Title:</b>
-  <%= @article.title %>
-</p>
-
-<p>
-  <b>Content:</b>
-  <%= @article.content %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= link_to @article.user.username, user_path(@article.user) %>
-</p>
-
-<% if ((user_signed_in?) and (current_user.id != @article.user.id)) %>
-<div id="article_follow_user">
-
-  <%= render "follows/partials/article_user_follow" %>
-
-  <% is_read =  Follow.all(:conditions => ['user_id = ? AND followee_id = ?', current_user.id, @article.user.id]).count %>
-
-  <% if is_read < 1 %>
 
 
-  <%= form_for(Follow.new) do |f| %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.hidden_field :followee_id, :value => @article.user.id %>
+<div id="article-show-left-bar">
 
-      <button type="submit" type="button" class="btn btn-default btn-lg">
-        <span class="glyphicon glyphicon-star"></span> S'abonner a l'utilisateur
-      </button>
+  <!-- AUTHOR MODULE -->
+    <%= render "articles/showmodules/author" %>
+  <!-- AUTHOR MODULE END -->
+
+  <!-- ADD TO MY JOURNAL MODULE -->
+    <%= render "articles/showmodules/add_to_my_journal" %>
+  <!-- ADD TO MY JOURNAL MODULE END -->
+
+  <!-- CREDIBILITY MODULE -->
+    <%= render "articles/showmodules/credibility" %>
+  <!-- CREDIBILITY MODULE END -->
+
+  <!-- LIST OF PUBLISHING JOURNALS MODULE -->
+    <%= render "articles/showmodules/list_journals" %>
+  <!-- LIST OF PUBLISHING JOURNALS MODULE END -->
+
+
+</div>
+
+<div id="related-articles">
   
-  <% end %>
-
-  <% else %>
-    <button type="submit" type="button" class="btn btn-default btn-lg">
-      <span class="glyphicon glyphicon-star-empty"></span> Se Desabonner
-    </button>
-  <% end %>
+  <!-- RELATED ARTICLES MODULE -->
+    <%= render "articles/showmodules/related_articles" %>
+  <!-- RELATED ARTICLES MODULE END -->
 
 </div>
-<% end %>
-
-<p>
-  <b>Photo:</b>
-  <%= @article.photo %>
-</p>
-
- <!-- Button trigger modal -->
-  <a data-toggle="modal" href="#add-article-to-ajax" class="btn btn-primary btn-lg">Add to my journal</a>
-
-  <!-- Modal -->
-  <div class="modal fade" id="add-article-to-ajax" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Modal title</h4>
-        </div>
-        <div class="modal-body">
-
-          <!-- ADD ARTICLE TO ISSUE AJAX -->
-          <div id="add-to-journal">
-
-            <%= render "articles/partials/journals_select_box" %>
-
-          </div>
-          <!-- ADD ARTICLE TO ISSUE AJAX END -->
-
-          
-
-          <!-- ADD A NEW JOURNAL AJAX -->
-          <div id="new-journal">
-            <%= form_for(Journal.new, :remote => true) do |f| %>
-              <%= f.hidden_field :user_id, :value => current_user.id %>
-              <%= f.text_field :name %>
-              <%= f.submit %>
-            <% end %>
-          </div>
-          <!-- ADD A NEW JOURNAL AJAX END -->
 
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
 
-
-  <!-- Modal -->
-  <div class="modal fade" id="add-article-to-success" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Notification</h4>
-        </div>
-
-        <div class="modal-body">
-          Votre article a été ajouté à votre journal avec succès
-        </div>
-
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-
+  
+<!-- MODAL ADD TO JOURNAL MODULE -->
+  <%= render "articles/showmodules/add_modal" %>
+<!-- MODAL ADD TO JOURNAL MODULE END -->
 

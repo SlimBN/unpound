@@ -1,0 +1,70 @@
+  <div id="user">
+    <figure>
+            <figcaption>
+                <h3><%= link_to @article.user.username, user_path(@article.user) %></h3>
+
+                <div class="follow-unfollow">
+                  <% if ((user_signed_in?) and (current_user.id != @article.user.id)) %>
+
+                    <% is_following =  Follow.all(:conditions => ['user_id = ? AND followee_id = ?', current_user.id, @article.user.id]).count %>
+
+                    <% if is_following < 1 %>
+
+
+                    <%= form_for(Follow.new, :remote => true) do |f| %>
+                      <%= f.hidden_field :user_id, :value => current_user.id %>
+                      <%= f.hidden_field :followee_id, :value => @article.user.id %>
+
+                        <button id="follow-button" type="submit" type="button" class="btn btn-default btn-lg">
+                          <span class="glyphicon glyphicon-star"></span> S'abonner a l'utilisateur
+                        </button>
+                    
+                    <% end %>
+
+                    <% else %>
+                    <%= link_to 'Destroy', Follow.all(:conditions => ['user_id = ? AND followee_id = ?', current_user.id, @article.user.id]), :class => "btn btn-default btn-lg", :id => "unfollow-button", remote: true, method: :delete %>
+                    <% end %>
+
+                  <% end %>                  
+                </div>
+
+                <div class="stats">
+  
+                  <div class="data-stats">
+                    <div class="title">
+                      Articles
+                    </div>
+
+                    <div class="number">
+                      <%= Article.where('user_id = ?', @article.user_id).count %>
+                    </div>
+                  </div>
+                  
+                  <div class="data-stats">
+                    <div class="title">
+                      Journals
+                    </div>
+
+                    <div class="number">
+                      <%= Journal.where('user_id = ?', @article.user_id).count %>
+                    </div>
+                  </div>
+                  
+                  <div class="data-stats">
+                    <div class="title">
+                      Abonnés
+                    </div>
+
+                    <div class="number">
+                      <%= Follow.where('followee_id = ?', @article.user_id).count %>
+                    </div>
+                  </div>                  
+
+
+                </div>
+
+
+            </figcaption>
+            <%= image_tag @article.user.avatar_url().to_s %>
+        </figure>
+  </div>

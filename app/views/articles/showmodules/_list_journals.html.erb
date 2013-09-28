@@ -1,0 +1,21 @@
+<div id="list-publishing-journals">
+	
+	<% ArticlesAndPage.order('created_at DESC').last(5).each do |journal| %>
+
+	<div class="journal">
+		<div class="picture">
+			<% if Journal.find(journal.journal_id).cover.present? %>
+				<%= image_tag Journal.find(journal.journal_id).cover_url().to_s %>
+			<% else %>
+				not here
+			<% end %>
+		</div>
+
+		<div class="title">
+			<%= link_to Journal.find(journal.journal_id).name, Journal.find(journal.journal_id) %>
+		</div>
+	</div>
+		
+	<% end %>
+
+</div>
