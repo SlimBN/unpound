@@ -1,4 +1,13 @@
-<p id="notice"><%= notice %></p>
+<div id="issue_show">
+
+	<% Page.where("issue_id = ?", @issue.id).order('classement ASC').each do |page| %>
+		<%= page.classement %>
+		<%= page.name %>
+
+	</br>
+	<% end %>
+	
+</div>
 
 <p>
   <b>Journal:</b>

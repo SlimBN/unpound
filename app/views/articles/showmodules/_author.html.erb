@@ -3,7 +3,7 @@
             <figcaption>
                 <h3><%= link_to @article.user.username, user_path(@article.user) %></h3>
 
-                <div class="follow-unfollow">
+                <div id="follow-unfollow">
                   <% if ((user_signed_in?) and (current_user.id != @article.user.id)) %>
 
                     <% is_following =  Follow.all(:conditions => ['user_id = ? AND followee_id = ?', current_user.id, @article.user.id]).count %>
@@ -16,7 +16,7 @@
                       <%= f.hidden_field :followee_id, :value => @article.user.id %>
 
                         <button id="follow-button" type="submit" type="button" class="btn btn-default btn-lg">
-                          <span class="glyphicon glyphicon-star"></span> S'abonner a l'utilisateur
+                          <span class="glyphicon glyphicon-flag"></span> S'abonner a l'utilisateur
                         </button>
                     
                     <% end %>

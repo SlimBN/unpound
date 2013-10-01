@@ -1,23 +1,213 @@
-#user_show {
+#user_show_left {
+	position: fixed;
+	top: 90px;
+	left: 0px;
 
-	margin-top: 2px;
+	width: 300px;
+	height: 100%;
 
-	#avatar {
-		width: 492px;
-		height: 492px;
+	border-right: 1px solid #ccc;
 
-		margin: 1px;
+	background-color: rgba(255, 255, 255, 0.4);
 
-		border-radius: 5px;
+	#personal_pack {
 
-		img {
-			border-radius: 5px;
+		border-bottom: 1px solid #ccc;
+		padding-bottom: 10px;
+
+		#avatar {
+			margin-top: 10px;
+
+			img {
+				width: 280px;
+				height: 280px;
+			}
+		}
+
+		#name_and_username {
+			padding-left: 10px;
+
+			text-align: left;
+			font-weight: bold;
+			font-size: 22px;
+			text-transform: uppercase;
+		}
+
+		#about {
+			margin-top: 10px;
+			padding-left: 10px;
+			padding-right: 10px;
+
+			text-align: left;
+			font-size: 16px;
+			font-weight: 100;
+			line-height: 18px;
+		}
+
+		#location {
+			margin-top: 20px;
+			padding-left: 8px;
+			padding-right: 10px;
+
+			text-align: left;
+			font-weight: 100;
+			line-height: 18px;
 		}
 	}
 
-	#about {
-		line-height: 40px;
-		vertical-align: middle;
+	#user_stats {
+		text-align: left;
+
+		border-bottom: 1px solid #ccc;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-left: 8px;
+
+		#articles, #journals, #followers {
+			text-transform: uppercase;
+			font-size: 20px;
+			font-weight: bold;
+			color: rgba(0, 0, 0, 0.8);
+
+			.number {
+				color: #20A3D5;
+			}
+		}
+
+
 	}
 
+}
+
+#user_show_listing {
+	padding-left: 290px;
+	margin-top: -10px;
+
+	height: 100%;
+
+	text-align: left;
+
+	#articles, #issues, #activity, #publishers {
+		position: relative;
+		width: 32%;
+		min-width: 300px;
+		height: 650px;
+		overflow-y: scroll;
+
+		padding-top: 50px;
+
+		display: inline-block;
+		vertical-align: top;
+		text-align: center;
+
+		background-color: #FAFAFA;
+
+		.column-title {
+			position: absolute;
+			top: 0;
+			left: 0;
+
+			width: 100%;
+
+			padding: 8px;
+
+			border-radius: 5px 0px 0px 0px;
+			background-color: #E54E2E;
+
+			font-weight: bold;
+			font-family: "lino";
+			font-size: 18px;
+			text-transform: uppercase;
+			color: #fff;
+			text-shadow: 0 -1px black;
+			letter-spacing: 2px;
+		}
+	}
+
+	#articles {
+		margin: 0px;
+		padding: 0px;
+		padding-top: 40px;
+
+		text-align: left;
+
+		#article_container {
+			padding-bottom: 10px;
+			padding-left: 5px;
+			box-shadow: inset 0 -10px 30px rgba(0, 0, 0, 0.4);
+
+			#avatar {
+				margin: 10px 0px 0px 0px;
+				padding: 0px;
+				width: 60px;
+				display: inline-block;
+
+				img {
+					width: 60px;
+					height: 60px;
+
+				}
+			}
+
+			#article {
+				margin: 8px 0px 0px 0px;
+				max-width: 260px;
+				display: inline-block;
+				vertical-align: top;
+
+				.title {
+					text-transform: uppercase;
+					font-weight: bold;
+					font-size: 18px;
+					line-height: 19px;
+
+					margin-bottom: 5px;
+				}
+			}
+
+		}
+
+
+	}
+
+	#issues {
+		margin: 0px;
+		padding: 0px;
+		padding-top: 40px;
+
+		text-align: left;
+
+		#issue {
+			margin: 0px 0px 0px 0px;
+			padding-bottom: 10px;
+			padding-top: 10px;
+			padding-left: 5px;
+
+			box-shadow: inset 0 -10px 30px rgba(0, 0, 0, 0.4);
+			#cover {
+				width: 80px;
+
+				display: inline-block;
+
+				img {
+					width: 80px;
+					height: 100px;
+				}
+			}
+
+			#data {
+				display: inline-block;
+				vertical-align: top;
+
+				.issue_theme {
+					text-transform: uppercase;
+					font-weight: bold;
+
+					.normal {
+						color: #000;
+					}
+				}
+			}
+		}
+	}
 }

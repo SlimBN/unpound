@@ -45,7 +45,7 @@ class FollowsController < ApplicationController
     respond_to do |format|
       if @follow.save
         @followee = User.find(@follow.followee_id)
-        format.js { render :action => '../follows/ajax/follow_unfollow'}
+        format.js { render :action => '../follows/ajax/follow'}
       else
         format.html { render action: "new" }
         format.json { render json: @follow.errors, status: :unprocessable_entity }
@@ -76,7 +76,8 @@ class FollowsController < ApplicationController
     @follow.destroy
 
     respond_to do |format|
-        format.js { render :action => '../follows/ajax/follow_unfollow'}
+        @followee = User.find(@follow.followee_id)
+        format.js { render :action => '../follows/ajax/unfollow'}
     end
   end
 end

@@ -14,8 +14,6 @@ gem 'mini_magick'
 # Used for authentication
 gem 'devise'
 
-gem 'gon'
-
 
 # Gems used only for assets and not required
 # in production environments by default.
