@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130923170126) do
+ActiveRecord::Schema.define(:version => 20131001210510) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20130923170126) do
     t.string   "photo"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "tag_list"
   end
 
   create_table "articles_and_pages", :force => true do |t|
@@ -33,6 +34,14 @@ ActiveRecord::Schema.define(:version => 20130923170126) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "articles_tags", :force => true do |t|
+    t.integer "article_id"
+    t.integer "tag_id"
+  end
+
+  add_index "articles_tags", ["article_id"], :name => "index_articles_tags_on_article_id"
+  add_index "articles_tags", ["tag_id"], :name => "index_articles_tags_on_tag_id"
 
   create_table "credits", :force => true do |t|
     t.integer  "user_id"
@@ -125,6 +134,14 @@ ActiveRecord::Schema.define(:version => 20130923170126) do
     t.text "propertyName"
     t.text "propertyValue"
   end
+
+  create_table "tags", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tags", ["content"], :name => "index_tags_on_content", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "username"

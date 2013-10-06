@@ -60,9 +60,6 @@ GEM
     eventmachine (1.0.3)
     execjs (2.0.1)
     ffaker (1.16.2)
-    gon (4.1.1)
-      actionpack (>= 2.3.0)
-      json
     hike (1.2.3)
     i18n (0.6.5)
     journey (1.0.4)
@@ -155,7 +152,6 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   ffaker
-  gon
   jquery-rails
   meta_request
   mini_magick
