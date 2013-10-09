@@ -1,0 +1,22 @@
+<div id="user-cover-profile">
+	
+	<div class="user-block">
+		<div class="avatar">
+			<%= image_tag @user.avatar_url(:profile).to_s %>
+		</div>
+
+		<div class="user-data">
+			<div class="name">
+				<%= @user.username %>
+			</div>
+
+			<div class="job">
+				Employeur actuel : Faculté de medecine de monastir
+			</div>
+
+			<div class="follows">
+				Ancien établissement fréquenté : Secourisme 52 contacts vous ont ajouté à leurs cercles.
+			</div>
+		</div>
+	</div>
+</div>

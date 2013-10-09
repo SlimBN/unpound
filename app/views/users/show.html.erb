@@ -1,17 +1,34 @@
+<%= render "users/partials/cover_top" %>
+
+
+<div id="profile-container">
+  <!-- 
+  < rende "users/partials/controllers_top" %>
+
+  < rende "users/partials/followers" %>
+
+  < rende "users/partials/following_journals" %>
+
+  < rende "users/partials/credibility" %>
+
+  < rende "users/partials/journals" %>
+
+  < rende "users/partials/top_ten_articles" %>
+
+  < rende "users/partials/publications" %>
+ -->
+</div>
+
+
+
+
+
+
+
 <div id="user_show_left">
 
   <div id="personal_pack">
     
-    <div id="avatar">
-      <%= image_tag @user.avatar_url(:profile).to_s %>
-    </div>
-
-    <div id="name_and_username">
-      <%= @user.username %>
-      <% if (user_signed_in? and @user.id = current_user.id) %>
-        <a href="<%= edit_user_url(current_user) %>"><span class="glyphicon glyphicon-pencil"></span></a>
-      <% end %>
-    </div>
 
     <div id="about">
       <%= @user.about %>
@@ -37,101 +54,26 @@
       <span class="glyphicon glyphicon-bullhorn"></span> <span class="number"><%= Follow.where('user_id = ?', @user.id).count %></span> Abonnés
     </div>
 
-    <div id="credibility">
-
-    </div>
-
-  </div>
-
-  <div id="trending_topics">
-    
-  </div>
 
 </div>
 
-<div id="user_show_listing">
-  <div id="articles">
-      
-    <div class="column-title">
-      Articles
-    </div>
 
-    <% Article.where('user_id = ?', @user.id).order('created_at DESC').each do |article| %>
-    <div id="article_container">
-      
-      <div id="avatar">
-        <%= image_tag @user.avatar_url(:profile).to_s %>
-      </div>
-      <div id="article">
-        <div class="title">
-          <%= article.title %>
-        </div>
-        <div class="content">
-          <%= truncate(article.content, length: 130) %> <%= link_to "Continuer à lire", article %>
-        </div>
+truncate(article.content, length: 130)
 
-    </div>
-
-    </div>
-      
-    <% end %>      
-
-
-  </div>
-
-  <div id="issues">
-    <div class="column-title">
-      Editions
-    </div>
-    <% Journal.where('user_id = ?', @user.id).each do |journal| %>
-      
-      <% Issue.where('journal_id = ?', journal.id).order('created_at DESC').each do |issue| %>
-
-      <div id="issue">
-        
         <div id="cover">
-          <% if issue.picture.present? %>
-            <%= image_tag issue.picture_url().to_s %>
-          <% else %>
-            <%= image_tag "rails.png" %>
-          <% end %>
+          if issue.picture.present? %>
+           = image_tag issue.picture_url().to_s %>
+          else %>
+           = image_tag "rails.png" %>
+          end %>
         </div>
 
-        <div id="data">
-          <div class="issue_theme">
-            #<%= link_to issue.number, issue %> - <%= link_to issue.theme, issue, class: "normal" %>
-          </div>
-
-          <div class="journal">
-            <%= link_to issue.journal.name, issue.journal %>
-          </div>
-
-        </div>
-
-      </div>
 
 
-      <% end %>
-    <% end %>
-  </div>
-
-  <div id="activity">
-    afafaef
-  </div>
 </div>
 
 
 
-
-<script type="text/javascript" >
-  
-  $(function() { 
-   
-    $('#user_show').nested(); 
- 
-  });
-  
-  
 </script>
 
 <p id="notice"><%= notice %></p>

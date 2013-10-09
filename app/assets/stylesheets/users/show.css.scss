@@ -1,3 +1,73 @@
+#user-cover-profile {
+	// position: absolute;
+	// top: 0px;
+	// left: 0px;
+
+	width: 100%;
+	height: 300px;
+
+	background-image: url("https://lh6.googleusercontent.com/-8b6AhxYBnUo/UYFKr4QOkYI/AAAAAAAABio/EiPd7r81c40/w1600-h900/default_cover_8_14d0436d687b1b22589bbc67e793e75e.jpg");
+
+	box-shadow: inset 0 -100px 100px rgba(0, 0, 0, 0.7);
+
+	.user-block {
+		width: 900px;
+		height: 150px;
+
+		margin: 0 auto;
+		padding-top: 100px;
+
+		color: #fff;
+		font-family: "Roboto";
+
+		.avatar {
+			width: 150px;
+
+			padding-top: 20px;
+
+			display: inline-block;
+
+			img {
+				width: 120px;
+				height: auto;
+
+				border-radius: 50%;
+			}
+		}
+
+		.user-data {
+			width: 600px;
+
+			display: inline-block;
+			line-height: 38px;
+			vertical-align: bottom;
+
+			text-align: left;
+
+			padding-top: 20px;
+
+			.name {
+				color: #FFF;
+				font-size: 38px;
+				font-family: "Roboto";
+				font-weight: 700;
+				text-shadow: 0 1px 0 rgba(0,0,0,0.7);
+				line-height: 45px;
+			}
+
+			.job {
+				line-height: 20px;
+			}
+
+			.follows {
+				line-height: 20px;
+			}
+		}
+	}
+}
+
+
+
 #user_show_left {
 	position: fixed;
 	top: 90px;

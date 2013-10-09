@@ -4,7 +4,7 @@ class Article < ActiveRecord::Base
 
   has_many :articlesandpage
 
-  has_as_belongs_to_many :tags
+  # has_as_belongs_to_many :tags
 
   belongs_to :user
 

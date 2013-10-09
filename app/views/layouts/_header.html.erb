@@ -7,8 +7,15 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<header>
-	<div class="logo">
+<header id="logo-header">
+	<div class="logo" >
+		<%= link_to (image_tag "logo.png"), root_path() %>
+	</div>
+
+</header>
+
+<header id="header">
+	<div class="lefty" style="visibility: hidden;" >
 		<%= link_to "Wireald", root_path() %>
 	</div>
 
@@ -26,15 +33,24 @@
 			<% if user_signed_in? %>
 			<li>
 				<% if Notification.all(:conditions => ['user_id = ?', current_user.id]).count != 0 %>
-				<%= Notification.all(:conditions => ['user_id = ?', current_user.id]).count %> <% end %>Notifications
+				<%= Notification.all(:conditions => ['user_id = ?', current_user.id]).count %> <% end %> 
 			</li>
 			<% end %>
 
 			<li></li>
 
 		</ul>
-		
+	</div>
 
+	<div class="righty">
+		<ul>
+			<li><%= image_tag "color_128/bell.png" %> Notifications</li>
+			<li><a href="<%= user_path(current_user) %>"><%= image_tag "color_128/user.png" %> Profil</a></li>
+			<li><%= image_tag "color_128/bell.png" %> Notifications</li>
+			<li>yea</li>
+
+		</ul>
+		
 	</div>
 
 </header>
