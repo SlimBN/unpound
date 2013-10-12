@@ -4,7 +4,7 @@
 	</div>
 
 	<% Journal.where('user_id = ?', @user.id).each do |journal| %>
-		<%= journal.name %>
+		<%= link_to journal.name, journal %>
 	<% end %>
 
 

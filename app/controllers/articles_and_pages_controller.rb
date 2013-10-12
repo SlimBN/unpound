@@ -41,6 +41,8 @@ class ArticlesAndPagesController < ApplicationController
   # POST /articles_and_pages.json
   def create
     @articles_and_page = ArticlesAndPage.new(params[:articles_and_page])
+    @articles_and_page.number_of_repush = ArticlesAndPage.where('user_id = ?', @articles_and_page.user_id).count
+    @articles_and_page.number_of_article_repush = ArticlesAndPage.where('article_id = ?', @articles_and_page.article_id).count
 
     respond_to do |format|
       if @articles_and_page.save

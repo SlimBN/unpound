@@ -4,7 +4,50 @@
 <div id="profile-container">
 
   <div class="main-profile">
-    zefefefe
+
+
+<div id="carousel-example-generic" class="carousel slide">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="..." alt="...">
+      <div class="carousel-caption">
+        ...
+      </div>
+    </div>
+    ...
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+    <span class="icon-prev"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+    <span class="icon-next"></span>
+  </a>
+</div>
+
+
+
+
+    
+
+    <%= render "users/partials/publications" %>
+
+
+
+
+
+
+
+  
   </div>
 
   <div class="profile-sidebar">
@@ -12,6 +55,8 @@
     <%= render "users/partials/followers" %>
 
     <%= render "users/partials/credibility" %>
+
+    <%= render "users/partials/top_ten_articles" %>
 
     <%= render "users/partials/journals" %>
     
@@ -35,62 +80,3 @@
 
 
 
-
-
-
-
-<div id="user_show_left">
-
-  <div id="personal_pack">
-    
-
-    <div id="about">
-      <%= @user.about %>
-    </div>
-
-    <div id="location">
-      <strong><span class="glyphicon glyphicon-map-marker"></span> <%= @user.town %></strong> &bull; <span class="glyphicon glyphicon-globe"></span> <a href="">http://www.unbound.com</a>
-    </div>
-
-  </div>
-
-  <div id="user_stats">
-    
-    <div id="articles">
-      <span class="glyphicon glyphicon-edit"></span> <span class="number"><%= Article.where('user_id = ?', @user.id).count %></span> Articles
-    </div>
-
-    <div id="journals">
-      <span class="glyphicon glyphicon-book"></span> <span class="number"><%= Journal.where('user_id = ?', @user.id).count %></span> Journals
-    </div>
-
-    <div id="followers">
-      <span class="glyphicon glyphicon-bullhorn"></span> <span class="number"><%= Follow.where('user_id = ?', @user.id).count %></span> Abonnés
-    </div>
-
-
-</div>
-
-
-truncate(article.content, length: 130)
-
-        <div id="cover">
-          if issue.picture.present? %>
-           = image_tag issue.picture_url().to_s %>
-          else %>
-           = image_tag "rails.png" %>
-          end %>
-        </div>
-
-
-
-</div>
-
-
-
-</script>
-
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>

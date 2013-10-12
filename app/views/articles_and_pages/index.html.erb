@@ -2,7 +2,11 @@
 
 <table>
   <tr>
+    <th>id</th>
     <th>Article</th>
+    <th>journal</th>
+    <th>repush</th>
+    <th>article repush</th>
     <th>Page</th>
     <th>User</th>
     <th>Style</th>
@@ -13,7 +17,11 @@
 
 <% @articles_and_pages.each do |articles_and_page| %>
   <tr>
+    <td><%= articles_and_page.id %></td>
     <td><%= articles_and_page.article_id %></td>
+    <td><%= articles_and_page.journal_id %></td>
+    <td><%= articles_and_page.number_of_repush %></td>
+    <td><%= articles_and_page.number_of_article_repush %></td>
     <td><%= articles_and_page.page_id %></td>
     <td><%= articles_and_page.user_id %></td>
     <td><%= articles_and_page.style %></td>

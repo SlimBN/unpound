@@ -148,6 +148,8 @@
 		position: relative;
 		border-radius: 5px;
 
+		z-index: 10;
+
 		width: 400px;
 		height: 330px;
 
@@ -158,6 +160,10 @@
 		#preview {
 			margin-top: 20px;
 			padding-top: 20px;
+
+			canvas {
+				z-index: -10;
+			}
 		}
 
 		#preview-textfield {

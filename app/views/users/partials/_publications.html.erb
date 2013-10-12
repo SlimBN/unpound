@@ -1,0 +1,40 @@
+	<% Article.where('user_id = ?', @user.id).each do |article| %>
+	<div class="publication-box">
+		<div class="user">
+			<%= link_to image_tag(article.user.avatar_url().to_s, title: article.user.username), user_path(article.user) %>
+		</div>
+
+		<div class="title-block">
+			
+			<div class="title">
+				<%= link_to article.title, article %>
+			</div>
+
+			<div class="created-at">
+				<%= article.created_at %>
+			</div>
+
+		</div>
+
+
+		<div class="quote-content">
+			<%= truncate(article.content, length: 250) %> <%= link_to "Continuer à lire", article %>
+		</div>
+
+		<div class="cover">
+			<%= link_to image_tag(article.photo_url().to_s), article %>
+		</div>
+
+		<div class="toolbox">
+			
+		</div>
+
+		<div class="facebook-comments">
+			<div class="fb-comments" data-href="http://0.0.0.0:3000/articles/<%= article.id %>" data-width="680"></div>
+		</div>
+
+		
+	</div>
+		
+	</br>
+	<% end %>

@@ -1,0 +1,25 @@
+<div class="top-ten-articles-box">
+
+	<div class="label">
+		Top 10 des articles publié
+	</div>
+	<% ArticlesAndPage.where("user_id = ?", @user.id).order('number_of_article_repush DESC').first(1).each do |article| %>
+
+		<div class="article">
+			
+			<div class="titre">
+				<%= Article.find(article).title %>
+			</div>
+
+			<div class="content">
+				<%= Article.find(article).content %>
+			</div>
+
+		</div>
+		
+		
+
+	</br>
+	<% end %>
+
+</div>
