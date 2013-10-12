@@ -66,6 +66,139 @@
 	}
 }
 
+#profile-container {
+	margin-top: 10px;
+
+	.main-profile {
+		width: 700px;
+
+		display: inline-block;
+		vertical-align: top;
+
+	}
+
+	.profile-sidebar {
+		width: 450px;
+
+		display: inline-block;
+		vertical-align: top;
+
+		.follow-box {
+			width: 100%;
+
+			padding: 10px;
+			margin-bottom: 10px;
+
+			border: 1px solid #eee;
+			box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+
+			background-color: #F3F3F3;
+			border-radius: 3px;
+
+			.label {
+				width: 100%;
+				text-align: left;
+
+				float: left;
+
+				font-family: "Roboto";
+				font-size: 20px;
+				line-height: 40px;
+				color: #000;
+
+				span {
+					float: right;
+				}
+			}
+
+			.list {
+				.avatar {
+					width: 70px;
+
+					margin: 5px;
+
+					display: inline-block;
+					vertical-align: top;
+
+					img {
+						width: 70px;
+						height: 70px;
+
+						border-radius: 50%;
+					}
+				}
+			}
+		}
+
+		.credibility-box {
+			width: 100%;
+			height: 240px;
+			
+			margin-bottom: 10px;
+			padding: 10px;
+
+			border: 1px solid #840A38;
+			box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+
+			background-color: #840A38;
+			border-radius: 3px;
+
+			color: #fff;
+			font-family: "Roboto";
+			font-size: 24px;
+
+			.label {
+				width: 100%;
+				text-align: left;
+
+				float: left;
+
+				font-family: "Roboto";
+				font-size: 20px;
+				line-height: 40px;
+				color: rgba(255, 255, 255, 0.7);
+
+					span {
+						float: right;
+					}
+			}
+		}
+
+		.journals-box {
+			width: 100%;
+			
+			margin-bottom: 10px;
+			padding: 10px;
+
+			border: 1px solid #55A435;
+			box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+
+			background-color: #55A435;
+			border-radius: 3px;
+
+			color: #fff;
+			font-family: "Roboto";
+			font-size: 24px;
+
+			.label {
+				width: 100%;
+				text-align: left;
+
+				float: left;
+
+				font-family: "Roboto";
+				font-size: 20px;
+				line-height: 40px;
+				color: rgba(255, 255, 255, 0.7);
+
+					span {
+						float: right;
+					}
+			}
+		}
+	}
+}
+
 
 
 #user_show_left {

@@ -1,0 +1,30 @@
+<div class="follow-box">
+	<div class="label">
+		Suivi par <span><%= Follow.where('followee_id = ?', @user.id).count %> personnes</span>
+	</div>
+	<div class="list">
+		<% if Follow.where('followee_id = ?', @user.id).count == 0 %>
+			Commencez à interesser des lecteurs en <%= link_to "ecrivant un article", new_article_path() %>
+		<% else %>
+			<% Follow.where('followee_id = ?', @user.id).each do |follower| %>
+				<div class="avatar">
+					<%= link_to image_tag(follower.user.avatar_url().to_s, title: follower.user.username), user_path(follower.user) %>
+				</div>
+				
+			<% end %>
+		<% end %>
+	</div>
+
+	<div class="label">
+		Abonné(e) à <span><%= Follow.where('user_id = ?', @user.id).count %> personnes</span>
+	</div>
+	<div class="list">
+		<% Follow.where('user_id = ?', @user.id).each do |follower| %>
+			<div class="avatar">
+				<%= link_to image_tag(User.find(follower.followee_id).avatar_url().to_s, title: User.find(follower.followee_id).username), user_path(follower.user) %>
+			</div>
+			
+		<% end %>
+	</div>
+	
+</div>

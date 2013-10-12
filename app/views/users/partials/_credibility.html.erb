@@ -1,0 +1,44 @@
+<div class="credibility-box">
+
+	<% if Credit.where('user_id = ?', @user.id).count == 0 %>
+		Pas encore d'article pour faire le calcul...
+
+	<% else %>
+
+		<% credibility = (Credit.where('verdict = ? AND user_id = ?', "true", @user.id).count * 100) / Credit.where('user_id = ?', @user.id).count %>
+		<div class="label">
+			Score de Crédibilité <span><%= credibility %> %</span>
+		</div>
+		
+	    <div id="preview">
+	  		<canvas width=400 height=300 id="canvas-preview"></canvas>
+	  	</div>
+
+
+		<script>
+			var opts = {
+				lines: 5, // The number of lines to draw
+				angle: 0, // The length of each line
+				lineWidth: 0.1, // The line thickness
+				pointer: {
+					length: 0, // The radius of the inner circle
+					strokeWidth: 0, // The rotation offset
+					color: 'rgba(0, 0, 0, 0.4)' // Fill color
+				},
+			 	limitMax: 'false',   // If true, the pointer will not go past the end of the gauge
+
+				colorStart: 'rgba(255, 255, 255, 0.9)',   // Colors
+				colorStop: 'rgba(255, 255, 255, 0.9)',    // just experiment with them
+				strokeColor: 'rgba(0, 0, 0, 0.4)',   // to see which ones work best for you
+				shadowColor: 'rgba(0, 0, 0, 0.4)',   // to see which ones work best for you
+				generateGradient: false
+			};
+			var target = document.getElementById('canvas-preview'); // your canvas element
+			var gauge = new Donut(target).setOptions(opts); // create sexy gauge!
+			gauge.maxValue = 100; // set max gauge value
+			gauge.animationSpeed = 32; // set animation speed (32 is default value)
+			gauge.set(<%= credibility %>); // set actual value
+
+		</script>
+	<% end %>
+</div>

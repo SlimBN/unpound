@@ -41,17 +41,19 @@
 
 		</ul>
 	</div>
-
+	
+	<% if user_signed_in? %>
 	<div class="righty">
 		<ul>
 			<li><%= image_tag "color_128/bell.png" %> Notifications</li>
 			<li><a href="<%= user_path(current_user) %>"><%= image_tag "color_128/user.png" %> Profil</a></li>
 			<li><%= image_tag "color_128/bell.png" %> Notifications</li>
-			<li>yea</li>
+			<li></li>
 
 		</ul>
 		
 	</div>
+	<% end %>
 
 </header>
 <!-- 
