@@ -26,7 +26,39 @@
 		</div>
 
 		<div class="toolbox">
-			
+			<% if Credit.where("user_id = ? and article_id = ?", current_user.id, article.id).count < 100 %>
+			<div class="thumbup">
+				<%= form_for(Credit.new, :remote => true) do |f| %>
+  					<%= f.hidden_field :user_id, value: current_user.id %>
+  					<%= f.hidden_field :article_id, value: article.id %>
+  					<%= f.hidden_field :verdict, value: true %>
+  					<button type="submit" type="button" class="btn btn-default btn-lg">
+            			<span class="glyphicon glyphicon-thumbs-up"></span> Je Confirme
+            		</button>
+  				<% end %>
+			</div>
+
+			<div class="thumbdown">
+				<%= form_for(Credit.new, :remote => true) do |f| %>
+  					<%= f.hidden_field :user_id, value: current_user.id %>
+  					<%= f.hidden_field :article_id, value: article.id %>
+  					<%= f.hidden_field :verdict, value: false %>
+  					<button type="submit" type="button" class="btn btn-default btn-lg">
+            			<span class="glyphicon glyphicon-thumbs-down"></span> Pas Vrai
+            		</button>
+  				<% end %>
+			</div>
+			<% end %>
+
+
+
+			<div class="addtomyjournal">
+				
+			</div>
+
+			<div class="share">
+				
+			</div>
 		</div>
 
 		<div class="facebook-comments">
