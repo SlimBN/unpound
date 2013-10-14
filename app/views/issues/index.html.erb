@@ -6,6 +6,7 @@
     <th>Theme</th>
     <th>Number</th>
     <th>Picu</th>
+    <th>Draft</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,6 +18,7 @@
     <td><%= issue.theme %></td>
     <td><%= issue.number %></td>
     <td><%= issue.picture %></td>
+    <td><%= issue.draft %></td>
     <td><%= link_to 'Show', issue %></td>
     <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
     <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>

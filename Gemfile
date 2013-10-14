@@ -10,6 +10,8 @@ gem 'sqlite3'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem "fnordmetric"
+
 
 # Used for authentication
 gem 'devise'
@@ -38,7 +40,7 @@ gem 'jquery-rails'
 # Use unicorn as the app server
 gem 'unicorn'
 
-gem 'thin'
+# gem 'thin'
 
 
 gem 'better_errors'
@@ -54,4 +56,4 @@ gem 'ffaker'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'

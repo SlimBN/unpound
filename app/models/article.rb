@@ -8,6 +8,10 @@ class Article < ActiveRecord::Base
 
   belongs_to :user
 
+def trigger_view_event
+  FNORD_METRIC.event(attributes.merge(_type: :view_article))    
+end
+
 
 #deep surgery for the hashtag thing (ba3 ba3 ba3)
   # serialize :tag_list

@@ -17,8 +17,11 @@ class ArticlesController < ApplicationController
 
     is_read =  Read.all(:conditions => ['user_id = ? AND article_id = ?', current_user.id, @article.id]).count
 
-      read_it = Read.new(:user_id => current_user.id, :article_id => @article.id)
-      read_it.save
+    read_it = Read.new(:user_id => current_user.id, :article_id => @article.id)
+    read_it.save
+
+
+    @article.trigger_view_event
 
 
     respond_to do |format|
@@ -50,6 +53,8 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
+        @publication = Publication.new(:user_id => current_user.id, :article_id => @article.id, :element => "article")
+        @publication.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render json: @article, status: :created, location: @article }
       else

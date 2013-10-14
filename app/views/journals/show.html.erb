@@ -1,40 +1,80 @@
-<div id="Last_and_about">
+<div id="journal_show">
 
-  <% last_issue = Issue.where('journal_id = ?', @journal.id).order('created_at ASC').last %>
-  
-
-
-  <div id="journal_info">
-    <div class="title">
-      <%= @journal.name %>
-    </div>
-    <div class="when">
-      Une création <%= link_to @journal.user.username, @journal.user %> depuis <%= @journal.created_at %>
+  <div class="top-journal-board">
+    
+    <div class="cover">
+      <%= image_tag @journal.cover_url().to_s %>
     </div>
 
-    <div class="description">
-      "<%= @journal.description %>"
+    <div class="journal-data">
+      <div class="title">
+        <%= @journal.name %>
+      </div>
+
+      <div class="description">
+        <%= raw(@journal.description) %>
+      </div>
+
+      <div class="sub-board">
+        <% Follow.where("journal_id = ?", @journal.id).last(20).each do |follower| %>
+          <%= link_to image_tag(follower.user.avatar_url().to_s, title: follower.user.username), user_path(follower.user) %>
+        <% end %>
+      </div>
     </div>
   </div>
+
+  <div class="info-box">
+    <div class="admin-avatar">
+      <%= image_tag @journal.user.avatar_url().to_s %>
+    </div>
+    
+    <div class="bande-info">
+      <div class="bande-inbox">
+        <div class="number">
+          18
+        </div>
+
+        <div class="caption">
+          Abonnés
+        </div>
+      </div>
+
+      <div class="bande-inbox">
+        <div class="number">
+          43
+        </div>
+
+        <div class="caption">
+          Journals
+        </div>
+      </div>
+    </div>
+
+    <div class="link">
+      <%= link_to "Voir le profil", user_path(@journal.user) %>
+    </div>
+
+  </div>
+
+  <div class="info-box">
+    <%= Issue.where("journal_id = ?", @journal.id).order('created_at DESC').count %>
+  </div>
+
+  <div class="info-box">
+    feafkk
+  </div>
+
+
+<!-- LIST JOURNAL'S UNPUBLISHED ISSUES -->
+  <% Issue.where("journal_id = ?", @journal.id).order('created_at DESC').each do |issue| %>
+    <div class="issue-box">
+      numeroooooo
+    </div>
+  <% end %>
+<!-- LIST JOURNAL'S UNPUBLISHED ISSUES END -->
+
+
 </div>
-
-
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @journal.description %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= link_to @journal.user.username, user_path(@journal.user) %>
-</p>
 
 
 <!-- LIST JOURNAL'S PUBLISHED ISSUES -->
@@ -51,18 +91,6 @@ Numeros publiés
 <!-- LIST JOURNAL'S PUBLISHED ISSUES END -->
 
 
-<!-- LIST JOURNAL'S UNPUBLISHED ISSUES -->
-Numéro en cour de preparation
-<ul>
-  <% Issue.where("journal_id = ? AND draft = ?", @journal.id, true).order('created_at DESC').each do |issue| %>
-    
-    <li>
-      <%= link_to issue.theme, issue %>
-    </li>
-
-  <% end %>
-</ul>
-<!-- LIST JOURNAL'S UNPUBLISHED ISSUES END -->
 
 
 <!-- ADD A NEW ISSUE MODULE -->

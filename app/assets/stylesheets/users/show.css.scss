@@ -171,10 +171,194 @@
 			}
 
 			.toolbox {
+				width: 680px;
+
 				margin-top: 10px;
 
 				text-align: left;
-				.thumbup, .thumbdown {
+				.thumbup, .thumbdown, .add-to-my-journal, .share {
+					display: inline-block;
+					line-height: 30px;
+					vertical-align: middle;
+
+					a {
+						background-color: #FDFDFD;
+
+						padding: 10px;
+
+						border-radius: 3px;
+						border: 1px solid #eee;
+						box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
+						color: rgba(0, 0, 0, 0.7);
+
+						&:hover {
+							text-decoration: none;
+						}
+					}
+				}
+			}
+
+			.facebook-comments {
+				margin-top: 10px;
+			}
+		}
+
+
+		.publication-journal-box {
+		  /*dimentions just for preview*/
+		  width: 100%;
+		  /*---------------------------*/
+
+		  box-shadow:
+		    1px 2px 5px rgba(34, 34, 34, .5),
+		    10px -5px 0px #ffffff,
+		    10px -5px 6px rgba(34, 34, 34, .5),
+		    -5px 5px 0px #ffffff,
+		    -5px 5px 6px rgba(34, 34, 34, .5);
+
+		    /*and just for fun (remember to prefix where appropriate)*/
+		    -webkit-backface-visibility: hidden;
+		    -webkit-transform: rotate(-1deg);
+		    transform: rotate(-1deg);
+		    transition: all 0.5s;
+
+		    &:hover {
+			   box-shadow:
+			     1px 2px 4px rgba(34, 34, 34, .5),
+			     4px -4px 0px #ffffff,
+			     4px -4px 6px rgba(34, 34, 34, .5),
+			     -4px 4px 0px #ffffff,
+			     -4px 4px 6px rgba(34, 34, 34, .5);
+			     -webkit-transform: rotate(0deg);
+			     transform: rotate(0deg);
+		    }
+
+			padding: 10px;
+			margin-bottom: 10px;
+
+			border: 1px solid #eee;
+			box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+
+			background-color: #F3F3F3;
+			border-radius: 3px;
+
+			.user {
+				width: 50px;
+				height: 50px;
+
+				display: inline-block;
+				vertical-align: top;
+
+				img {
+					height: 50px;
+					width: 50px;
+
+					border-radius: 50%;
+				}
+			}
+
+			.title-block {
+				width: 100%;
+				
+				display: inline-block;
+				vertical-align: top;
+
+				margin-bottom: 10px;
+				
+				.title {
+					text-align: center;
+
+					padding-left: 10px;
+
+					font-family: "Carrington";
+					font-size: 60px;
+					font-weight: 100;
+					letter-spacing: 1px;
+
+					a {
+						color: rgba(0, 0, 0, 0.8);
+						text-decoration: none;
+
+						&:hover {
+							color: rgba(0, 0, 0, 0.8);
+						}
+					}
+				}
+
+				.created-at {
+					text-align: center;
+					border-top: 1px solid #000;
+					border-bottom: 1px solid #000;
+
+					width: 100%;
+
+					padding-top: 5px;
+					padding-bottom: 5px;
+					padding-left: 11px;
+
+					line-height: 14px;
+				}				
+			}
+
+
+
+			.description {
+				margin-top: 20px;
+				margin-bottom: 20px;
+				padding-left: 20px;
+				padding-right: 10px;
+
+				text-align: left;
+				font-family: "Roboto";
+				font-size: 22px;
+				line-height: 27px;
+				letter-spacing: 2px;
+
+				&:before {
+					content: "\"";
+					font-size: 40px;
+				}
+
+				&:after {
+					content: "\"";
+					font-size: 40px;
+				}
+
+			}
+
+			.charte {
+				width: 100%;
+
+				padding-right: 20px;
+
+				font-family: "Roboto";
+				text-align: right;
+			}
+
+			.cover {
+				padding-bottom: 10px;
+				border-bottom: 1px solid #000;
+				img {
+					filter: grayscale(100%);
+					-webkit-filter: grayscale(100%);
+					-moz-filter: grayscale(100%);
+					filter: grayscale(100%);
+					
+					width: 680px;
+					height: 250px;
+
+					border-radius: 5px;
+				}
+			}
+
+			.toolbox {
+				width: 680px;
+
+				margin-top: 10px;
+
+				text-align: left;
+				.thumbup, .thumbdown, .add-to-my-journal, .share {
 					display: inline-block;
 					line-height: 30px;
 					vertical-align: middle;
@@ -212,6 +396,7 @@
 
 		.follow-box {
 			width: 100%;
+			min-height: 150px;
 
 			padding: 10px;
 			margin-bottom: 10px;
@@ -321,6 +506,25 @@
 					span {
 						float: right;
 					}
+			}
+
+			.journal {
+				margin-left: 13px;
+				padding-right: 10px;
+
+				font-size: 26px;
+				text-align: left;
+
+				.titre {
+					font-size: 32px;
+					color: rgba(255, 255, 255, 0.9);
+				}
+
+				.content {
+					font-size: 16px;
+					line-height: 20px;
+					color: rgba(255, 255, 255, 0.9);
+				}
 			}
 		}
 

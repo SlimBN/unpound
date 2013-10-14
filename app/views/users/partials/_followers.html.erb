@@ -16,14 +16,19 @@
 	</div>
 
 	<div class="label">
-		Abonné(e) à <span><%= Follow.where('user_id = ?', @user.id).count %> personnes</span>
+		Abonné(e) à <span><%= Follow.where('user_id = ? and journal_id = ?', @user.id, "0").count %> personnes</span>
 	</div>
 	<div class="list">
-		<% Follow.where('user_id = ?', @user.id).each do |follower| %>
-			<div class="avatar">
-				<%= link_to image_tag(User.find(follower.followee_id).avatar_url().to_s, title: User.find(follower.followee_id).username), user_path(follower.user) %>
-			</div>
-			
+		<% if Follow.where('user_id = ? and journal_id = ?', @user.id, "0").count < 1 %>
+			Commencez à interesser des lecteurs en <%= link_to "ecrivant un article", new_article_path() %>
+		<% else %>
+			<% Follow.where('user_id = ? and journal_id = ?', @user.id, "0").each do |follower| %>
+				<div class="avatar">
+					<% user = User.find(follower.followee_id).id %>
+					<%= link_to image_tag(User.find(follower.followee_id).avatar_url().to_s, title: User.find(follower.followee_id).username), user_path(User.find(follower.followee_id)) %>
+				</div>
+				
+			<% end %>
 		<% end %>
 	</div>
 	

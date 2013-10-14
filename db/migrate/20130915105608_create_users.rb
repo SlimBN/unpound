@@ -6,6 +6,10 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :country_id
       t.string :town
       t.string :avatar
+      t.string :web
+      t.string :studies
+      t.string :background
+      t.string :avatar
 
       t.timestamps
     end

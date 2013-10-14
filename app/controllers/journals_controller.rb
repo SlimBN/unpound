@@ -23,6 +23,8 @@ class JournalsController < ApplicationController
   def show
     @journal = Journal.find(params[:id])
 
+    @journal.trigger_view_event
+
     if user_signed_in?
       is_read =  Read.all(:conditions => ['user_id = ? AND journal_id = ?', current_user.id, @journal.id]).count
     
@@ -59,6 +61,8 @@ class JournalsController < ApplicationController
 
     respond_to do |format|
       if @journal.save
+        @publication = Publication.new(:user_id => current_user.id, :journal_id => @journal.id, :element => "journal")
+        @publication.save
         format.js { render :action => '../journals/ajax/create'}
         format.html { redirect_to @journal, notice: 'Journal was successfully created.' }
       else

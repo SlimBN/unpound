@@ -1,6 +1,9 @@
 Unbound::Application.routes.draw do
 
 
+  resources :publications
+
+
   resources :credits
 
 

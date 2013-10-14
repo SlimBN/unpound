@@ -1,72 +1,137 @@
-	<% Article.where('user_id = ?', @user.id).each do |article| %>
-	<div class="publication-box">
-		<div class="user">
-			<%= link_to image_tag(article.user.avatar_url().to_s, title: article.user.username), user_path(article.user) %>
-		</div>
+	<% Publication.where('user_id = ?', @user.id).order("created_at DESC").each do |publication| %>
+	<% if publication.element == "journal" %>
 
-		<div class="title-block">
+		<div class="publication-journal-box">
+
+			<div class="title-block">
+				
+				<div class="title">
+					<%= link_to Journal.find(publication.journal_id).name, Journal.find(publication.journal_id) %>
+				</div>
+
+				<div class="created-at">
+					<%= Journal.find(publication.journal_id).user.username %> &bull; Démarré le <%= Journal.find(publication.journal_id).created_at.day %>/<%= Journal.find(publication.journal_id).created_at.month %>/<%= Journal.find(publication.journal_id).created_at.year %>
+				</div>
+
+			</div>
+
+			<div class="cover">
+				<%= link_to image_tag(Journal.find(publication.journal_id).cover_url().to_s), Journal.find(publication.journal_id) %>
+			</div>
+
+			<div class="description">
+				<%= truncate(Journal.find(publication.journal_id).description, length: 250) %> <%= link_to "Continuer à lire", Journal.find(publication.journal_id) %>
+
+			</div>
 			
-			<div class="title">
-				<%= link_to article.title, article %>
+			<div class="charte">
+				Charte Editoriale,</br><%= Journal.find(publication.journal_id).user.username %>
 			</div>
 
-			<div class="created-at">
-				<%= article.created_at %>
+			<div class="toolbox">
+
+				<div class="add-to-my-journal">
+	  					<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default btn-lg">
+	            			<span class="glyphicon glyphicon-plus"></span> S'abonner
+	            		</button>
+				</div>
+
+				<div class="share">
+	  					<button type="submit" type="button" class="btn btn-default btn-lg">
+	            			<span class="glyphicon glyphicon-share"></span> Partager
+	            		</button>
+					
+				</div>
 			</div>
 
+			<div class="facebook-comments">
+				<div class="fb-comments" data-href="http://0.0.0.0:3000/<%= Journal.find(publication.journal_id).id %>" data-width="680"></div>
+			</div>
+
+			
 		</div>
 
-
-		<div class="quote-content">
-			<%= truncate(article.content, length: 250) %> <%= link_to "Continuer à lire", article %>
-		</div>
-
-		<div class="cover">
-			<%= link_to image_tag(article.photo_url().to_s), article %>
-		</div>
-
-		<div class="toolbox">
-			<% if Credit.where("user_id = ? and article_id = ?", current_user.id, article.id).count < 100 %>
-			<div class="thumbup">
-				<%= form_for(Credit.new, :remote => true) do |f| %>
-  					<%= f.hidden_field :user_id, value: current_user.id %>
-  					<%= f.hidden_field :article_id, value: article.id %>
-  					<%= f.hidden_field :verdict, value: true %>
-  					<button type="submit" type="button" class="btn btn-default btn-lg">
-            			<span class="glyphicon glyphicon-thumbs-up"></span> Je Confirme
-            		</button>
-  				<% end %>
-			</div>
-
-			<div class="thumbdown">
-				<%= form_for(Credit.new, :remote => true) do |f| %>
-  					<%= f.hidden_field :user_id, value: current_user.id %>
-  					<%= f.hidden_field :article_id, value: article.id %>
-  					<%= f.hidden_field :verdict, value: false %>
-  					<button type="submit" type="button" class="btn btn-default btn-lg">
-            			<span class="glyphicon glyphicon-thumbs-down"></span> Pas Vrai
-            		</button>
-  				<% end %>
-			</div>
-			<% end %>
-
-
-
-			<div class="addtomyjournal">
-				
-			</div>
-
-			<div class="share">
-				
-			</div>
-		</div>
-
-		<div class="facebook-comments">
-			<div class="fb-comments" data-href="http://0.0.0.0:3000/articles/<%= article.id %>" data-width="680"></div>
-		</div>
-
+	<% end %>
 		
-	</div>
+	<% if publication.element == "article" %>
+
+		<div class="publication-box">
+			<div class="user">
+				<%= link_to image_tag(Article.find(publication.user_id).user.avatar_url().to_s, title: Article.find(publication.user_id).user.username), user_path(Article.find(publication.user_id).user) %>
+			</div>
+
+			<div class="title-block">
+				
+				<div class="title">
+					<%= link_to Article.find(publication.user_id).title, Article.find(publication.user_id) %>
+				</div>
+
+				<div class="created-at">
+					<%= Article.find(publication.user_id).created_at %>
+				</div>
+
+			</div>
+
+
+			<div class="quote-content">
+				<%= truncate(Article.find(publication.user_id).content, length: 250) %> <%= link_to "Continuer à lire", Article.find(publication.user_id) %>
+			</div>
+
+			<div class="cover">
+				<%= link_to image_tag(Article.find(publication.user_id).photo_url().to_s), Article.find(publication.user_id) %>
+			</div>
+
+			<div class="toolbox">
+				<% if Credit.where("user_id = ? and article_id = ?", current_user.id, Article.find(publication.user_id).id).count < 100 %>
+				<div class="thumbup">
+					<%= form_for(Credit.new, :remote => true) do |f| %>
+	  					<%= f.hidden_field :user_id, value: current_user.id %>
+	  					<%= f.hidden_field :article_id, value: Article.find(publication.user_id).id %>
+	  					<%= f.hidden_field :verdict, value: true %>
+	  					<button type="submit" type="button" class="btn btn-default btn-lg">
+	            			<span class="glyphicon glyphicon-thumbs-up"></span> Je Confirme
+	            		</button>
+	  				<% end %>
+				</div>
+
+				<div class="thumbdown">
+					<%= form_for(Credit.new, :remote => true) do |f| %>
+	  					<%= f.hidden_field :user_id, value: current_user.id %>
+	  					<%= f.hidden_field :article_id, value: Article.find(publication.user_id).id %>
+	  					<%= f.hidden_field :verdict, value: false %>
+	  					<button type="submit" type="button" class="btn btn-default btn-lg">
+	            			<span class="glyphicon glyphicon-thumbs-down"></span> Pas Vrai
+	            		</button>
+	  				<% end %>
+				</div>
+				<% end %>
+
+
+
+				<div class="add-to-my-journal">
+	  					<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default btn-lg">
+	            			<span class="glyphicon glyphicon-plus"></span> Publier
+	            		</button>
+				</div>
+
+				<div class="share">
+	  					<button type="submit" type="button" class="btn btn-default btn-lg">
+	            			<span class="glyphicon glyphicon-share"></span> Partager
+	            		</button>
+					
+				</div>
+			</div>
+
+			<div class="facebook-comments">
+				<div class="fb-comments" data-href="http://0.0.0.0:8080/articles/<%= Article.find(publication.user_id).id %>" data-width="680"></div>
+			</div>
+
+			
+		</div>
+
+	<% end %>
 		
 	</br>
 	<% end %>
+
+
