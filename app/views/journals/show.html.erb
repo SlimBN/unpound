@@ -8,7 +8,7 @@
 
     <div class="journal-data">
       <div class="title">
-        <%= @journal.name %>
+        <%= @journal.name %> <% if @journal.user == current_user %> <%= link_to (image_tag "color_18/gear.png"), edit_journal_path(@journal) %> <% end %>
       </div>
 
       <div class="description">
@@ -56,20 +56,110 @@
 
   </div>
 
-  <div class="info-box">
-    <%= Issue.where("journal_id = ?", @journal.id).order('created_at DESC').count %>
+  <div class="info-journal-box">
+    <div class="number-of-followers">
+      <div class="number">
+      <%= Follow.where("journal_id = ?", @journal.id).count %>
+      </div>
+
+      <div class="label">
+        Abonnés
+      </div>
+      
+    </div>
+
+    <div class="number-of-issues">
+      <div class="number">
+        <%= Issue.where("journal_id = ?", @journal.id).count %>
+      </div>
+
+      <div class="label">
+        Numéros Publiés
+      </div>
+      
+    </div>
+    
   </div>
 
-  <div class="info-box">
-    feafkk
+
+  <% if ((@journal.user_id == current_user.id) and (Issue.where("journal_id = ? AND draft = ?", @journal.id, true).order('created_at DESC').count < 3)) %>
+  <div class="add-issue-box">
+    <div class="content">
+      <a data-toggle="modal" href="#add-issue-to-journal-ajax">Ajouter un numéro</a>
+    </div>
   </div>
+  <% end %>
 
 
 <!-- LIST JOURNAL'S UNPUBLISHED ISSUES -->
   <% Issue.where("journal_id = ?", @journal.id).order('created_at DESC').each do |issue| %>
+
+
+    <% if (issue.draft == true ) and (issue.journal.user_id == current_user.id) %>
     <div class="issue-box">
-      numeroooooo
+      
+      <div class="draft">
+        <%= link_to (image_tag "color_18/gear.png"), edit_journal_path(@journal) %> <%= image_tag "draft.png" %>
+      </div>
+
+      <div class="theme-picture">
+        <%= link_to image_tag(issue.picture_url().to_s), issue %>
+      </div>
+
+      <div class="bande-info">
+        <div class="bande-inbox">
+          <div class="number">
+            <%= Page.where("issue_id = ?", issue.id).count %>
+          </div>
+          <div class="caption">
+            Pages
+          </div>
+        </div>
+      </div>
+
+      <div class="link">
+        <%= link_to issue.theme, issue %>
+      </div>
+      
     </div>
+    <% end %>
+
+    <% if (issue.draft == false ) %>
+    <div class="issue-box">
+      
+
+      <div class="theme-picture">
+        <%= link_to image_tag(issue.picture_url().to_s), issue %>
+      </div>
+
+      <div class="bande-info">
+        <div class="bande-inbox">
+          <div class="number">
+            <%= Page.where("issue_id = ?", issue.id).count %>
+          </div>
+          <div class="caption">
+            Pages
+          </div>
+        </div>
+
+        <div class="bande-inbox">
+          <div class="number">
+            <%= Read.where('issue_id = ?', issue.id).count %>
+          </div>
+
+          <div class="caption">
+            Lectures
+          </div>
+        </div>
+      </div>
+
+      <div class="link">
+        <%= link_to issue.theme, issue %>
+      </div>
+      
+    </div>
+    <% end %>
+
   <% end %>
 <!-- LIST JOURNAL'S UNPUBLISHED ISSUES END -->
 
@@ -77,27 +167,9 @@
 </div>
 
 
-<!-- LIST JOURNAL'S PUBLISHED ISSUES -->
-Numeros publiés
-<ul>
-  <% Issue.where("journal_id = ? AND draft = ?", @journal.id, false).order('created_at DESC').each do |issue| %>
-    
-    <li>
-      <%= link_to issue.theme, issue %>
-    </li>
-
-  <% end %>
-</ul>
-<!-- LIST JOURNAL'S PUBLISHED ISSUES END -->
-
-
-
 
 <!-- ADD A NEW ISSUE MODULE -->
 <% unless Issue.where("journal_id = ? AND draft = ?", @journal.id, true).order('created_at DESC').count > 0 %>
-
-  <a data-toggle="modal" href="#add-issue-to-journal-ajax" class="btn btn-primary btn-lg">Add un issue</a>
-
 
   <!-- Modal -->
   <div class="modal fade" id="add-issue-to-journal-ajax" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -114,8 +186,9 @@ Numeros publiés
             <%= form_for(Issue.new) do |f| %>
               <%= f.hidden_field :journal_id, :value => @journal.id %>
               <%= f.text_field :number, :placeholder => "Numéro" %>
+              <%= f.file_field :picture %>
               <%= f.text_field :theme, :placeholder => "Thème" %>
-              <%= f.check_box :draft %>
+              <%= f.hidden_field :draft, value: "true" %>
               <%= f.submit %>
             <% end %>
           </div>
@@ -127,9 +200,3 @@ Numeros publiés
   </div><!-- /.modal -->
 
 <% end %>
-
-
-
-
-<%= link_to 'Edit', edit_journal_path(@journal) %> |
-<%= link_to 'Back', journals_path %>

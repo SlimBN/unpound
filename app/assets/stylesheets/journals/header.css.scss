@@ -13,6 +13,21 @@
 	height: 60px;
 	width: 100%;
 
+	.white-logo {
+		background-color: #FFF;
+
+		height: 60px;
+		width: 67px;
+		padding-left: 10px;
+		padding-right: 10px;
+		margin-right: 10px;
+
+		display: inline-block;
+
+		line-height: 60px;
+		vertical-align: middle;
+	}
+
 	.user {
 		display: inline-block;
 		line-height: 60px;

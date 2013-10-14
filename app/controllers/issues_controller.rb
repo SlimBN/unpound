@@ -15,6 +15,13 @@ class IssuesController < ApplicationController
   def show
     @issue = Issue.find(params[:id])
 
+    @is_read =  Read.all(:conditions => ['user_id = ? AND issue_id = ?', current_user.id, @issue.id]).count
+
+    unless @issue.draft == true
+      @read_it = Read.new(:user_id => current_user.id, :issue_id => @issue.id)
+      @read_it.save
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @issue }
