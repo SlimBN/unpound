@@ -22,6 +22,17 @@
 	<span>
 		<%= link_to "Se Déconnecter", logout_path() %>
 	</span>
+
+	<span>
+		<% if user_signed_in? %>
+		<a href="<%= notifications_path() %>">
+		<% if Notification.all(:conditions => ['user_id = ?', current_user.id]).count != 0 %>
+		<%= Notification.all(:conditions => ['user_id = ?', current_user.id]).count %> Notifications
+		</a>
+		<% end %>
+		<% end %>
+	</span>
+
 	<% else %>
 	<span>
 		<%= link_to "S'enregistrer'", register_path() %>
@@ -30,15 +41,11 @@
 		<%= link_to "Se Connecter", login_path() %>
 	</span>
 	<% end %>
-
 	<span>
-		login
+		<%= link_to "Articles", articles_path() %>
 	</span>
 	<span>
-		login
-	</span>
-	<span>
-		login
+		<%= link_to "Journaux", journals_path() %>
 	</span>
 
 </div>

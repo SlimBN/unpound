@@ -61,12 +61,12 @@ if (!Object.keys) {
 
     $.Nested.settings = {
         selector: '.box',
-        minWidth: 240,
+        minWidth: 300,
         minColumns: 2,
         gutter: 20,
-        resizeToFit: true, // will resize block bigger than the gap
+        resizeToFit: false, // will resize block bigger than the gap
         resizeToFitOptions: {
-            resizeAny: true // will resize any block to fit the gap         
+            resizeAny: false // will resize any block to fit the gap         
         },
         animate: true,
         animationOptions: {

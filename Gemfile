@@ -16,6 +16,8 @@ gem "fnordmetric"
 # Used for authentication
 gem 'devise'
 
+gem 'sextant'
+
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -4,6 +4,9 @@ Unbound::Application.routes.draw do
   resources :publications
 
 
+  resources :tags
+
+
   resources :credits
 
 
@@ -65,6 +68,7 @@ Unbound::Application.routes.draw do
 
 
   match ':id' => 'journals#show', :as => :see_journal
+  match 'vote/article' => 'credits#issue_vote', :as => :vote_article
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:

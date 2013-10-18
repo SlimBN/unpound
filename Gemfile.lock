@@ -50,8 +50,15 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    columnize (0.3.6)
     daemons (1.1.9)
     debug_inspector (0.0.2)
+    debugger (1.6.0)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.2.1)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.2.3)
     devise (3.0.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -141,6 +148,8 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    sextant (0.2.4)
+      rails (>= 3.2)
     sinatra (1.3.6)
       rack (~> 1.4)
       rack-protection (~> 1.3)
@@ -186,6 +195,7 @@ DEPENDENCIES
   binding_of_caller
   carrierwave
   coffee-rails (~> 3.2.1)
+  debugger
   devise
   ffaker
   fnordmetric
@@ -195,7 +205,7 @@ DEPENDENCIES
   populator
   rails (= 3.2.14)
   sass-rails (~> 3.2.3)
+  sextant
   sqlite3
-  thin
   uglifier (>= 1.0.3)
   unicorn

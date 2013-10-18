@@ -4,32 +4,37 @@ class Article < ActiveRecord::Base
 
   has_many :articlesandpage
 
-  # has_as_belongs_to_many :tags
+  has_and_belongs_to_many :tags
 
   belongs_to :user
 
 def trigger_view_event
   FNORD_METRIC.event(attributes.merge(_type: :view_article))    
 end
+  
+  def process_tags(article_id)
+    p = Article.find(article_id)
+    p.tag_list.each do |tag|
+      t = Tag.find_or_create_by_content(tag)
+      t.articles << p
+      t.save
+
+      p.content = p.content.gsub("#" + tag) {"<a href='articles/'>#"+tag+"</a>"}
+      p.save
+    end
+  end
 
 
 #deep surgery for the hashtag thing (ba3 ba3 ba3)
-  # serialize :tag_list
-  # before_save :generate_taglist
-  # after_commit :process_tags
+  serialize :tag_list
+  before_save :generate_taglist
+  after_commit :process_tags
 
-  # private
-  # def generate_taglist
-  #   self.tag_list = self.body.scan(/#(w*[A-Za-z0-9_]+w*)/).flatten
-  # end
-  
-  # def process_tags(post_id)
-  #   p = Post.find(post_id)
-  #   p.tag_list.each do |tag|
-  #     t = find_or_initialize_by_content(tag)
-  #     t.posts << p
-  #     t.save
-  #   end
-  # end
+  private
+  def generate_taglist
+    self.tag_list = self.content.scan(/#(w*[A-Za-z0-9_]+w*)/).flatten
+    # self.content = self.content.gsub(/#(w*[A-Za-z0-9_]+w*)/) {"<a href='#{x}'>#{x}</a>"}
+    # self.content.save
+  end
 
 end

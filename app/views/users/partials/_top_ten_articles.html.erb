@@ -14,7 +14,7 @@
 			</div>
 
 			<div class="content">
-				<%= Article.find(article).content %>
+				<%= truncate(Article.find(article).content, length: 140) %>
 			</div>
 
 		</div>

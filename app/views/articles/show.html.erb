@@ -4,6 +4,11 @@
     <%= @article.title %>
   </div>
 
+
+        <% @article.tags.each do |tag| %>
+          <%= tag.content %>
+        <% end %>
+
   <div class="photo">
     <%= image_tag @article.photo_url().to_s %>
   </div>

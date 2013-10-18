@@ -1,33 +1,224 @@
-<div id="issue_show">
+<div id="issue-show">
 
-	<% Page.where("issue_id = ?", @issue.id).order('classement ASC').each do |page| %>
-		<%= page.classement %>
-		<%= page.name %>
+  <div class="journal-title">
 
-	</br>
-	<% end %>
-	
+    <div id="issue-show-info-box">
+      <div class="logo">
+        <%= image_tag (@issue.picture_url().to_s) %>
+      </div>
+
+      <div class="names">
+        <div class="journal">
+          <%= link_to @issue.journal.name, @issue.journal %>
+        </div>
+        <div class="issue">
+          <%= @issue.theme %>
+        </div>
+        <div class="web">
+          <span class="glyphicon glyphicon-globe"></span> <a href="http://unbound.com">http://unbound.com</a>
+        </div>        
+      </div>
+
+<!--       <div class="blue">
+        <div class="number_of_reads">
+          Lu 
+          <div class="number">
+            49203 Fois
+          </div>
+        </div>
+
+        <div class="interaction-box">
+          <div class="follow">
+            Follow
+          </div>
+
+          <div class="fbshare">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fparse.com" target="_blank">Facebook</a>
+          </div>
+
+          <div class="twitter-share">
+            twitter
+          </div>
+        </div>
+      </div> -->
+
+    </div>
+
+  </div>
+  
+  <% Page.where("issue_id = ?", @issue.id).order('classement ASC').each do |page| %>
+  <div class="page page-<%= page.id %>">
+
+    <div class="title-page">
+      <%= page.name %>
+    </div>
+  
+      
+      <% ArticlesAndPage.where("page_id = ?", page.id).each do |article| %>
+        <% if Read.where("article_id = ?", article.article_id).count < 6 %>
+        <div class="box article size11">
+          <!-- PARTIE QUI CONTIENT L'AVATAR DE L'UTILISATEUR ET SON LIEN -->
+          <div class="article-author"><%= link_to (image_tag Article.find(article.article_id).user.avatar_url().to_s), user_path(Article.find(article.article_id).user), title: Article.find(article.article_id).user.username %>
+          </div>
+          <!-- END PARTIE QUI CONTIENT L'AVATAR DE L'UTILISATEUR ET SON LIEN -->
+          
+          <!-- PARTIE QUI CONTIENT LES INFOS DE L'ARTICLE -->
+          <div class="article-data">
+            <div class="article-title">
+              <%= link_to truncate(Article.find(article.article_id).title, length: 30000), article_path(Article.find(article.article_id)) %>
+            </div>
+
+            <div class="article-time">
+              <%= Article.find(article.article_id).created_at %>
+            </div>
+            
+          </div>
+          <!-- END PARTIE QUI CONTIENT LES INFOS DE L'ARTICLE -->
+
+          <!-- ARTICLE CONTENT -->
+          <div class="article-content">
+            <%= truncate(strip_tags(Article.find(article.article_id).content), length: 350) %>
+          </div>
+          <!-- END ARTICLE CONTENT -->
+
+
+
+          <div class="toolbelt">
+              <%= form_for(Credit.new, url: vote_article_path(), remote: true) do |f| %>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= f.hidden_field :article_id, value: Article.find(article.article_id).id %>
+                <%= f.hidden_field :verdict, value: true %>
+                <button type="submit" type="button" class="btn btn-default btn-lg vote-<%= Article.find(article.article_id).id %>">
+                  <span class="glyphicon glyphicon-thumbs-up"></span>
+                </button>
+              <% end %>
+
+              <%= form_for(Credit.new, url: vote_article_path(), remote: true) do |f| %>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= f.hidden_field :article_id, value: Article.find(article.article_id).id %>
+                <%= f.hidden_field :verdict, value: false %>
+                <button type="submit" type="button" class="btn btn-default btn-lg vote-<%= Article.find(article.article_id).id %>">
+                  <span class="glyphicon glyphicon-thumbs-down"></span>
+                </button>
+              <% end %>
+
+              <button type="button" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-star"></span>
+              </button>
+
+              
+                <a href="https://www.facebook.com/sharer/sharer.php?u=<%= root_path() %>articles/<%= Article.find(article.article_id).id %>" target="_blank">
+                  <button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-share"></span></button>
+                </a>
+              
+              
+              <div class="indicators">
+                <div class="issue-article-credibility-<%= Article.find(article.article_id).id %>">
+                  <% if Credit.where('verdict = ? AND article_id = ?', "true", Article.find(article.article_id).id).count > 0 %>
+                  
+                    <%= (Credit.where('verdict = ? AND article_id = ?', "true", Article.find(article.article_id).id).count * 100) / Credit.where('article_id = ?', Article.find(article.article_id).id).count %> %
+                  
+                  <% else %>
+                    Pas encore voté
+                  <% end %>
+                </div>
+                
+              </div>
+
+          </div>
+        </div>
+        <% end %>
+
+        <% if Read.where("article_id = ?", article.article_id).count > 50 %>
+        <div class="box article size22">
+          
+          <!-- PARTIE QUI CONTIENT L'AVATAR DE L'UTILISATEUR ET SON LIEN -->
+          <div class="article-author"><%= link_to (image_tag Article.find(article.article_id).user.avatar_url().to_s), user_path(Article.find(article.article_id).user), title: Article.find(article.article_id).user.username %>
+          </div>
+          <!-- END PARTIE QUI CONTIENT L'AVATAR DE L'UTILISATEUR ET SON LIEN -->
+          
+          <!-- PARTIE QUI CONTIENT LES INFOS DE L'ARTICLE -->
+          <div class="article-data">
+            <div class="article-title">
+              <%= link_to truncate(Article.find(article.article_id).title, length: 30000), article_path(Article.find(article.article_id)) %>
+            </div>
+
+            <div class="article-time">
+              <%= Article.find(article.article_id).created_at %>
+            </div>
+            
+          </div>
+          <!-- END PARTIE QUI CONTIENT LES INFOS DE L'ARTICLE -->
+
+          <!-- ARTICLE CONTENT -->
+          <div class="article-content">
+            <%= truncate(strip_tags(Article.find(article.article_id).content), length: 350) %>
+          </div>
+          <!-- END ARTICLE CONTENT -->
+
+          <!-- ARTICLE PHOTO -->
+          <div class="picture">
+            <%= image_tag Article.find(article.article_id).photo_url().to_s %>
+          </div>
+          <!-- END ARTICLE PHOTO -->
+
+
+          <div class="toolbelt">
+              <%= form_for(Credit.new, url: vote_article_path(), remote: true) do |f| %>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= f.hidden_field :article_id, value: Article.find(article.article_id).id %>
+                <%= f.hidden_field :verdict, value: true %>
+                <button type="submit" type="button" class="btn btn-default btn-lg vote-<%= Article.find(article.article_id).id %>">
+                  <span class="glyphicon glyphicon-thumbs-up"></span> Credible
+                </button>
+              <% end %>
+
+              <%= form_for(Credit.new, url: vote_article_path(), remote: true) do |f| %>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= f.hidden_field :article_id, value: Article.find(article.article_id).id %>
+                <%= f.hidden_field :verdict, value: false %>
+                <button type="submit" type="button" class="btn btn-default btn-lg vote-<%= Article.find(article.article_id).id %>">
+                  <span class="glyphicon glyphicon-thumbs-down"></span> Je ne pense pas
+                </button>
+              <% end %>
+
+              <button type="button" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-star"></span> Ajouter au Favoris
+              </button>
+
+              
+                <a href="https://www.facebook.com/sharer/sharer.php?u=<%= root_path() %>articles/<%= Article.find(article.article_id).id %>" target="_blank">
+                  <button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-share"></span> Share on Facebook</button>
+                </a>
+              
+              
+              <div class="indicators">
+                <div class="issue-article-credibility-<%= Article.find(article.article_id).id %>">
+                  <% if Credit.where('verdict = ? AND article_id = ?', "true", Article.find(article.article_id).id).count > 0 %>
+                  
+                    <%= (Credit.where('verdict = ? AND article_id = ?', "true", Article.find(article.article_id).id).count * 100) / Credit.where('article_id = ?', Article.find(article.article_id).id).count %> %
+                  
+                  <% else %>
+                    Pas encore voté
+                  <% end %>
+                </div>
+                
+              </div>
+
+          </div>
+
+        </div>
+        <% end %>
+
+
+      <% end %>
+
+
+  </div>
+  <% end %>
+
+
 </div>
 
-<p>
-  <b>Journal:</b>
-  <%= @issue.journal_id %>
-</p>
 
-<p>
-  <b>Theme:</b>
-  <%= @issue.theme %>
-</p>
 
-<p>
-  <b>Number:</b>
-  <%= @issue.number %>
-</p>
-
-<p>
-  <b>Picu:</b>
-  <%= @issue.picture %>
-</p>
-
-<%= link_to 'Edit', edit_issue_path(@issue) %> |
-<%= link_to 'Back', see_journal_path(@issue.journal_id) %>

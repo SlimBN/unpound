@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>id</th>
     <th>Name</th>
     <th>Issue</th>
     <th></th>
@@ -11,6 +12,7 @@
 
 <% @pages.each do |page| %>
   <tr>
+    <td><%= page.id %></td>
     <td><%= page.name %></td>
     <td><%= page.issue_id %></td>
     <td><%= link_to 'Show', page %></td>

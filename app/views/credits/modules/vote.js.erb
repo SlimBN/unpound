@@ -1,12 +1,17 @@
 var number1 = <%= @truecredits %>;
 var number2 = <%= @totalcredits %>;
 
-gauge.set(Math.floor((number1 / number2) * 100));
+//gauge.set(Math.floor((number1 / number2) * 100));
 // $('.vote').fadeOut();
 // $("#preview-textfield").html("<%= @value %> %");
 // $("#credibility").animate({height:'230'})
 
+alert("vote-<%= @article.id %>");
+
 
 $('.publication-box .toolbox .thumbup').remove();
 $('.publication-box .toolbox .thumbdown').remove();
+$('.credibility-box .label span').html(Math.floor((number1 / number2) * 100) + ' %');
+
+$('.toolbelt .vote-<%= @article.id %>').remove();
 $('.credibility-box .label span').html(Math.floor((number1 / number2) * 100) + ' %');
