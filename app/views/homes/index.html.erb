@@ -1,95 +1,137 @@
-
-<div id="newspaper">
-  
-  <% Article.all.each do |article| %>
-
-      <% if user_signed_in? %>
-        <% reads = Read.where('article_id = ? AND user_id = ?', article, current_user.id).count %>
-
-
-        <% if reads < 6 %>
-
-          <div id="article" class="box size11">
-
-            <% if article.photo.present? %>
-            <div class="photo">
-              <%= image_tag article.photo_url(:home11).to_s %>
-            </div>
-            <% end %>
+  <div id="home-logged-of">
+    
+      <div class="left">
+        <div class="overlay">
             
-            <div class="title" style="font-size: 16px;">
-              <%= link_to article.title, article %>
+        </div>
+
+        <div class="logo">
+          <%= image_tag "newspaper.png" %>
+        </div>
+
+        <% if user_signed_in? %>
+          
+          <div class="userbox">
+
+            <div class="avatar">
+              <%= image_tag current_user.avatar_url.to_s %>
             </div>
-            
 
-            <!-- CHECKING OUT IF THE ARTICLE IS READ -->
-            <% if user_signed_in? %>
-              <% if Read.where('article_id = ? AND user_id = ?', article, current_user.id).count < 1 %>
+            <div class="name">
+              <%= link_to current_user.username, user_path(current_user.id) %>
+            </div>
 
-                <div class="unread">
-                  <%= image_tag 'corner_triangle.png' %>
-                </div>
+            <hr>
 
-              <% end %>
-            <% end %>
-            <!-- CHECKING OUT IF THE ARTICLE IS READ END -->
+            <div class="aboutme">
+              Formerly: Goldman Sachs. Founder at AdGrok (sold to Twitter). Product at Facebook. FBX creator. Presently: Absolute dictator of a 32-foot sailboat. @antoniogm
+            </div>
 
-
-            <%= article.content.truncate(150) %>
           </div>
 
-        <% end %>
-
-        
-        <% if reads > 5 %>
-
-          <div id="article" class="box size22">
-            <div class="photo">
-              <%= image_tag article.photo_url(:home22).to_s %>
-            </div>
-            
-            <div class="title" style="font-size: 22px;">
-              <%= link_to article.title, article %>
-            </div>
-            
-
-            <!-- CHECKING OUT IF THE ARTICLE IS READ -->
-            <% if user_signed_in? %>
-              <% if Read.where('article_id = ? AND user_id = ?', article, current_user.id).count < 1 %>
-
-                <div class="unread">
-                  <%= image_tag 'corner_triangle.png' %>
-                </div>
-
-              <% end %>
-            <% end %>
-            <!-- CHECKING OUT IF THE ARTICLE IS READ END -->
-
-
-            <%= article.content.truncate(350) %>
+          <div class="user-buttons">
+            <a href="<%= new_article_path() %>" class="new-article"><span class="icon-doc-add"></span> Nouvel Article</a> ou <a href="" class="new-folder">Nouveau Dossier</a>
           </div>
 
+          
+            <script>
+              $(".left").backstretch("http://dl.dropbox.com/u/515046/www/garfield-interior.jpg");
+            </script>
+
+
+        <% else %>
+
+          <div class="description">
+            <div class="title">
+              WePost
+            </div>
+
+            <div class="motto">
+              Là ou c'est rentable d'écrire, et édifiant de lire <span class="icon-emo-coffee"></span> &nbsp; ... 
+              <a href="">De quoi s'agit-il</a>
+            </div>
+
+            <hr>
+
+            <div class="register-connect">
+              <a href="" class="facebook"><span class="icon-facebook-circled"></span> Facebook</a>
+              <a href="" class="twitter"><span class="icon-twitter-circled"></span> Twitter</a></br></br>
+              Ou <a href="" class="formulaire">S'enregistrer</a> à l'ancienne...
+            </div>
+          </div>
+          
+            <script>
+              $(".left").backstretch("http://dl.dropbox.com/u/515046/www/garfield-interior.jpg");
+            </script>
         <% end %>
 
+      </div>
+
+    <div class="catalogue">
+      
+      <div class="navigation">
+        <ul>
+          <li><a href="<%= home_tab_articles_path() %>" data-remote='true'>Articles</a></li>
+          <li><a href="<%= home_tab_journals_path() %>" data-remote='true'>Journaux</a></li>
+        </ul>
+      </div>
+
+
+      <% Article.order("created_at DESC").all.each do |article| %>
+        <div class="article article-<%= article.id %>">
+          <div class="title">
+            <%= link_to article.title, article %>
+          </div>
+
+          <div class="avatar">
+            <%= link_to (image_tag article.user.avatar_url().to_s), user_path(article.user.id) %>
+          </div>
+
+          <div class="preview">
+            <%= strip_tags(truncate(article.content, length: 450)) %>
+          </div>
+
+          <div class="data">
+              <%= link_to article.user.username, user_path(article.user.id) %>, <span class="icon-bookmark"></span> <%= time_ago_in_words(article.created_at) %>
+
+          </div>
+
+        </div>
       <% end %>
 
 
+      <div id="editor">
+        <p>This is a Paragraph</p>
+      </div>
+    
+        <script>
+            new Medium({
+                element: document.getElementById('editor')
+            });
+        </script>
 
-  <% end %>
+      
 
-</div>
+      <% Journal.order("created_at DESC").all.each do |journal| %>
+        <div class="journal journal-<%= journal.id %>" style="display: none">
+          <div class="title">
+            <%= journal.name %>
+          </div>
+
+          <div class="preview">
+            <%= strip_tags(truncate(journal.description, length: 450)) %>
+          </div>
+
+          <div class="data">
+              <%= link_to journal.user.username, user_path(journal.user.id) %>, <span class="icon-bookmark"></span> <%= time_ago_in_words(journal.created_at) %>
+
+          </div>
+
+        </div>
+      <% end %>
 
 
+    </div>
+  </div>
 
-
-<script type="text/javascript" >
-  
-  $(function() { 
-   
-    $('#newspaper').nested(); 
- 
-  });
-  
-  
-</script>
 

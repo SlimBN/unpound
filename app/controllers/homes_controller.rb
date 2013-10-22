@@ -10,6 +10,23 @@ class HomesController < ApplicationController
     end
   end
 
+  def home_tab_articles
+    @articles = Article.all
+
+    respond_to do |format|
+      format.js { render :action => '../homes/tabs/articles'}
+    end
+  end
+
+
+  def home_tab_journals
+    @journals = Journal.all
+
+    respond_to do |format|
+      format.js { render :action => '../homes/tabs/journals'}
+    end
+  end
+
   # GET /homes/1
   # GET /homes/1.json
   def show

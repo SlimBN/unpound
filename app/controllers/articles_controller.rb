@@ -15,11 +15,14 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
 
-    is_read =  Read.all(:conditions => ['user_id = ? AND article_id = ?', current_user.id, @article.id]).count
+    if user_signed_in?
 
-    read_it = Read.new(:user_id => current_user.id, :article_id => @article.id)
-    read_it.save
+      is_read =  Read.all(:conditions => ['user_id = ? AND article_id = ?', current_user.id, @article.id]).count
 
+      read_it = Read.new(:user_id => current_user.id, :article_id => @article.id)
+      read_it.save
+
+    end
 
     @article.trigger_view_event
 

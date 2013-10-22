@@ -1,4 +1,4 @@
-
+<% if user_signed_in? %>
             <%= form_for(ArticlesAndPage.new, :remote => true) do |f| %>
               <%= f.hidden_field :user_id, :value => current_user.id %>
               <%= f.hidden_field :article_id, :value => @article.id %>
@@ -11,4 +11,5 @@
 
               <%= f.submit %>
             <% end %>
-            
+
+<% end %>

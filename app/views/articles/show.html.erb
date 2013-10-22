@@ -4,11 +4,6 @@
     <%= @article.title %>
   </div>
 
-
-        <% @article.tags.each do |tag| %>
-          <%= tag.content %>
-        <% end %>
-
   <div class="photo">
     <%= image_tag @article.photo_url().to_s %>
   </div>
@@ -36,9 +31,11 @@
     <%= render "articles/showmodules/author" %>
   <!-- AUTHOR MODULE END -->
 
+  <% if user_signed_in? %>
   <!-- ADD TO MY JOURNAL MODULE -->
     <%= render "articles/showmodules/add_to_my_journal" %>
   <!-- ADD TO MY JOURNAL MODULE END -->
+  <% end %>
 
   <!-- CREDIBILITY MODULE -->
     <%= render "articles/showmodules/credibility" %>
@@ -62,7 +59,9 @@
 
 
   
+  <% if user_signed_in? %>
 <!-- MODAL ADD TO JOURNAL MODULE -->
   <%= render "articles/showmodules/add_modal" %>
 <!-- MODAL ADD TO JOURNAL MODULE END -->
+  <% end %>
 

@@ -1,0 +1,10 @@
+var number1 = <%= @truecredits %>;
+var number2 = <%= @totalcredits %>;
+
+gauge.set(Math.floor((number1 / number2) * 100));
+// $('.vote').fadeOut();
+// $("#preview-textfield").html("<%= @value %> %");
+// $("#credibility").animate({height:'230'})
+
+$('.toolbox .vote-<%= @article.id %>').remove();
+$('.credibility-box .label span').html(Math.floor((number1 / number2) * 100) + ' %');

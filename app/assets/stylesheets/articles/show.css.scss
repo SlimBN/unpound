@@ -1,4 +1,13 @@
 #article-show {
+	padding: 10px;
+	margin-bottom: 10px;
+
+	border: 1px solid #eee;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+
+	background-color: #F3F3F3;
+	border-radius: 3px;
+
 	width: 60%;
 	min-width: 900px;
 
@@ -12,12 +21,12 @@
 
 		font-size: 80px;
 		line-height: 60px;
-		font-family: 'base';
+	   	font-family: 'IM Fell English SC', serif;
 	}
 
 	.photo {
 		img {
-			width: 900px;
+			width: 870px;
 			height: auto;
 		}
 	}
@@ -27,9 +36,10 @@
 		margin-bottom: 20px;
 		padding-left: 10px;
 
-		font-family: 'lino';
+		font-family: 'Roboto';
 		font-weight: 100;
 		font-size: 24px;
+		line-height: 32px;
 	}
 }
 

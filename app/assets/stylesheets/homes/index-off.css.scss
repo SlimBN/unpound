@@ -1,0 +1,366 @@
+@import url(http://fonts.googleapis.com/css?family=Kotta+One|Arvo:400,400italic&subset=latin,latin-ext);
+
+#home-logged-of {
+	position: relative;
+
+	width: 100%;
+	height: 100%;
+	min-width: 900px;
+
+	margin: 0px;
+	padding: 0px;
+
+	.left {
+		position: fixed;
+		left: 0px;
+		top: 0px;
+
+		width: 400px;
+		height: 100%;
+
+		margin: 0px;
+		padding: 0px;
+
+		display: inline-block;
+		vertical-align: top;
+
+		border-right: 1px solid #000;
+
+		box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+
+		.overlay {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+
+			box-shadow: inset 0 -500px 800px rgba(0, 0, 0, 0.5);
+		}
+
+		.logo {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+
+			height: 60px;
+			width: 60px;
+
+			line-height: 60px;
+			vertical-align: middle;
+
+			background-color: black;
+		}
+
+		.description {
+			position: absolute;
+			bottom: 20px;
+			left: 20px;
+
+			width: 360px;
+
+			text-align: left;
+			font-family: 'Arvo', serif;
+			font-size: 18px;
+			color: #fff;
+
+			.title {
+				font-family: 'IM Fell English SC', serif;
+				font-size: 60px;
+			}
+
+			.motto {
+				a {
+					color: white;
+					text-decoration: underline;
+					font-family: 'Kotta One', serif;
+				}
+			}
+
+			.register-connect {
+				width: 100%;
+				text-align: left;
+
+				.facebook {
+					background-color: #2D4486;
+					border-radius: 3px;
+
+					box-shadow: 0 0 3px solid rgba(0, 0, 0, 0.6);
+
+					padding: 10px;
+
+					color: #fff;
+
+					&:hover {
+						text-decoration: none;
+					}
+
+					span {
+						font-size: 24px;
+					}
+
+				}
+
+				.twitter {
+					background-color: #139BEA;
+					border-radius: 3px;
+
+					box-shadow: 0 0 3px solid rgba(0, 0, 0, 0.6);
+
+					padding: 10px;
+
+					color: #fff;
+
+					&:hover {
+						text-decoration: none;
+					}
+
+					span {
+						font-size: 24px;
+					}
+
+				}
+
+				.formulaire {
+					background-color: #47A055;
+					border-radius: 3px;
+
+					box-shadow: 0 0 3px solid rgba(0, 0, 0, 0.6);
+
+					padding: 10px;
+
+					color: #fff;
+
+					&:hover {
+						text-decoration: none;
+					}
+
+					span {
+						font-size: 24px;
+					}
+
+				}
+			}
+
+		}
+
+		.userbox {
+			position: absolute;
+			bottom: 60px;
+			left: 0px;
+
+			padding: 10px;
+
+			width: 400px;
+
+			background-color: #fff;
+
+			.avatar {
+				width: 380px;
+
+				margin-top: -85px;
+
+				text-align: center;
+
+				img {
+					width: 150px;
+					height: 150px;
+
+					border-radius: 50%;
+					border: 10px solid #fff;
+
+					margin: O auto;
+				}
+			}
+
+			.name {
+				width: 380px;
+
+				text-align: center;
+				font-weight: bold;
+				font-family: 'Arvo', serif;
+				font-size: 30px;
+
+				a {
+					color: #000;
+
+					&:hover {
+						text-decoration: none;
+					}
+				}
+			}
+
+			hr {
+				color: #000;
+				background-color: #000;
+
+				margin-top: 5px;
+				margin-bottom: 5px;
+			}
+
+			.aboutme {
+				font-family: 'Kotta One', serif;
+				font-size: 18px;
+
+			}
+
+		}
+
+		.user-buttons {
+			position: absolute;
+			bottom: 0px;
+			left: 0px;
+
+			padding-left: 10px;
+			padding-right: 10px;
+
+			width: 400px;
+			height: 60px;
+
+			line-height: 60px;
+			vertical-align: middle;
+
+			text-align: center;
+
+			color: #FFF;
+
+			font-family: "Roboto";
+
+			a {
+				color: #FFF;
+				text-decoration: none;
+
+				&:hover {
+					text-decoration: none;
+				}
+			}
+
+			.new-article {
+				background-color: #449650;
+
+				padding: 10px;
+
+				border-radius: 3px;
+
+			}
+
+			.new-folder {
+				font-family: 'Kotta One', serif;
+				text-decoration: underline;
+
+			}
+		}
+
+
+
+	}
+
+	.catalogue {
+		height: 100%;
+
+		margin: 0px;
+		margin-left: 400px;
+		padding-left: 20px;
+		padding-right: 50px;
+
+		display: inline-block;
+		vertical-align: top;
+
+		text-align: left;
+
+		.navigation {
+			line-height: 40px;
+			font-size: 40px;
+			margin-top: 10px;
+			margin-bottom: 20px;
+			padding: 0px;
+
+			border-bottom: 1px solid #c3c3c3;
+
+			ul {
+				margin: 0px;
+				padding: 0px;
+
+				li {
+					margin: 0px;
+					padding: 0px;
+					padding-top: 20px;
+					padding-bottom: 20px;
+
+					display: inline-block;
+					vertical-align: top;
+
+					&:hover {
+						border-bottom: 1px solid #000;
+					}
+
+					a {
+						color: #000;
+						text-decoration: none;
+
+						padding-bottom: 30px;
+
+						&:hover {
+							text-decoration: none;
+						}
+					}					
+				}
+			}
+
+
+		}
+
+		.article {
+			margin-bottom: 20px;
+			.title {
+				font-family: 'IM Fell English SC', serif;
+				font-size: 40px;
+
+				a {
+					color: black;
+
+					text-decoration: none;
+
+					&:hover {
+						color: black;
+						text-decoration: none;
+					}
+				}
+
+			}
+
+			.avatar {
+				width: 150px;
+				height: 150px;
+
+				text-align: center;
+
+				display: inline-block;
+				vertical-align: middle;
+
+				img {
+					width: 100px;
+					height: 100px;
+
+					border-radius: 50%;
+				}
+			}
+
+			.preview {
+				display: inline-block;
+				vertical-align: top;
+
+				width: 750px;
+
+				font-family: 'Arvo', serif;
+				font-size: 17px;
+
+				padding-left: 5px;
+			}
+
+			.data {
+				text-align: right;
+				color: #A4A4A2;
+				font-family: Times;
+			}
+		}
+	}
+}

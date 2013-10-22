@@ -69,6 +69,14 @@ Unbound::Application.routes.draw do
 
   match ':id' => 'journals#show', :as => :see_journal
   match 'vote/article' => 'credits#issue_vote', :as => :vote_article
+  match 'vote/user/article' => 'credits#user_article_vote', :as => :vote_user_article
+
+
+
+  #tabs gestion
+  match 'home/articles' => 'homes#home_tab_articles', :as => :home_tab_articles
+  match 'home/journals' => 'homes#home_tab_journals', :as => :home_tab_journals
+
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
