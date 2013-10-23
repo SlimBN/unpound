@@ -1,0 +1,51 @@
+#signin-box {
+	width: 500px;
+
+	margin: 0 auto;
+	margin-top: 100px;
+	padding: 20px;
+
+	background-color: rgba(255, 255, 255, 0.7);
+
+	border-radius: 5px;
+
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+
+	text-align: left;
+	color: #000;
+	font-family: 'IM Fell English SC', serif;
+	font-size: 35px;
+
+	.signin-form-box {
+		font-family: "Roboto-R";
+		font-size: 20px;
+		
+		.block {
+			width: 100%;
+
+			margin-bottom: 10px;
+
+			.label {
+				width: 100%;
+
+				color: #000;
+			}
+
+			.form {
+				width: 100%;
+
+				input {
+					width: 460px;
+				}
+			}
+
+		}
+
+		.action-box {
+			width: 100%;
+
+			text-align: right;
+		}
+
+	}
+}

@@ -1,17 +1,45 @@
-<h2>Sign in</h2>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+<div id="signin-box">
+	
+	<div>Se Connecter</div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
+	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+		<div class="signin-form-box">
+
+			<div class="block">			
+				<div class="label">
+					Votre Email
+				</div>
+
+				<div class="form">
+					<%= f.email_field :email, :autofocus => true %>
+				</div>
+				
+			</div>
+
+			<div class="block">
+				<div class="label">
+					Votre Mot De Passe
+				</div>
+
+				<div class="form">
+					<%= f.password_field :password %>
+				</div>	
+
+			</div>
+
+			<div class="action-box">
+				<input name="commit" type="submit" value="Se Connecter" />
+			</div>
+		</div>
+	<% end %>
+</div>
 
 <%= render "devise/shared/links" %>
+
+
+<script>
+	$(".ejhema").backstretch("http://www.macwallpapers.eu/images/wallpapers/Summer%20Journal%20Mac%20Wallpapers%20HD%20Summer%20Trip-897873.jpeg");
+</script>

@@ -6,7 +6,7 @@
         </div>
 
         <div class="logo">
-          <%= image_tag "newspaper.png" %>
+          <%= link_to (image_tag "newspaper.png"), root_path() %>
         </div>
 
         <% if user_signed_in? %>
@@ -56,7 +56,7 @@
             <div class="register-connect">
               <a href="" class="facebook"><span class="icon-facebook-circled"></span> Facebook</a>
               <a href="" class="twitter"><span class="icon-twitter-circled"></span> Twitter</a></br></br>
-              Ou <a href="" class="formulaire">S'enregistrer</a> à l'ancienne...
+              Ou <a href="<%= register_path() %>" class="formulaire">S'enregistrer</a> à l'ancienne...
             </div>
           </div>
           
