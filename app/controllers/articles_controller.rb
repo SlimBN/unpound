@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
 
     end
 
-    @article.trigger_view_event
+    #@article.trigger_view_event
 
 
     respond_to do |format|
