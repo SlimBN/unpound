@@ -1,0 +1,42 @@
+    
+      <div class="left">
+        <div class="overlay">
+            
+        </div>
+
+        <div class="logo">
+          <%= link_to (image_tag "newspaper.png"), root_path() %>
+        </div>
+
+        <% if user_signed_in? %>
+          
+          <div class="userbox">
+
+            <div class="avatar">
+              <%= image_tag current_user.avatar_url.to_s %>
+            </div>
+
+            <div class="name">
+              <%= link_to current_user.username, user_path(current_user.id) %>
+            </div>
+
+            <hr>
+
+            <div class="aboutme">
+              Formerly: Goldman Sachs. Founder at AdGrok (sold to Twitter). Product at Facebook. FBX creator. Presently: Absolute dictator of a 32-foot sailboat. @antoniogm
+            </div>
+
+          </div>
+
+          <div class="user-buttons">
+            <a href="<%= new_article_path() %>" class="new-article"><span class="icon-doc-add"></span> Nouvel Article</a> ou <a href="" class="new-folder">Nouveau Dossier</a>
+          </div>
+
+          
+            <script>
+              $(".left").backstretch("http://dl.dropbox.com/u/515046/www/garfield-interior.jpg");
+            </script>
+
+        <% end %>
+
+      </div>

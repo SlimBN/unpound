@@ -5,24 +5,24 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  
-  <script>var editor = new MediumEditor('#article_content');</script>
-<script type="text/javascript" >
+<script>
 $(function()
 {
 // masonry plugin call
 $('.page').masonry({itemSelector : '.box',});
 });
 </script>
+
   
 </head>
 <body>
-
+<!-- 
 	<%= render "layouts/black_header" %>
-
+ -->
 <%= yield %>
 
 <script type="text/javascript" data-pin-hover="true" src="//assets.pinterest.com/js/pinit.js"></script>
+
 
 </body>
 </html>

@@ -1,0 +1,64 @@
+#new-article {
+
+	.send-new-article {
+		position: fixed;
+		top: 10px;
+		left: 10px;
+
+		background-color: green;
+
+		padding: 10px;
+
+		border-radius: 3px;
+	}
+
+	.form-container {
+		height: 100%;
+
+		margin: 0px;
+		margin-left: 400px;
+		padding-left: 20px;
+		padding-right: 50px;
+		padding-top: 50px;
+
+		display: inline-block;
+		vertical-align: top;
+
+		text-align: left;
+
+		input, textarea {
+			border: 0px;
+		}
+
+		.title {
+			font-family: 'IM Fell English SC', serif;
+			font-size: 50px;
+		}
+
+		.content textarea {
+			font-family: 'Arvo', serif;
+			font-size: 20px;
+
+			width: 700px;
+
+		}
+
+		.actions {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+
+			input {
+				background-color: rgba(68, 150, 80, 0.7);
+
+				padding: 10px;
+
+				border-radius: 3px;
+
+				color: #FFF;
+				font-family: "Roboto";
+			}
+		}
+
+	}
+}

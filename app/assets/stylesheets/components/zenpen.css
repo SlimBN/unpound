@@ -1,0 +1,151 @@
+/*!
+ * ZenPen
+ * http://www.zenpen.io
+ * MIT licensed
+ *
+ * Copyright (C) Tim Holman, http://tholman.com
+ */
+
+
+/*********************************************
+ * BASE STYLES
+ *********************************************/
+
+
+*:focus {
+	outline: none;
+}
+
+html {
+	overflow: hidden;
+}
+
+
+html, body {
+	font-family: 'Lora', serif;
+	padding: 0px;
+	margin: 0px;
+	height: 100%;
+}
+
+body {
+	padding-bottom: 40px;
+	padding-right: 10px;
+	overflow-y: scroll;
+	padding-left: 10px;
+	padding-top: 20px;
+	min-width: 800px;
+	width: 100%;
+
+	-webkit-transition: all 600ms;
+	-moz-transition: all 600ms;
+	-ms-transition: all 600ms;
+	-o-transition: all 600ms;
+	transition: all 600ms;
+}
+
+section {
+	max-width: 600px;
+	height: 100%;
+	margin: auto;
+}
+
+header {
+	font-weight: bold;
+	font-size: 38px;
+}
+
+article {
+	padding-bottom: 50px;
+	line-height: 30px;
+	margin-top: 22px;
+	min-height: 90%;
+	font-size: 22px;
+	display: block;
+}
+
+blockquote {
+	border-left: 4px solid deepskyblue;
+	margin-left: -19px;
+	padding-left: 15px;
+	margin-right: 0px;
+}
+
+.no-overflow {
+	overflow: hidden;
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+
+/* Used by the ui bubble to stop wrapping */
+.lengthen {
+	display: block;
+	width: 300px;
+	height: 100%;
+}
+
+.useicons {
+	-webkit-font-smoothing: antialiased;
+	font-size: 20px !important;
+	font-family: 'icomoon' !important;
+}
+
+.yin {
+	background: #fdfdfd;
+	color: #111;
+}
+
+.yang {
+	background-color: #111;
+	color: #fafafa;
+}
+
+
+a {
+	text-decoration: none;
+	color: deepskyblue;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+
+.quote {
+	line-height: 60px !important;
+	font-size: 49px !important;
+}
+
+.yang .zenpen-options {
+	background-color: rgba(255,255,255,0.9);
+	color: #000;
+}
+
+.yang .zenpen-options:before {
+	border-top: 5px solid rgba(255,255,255,0.9);
+}
+
+.url {
+	-webkit-font-smoothing: antialiased;
+}
+
+.top {
+	position: absolute;
+	top: 0px;
+}
+
+.bottom {
+	position: absolute;
+	bottom: 0px;
+}
+
+.about {
+	font-family: 'Lora', serif;
+	font-size: 28px !important
+}
+
+.wrapper {
+	position: relative;
+	height: 100%;
+}
