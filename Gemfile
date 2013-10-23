@@ -55,7 +55,7 @@ gem 'populator'
 gem 'ffaker'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 gem 'debugger'
