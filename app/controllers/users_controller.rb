@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @user.trigger_view_event
+    #@user.trigger_view_event
     
 
     respond_to do |format|
