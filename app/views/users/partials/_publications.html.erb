@@ -1,7 +1,7 @@
-	<% Publication.where('user_id = ?', @user.id).order("created_at DESC").each do |publication| %>
+	<% Publication.where('user_id = ? AND element = ?', @user.id, "article").order("created_at DESC").each do |publication| %>
 	<% if publication.element == "journal" %>
 
-		<div class="publication-journal-box">
+		<div class="publication-journal-box" style="background-color: red;">
 
 			<div class="title-block">
 				
@@ -56,29 +56,21 @@
 	<% if publication.element == "article" %>
 
 		<div class="publication-box">
-			<div class="user">
-				<%= link_to image_tag(Article.find(publication.article_id).user.avatar_url().to_s, title: Article.find(publication.article_id).user.username), user_path(Article.find(publication.article_id).user) %>
-			</div>
 
 			<div class="title-block">
 				
 				<div class="title">
 					<%= link_to Article.find(publication.article_id).title, Article.find(publication.article_id) %>
 				</div>
-
-				<div class="created-at">
-					<%= Article.find(publication.article_id).created_at %>
-				</div>
-
-			</div>
-
-
-			<div class="quote-content">
-				<%= truncate(Article.find(publication.article_id).content, length: 250) %> <%= link_to "Continuer à lire", Article.find(publication.article_id) %>
 			</div>
 
 			<div class="cover">
 				<%= link_to image_tag(Article.find(publication.article_id).photo_url().to_s), Article.find(publication.article_id) %>
+			</div>
+
+
+			<div class="quote-content">
+				<%= truncate(strip_tags(Article.find(publication.article_id).content), length: 250) %> <%= link_to "Continuer à lire", Article.find(publication.article_id) %>
 			</div>
 
 			<div class="toolbox">
