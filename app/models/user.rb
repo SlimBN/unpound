@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
   has_many :articles
   has_many :follows
 
-  def trigger_view_event
-    FNORD_METRIC.event(attributes.merge(_type: :view_user))
-  end
+  # def trigger_view_event
+  #   FNORD_METRIC.event(attributes.merge(_type: :view_user))
+  # end
 
 end

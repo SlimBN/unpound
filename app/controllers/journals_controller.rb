@@ -23,7 +23,7 @@ class JournalsController < ApplicationController
   def show
     @journal = Journal.find(params[:id])
 
-    @journal.trigger_view_event
+   # @journal.trigger_view_event
 
     if user_signed_in?
       is_read =  Read.all(:conditions => ['user_id = ? AND journal_id = ?', current_user.id, @journal.id]).count

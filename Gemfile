@@ -10,7 +10,7 @@ gem 'sqlite3'
 gem 'carrierwave'
 gem 'mini_magick'
 
-gem "fnordmetric"
+# gem "fnordmetric"
 
 
 # Used for authentication

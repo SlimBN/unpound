@@ -8,9 +8,9 @@ class Article < ActiveRecord::Base
 
   belongs_to :user
 
-def trigger_view_event
-  FNORD_METRIC.event(attributes.merge(_type: :view_article))    
-end
+# def trigger_view_event
+#   FNORD_METRIC.event(attributes.merge(_type: :view_article))    
+# end
   
   def process_tags(article_id)
     p = Article.find(article_id)
