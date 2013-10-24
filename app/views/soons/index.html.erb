@@ -22,7 +22,7 @@
 
   <div class="form">
     <%= form_for(Soon.new, remote: true) do |f| %>
-      <%= f.text_field :mail, :class => "soon-form" %>
+      <%= f.text_field :mail, :class => "soon-form", placeholder: "monmail@monfournisseur.com" %>
       <input type="submit" class="bouton" value="Faire partie de l'aventure" />
     <% end %>
   </div>
@@ -34,7 +34,7 @@
   </div>
   
   <script>
-    $('#soon').backstretch("http://localhost:8080/assets/bgs/morning_journal.jpg");
+    $('#soon').backstretch("assets/bgs/morning_journal.jpg");
   </script>
 
 </div>
