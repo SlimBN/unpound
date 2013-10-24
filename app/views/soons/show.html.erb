@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mail:</b>
+  <%= @soon.mail %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @soon.active %>
+</p>
+
+
+<%= link_to 'Edit', edit_soon_path(@soon) %> |
+<%= link_to 'Back', soons_path %>

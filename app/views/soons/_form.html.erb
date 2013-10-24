@@ -1,0 +1,25 @@
+<%= form_for(@soon) do |f| %>
+  <% if @soon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@soon.errors.count, "error") %> prohibited this soon from being saved:</h2>
+
+      <ul>
+      <% @soon.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mail %><br />
+    <%= f.text_field :mail %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br />
+    <%= f.text_field :active %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

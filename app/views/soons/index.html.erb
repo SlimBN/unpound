@@ -1,0 +1,41 @@
+<div id="soon">
+
+  <div class="social-pages">
+    <%= link_to (image_tag "icons/facebook.png"), "http://www.facebook.com/dowritit" %> 
+    <%= link_to (image_tag "icons/twitter.png"), "" %> 
+    <%= link_to (image_tag "icons/google.png"), "" %> 
+  </div>
+
+  <div class="description-box">
+    <div class="logo">
+      
+    </div>
+
+    <div class="title">
+      Do<strong>Writit</strong>
+    </div>
+
+    <div class="description">
+      DoWritit est une plateforme qui pousse les limites du journalisme, vers le social: Vous le pensez, donc vous l'écrivez et le partagez... L'information est un atout, que vous pouvez partager: Social Reporters
+    </div>
+  </div>
+
+  <div class="form">
+    <%= form_for(Soon.new, remote: true) do |f| %>
+      <%= f.text_field :mail, :class => "soon-form" %>
+      <input type="submit" class="bouton" value="Faire partie de l'aventure" />
+    <% end %>
+  </div>
+
+  <div class="success" style="display: none;">
+    <div class="green-light">
+      Merci de nous avoir rejoint, vous serez contacté dès notre lancement
+    </div>
+  </div>
+  
+  <script>
+    $('#soon').backstretch("http://localhost:8080/assets/bgs/morning_journal.jpg");
+  </script>
+
+</div>
+

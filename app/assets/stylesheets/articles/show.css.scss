@@ -1,19 +1,97 @@
 #article-show {
-	padding: 10px;
-	margin-bottom: 10px;
+	width: 1100px;
+	height: 100%;
 
-	border: 1px solid #eee;
-	box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+	margin: 0 auto;
 
-	background-color: #F3F3F3;
-	border-radius: 3px;
+	padding-top: 50px;
 
-	width: 60%;
-	min-width: 900px;
+	text-align: center;
 
-	display: inline-block;
+	.article {
+		width: 700px;
 
-	text-align: left;
+		display: inline-block;
+		vertical-align: top;
+
+		text-align: left;
+ 		
+ 		.photo {
+ 			img {
+ 				width: 680px;
+ 				height: auto;
+ 			}
+ 		}
+
+ 		.title {
+ 			font-size: 28px;
+
+ 			margin-top: 5px;
+ 			margin-bottom: 5px;
+ 		}
+
+ 		.content {
+ 			padding: 0px;
+ 			margin: 0px;
+
+			font-family: 'Arvo', serif;
+			font-size: 18px;
+			font-weight: 100;
+
+ 		}
+
+	}
+
+	.sidebar {
+		width: 300px;
+
+		display: inline-block;
+		vertical-align: top;
+
+		text-align: left;
+
+		.author {
+			img {
+				width: 75px;
+				height: 75px;
+
+				border-radius: 50%;
+			}
+		}
+
+		.name {
+			font-size: 38px;
+			font-family: "base";
+			white-space: 2px;
+			letter-spacing: 2px;
+		}
+
+		.about-user {
+			width: 200px;
+
+			font-family: 'Arvo', serif;
+			font-size: 18px;
+
+		}
+
+		.published {
+			font-size: 24px;
+			font-family: "base";
+			white-space: 0px;
+			letter-spacing: 0px;
+			font-weight: bold;
+			text-transform: uppercase;
+
+			margin-top: 15px;
+
+		}
+
+		.date {
+			font-family: 'Kotta One', serif;
+
+		}
+
+	}
 
 	.title {
 		margin-top: 20px;
@@ -52,106 +130,7 @@
 	display: inline-block;
 	vertical-align: top;
 
-	#user {
-		border-radius: 5px;
 
-		figure {
-			position: relative;
-
-			width: 400px;
-			height: 500px;
-
-			img {
-				position: relative;
-
-				margin: 0 auto;
-
-				width: 400px;
-				height: 300px;
-
-				border-radius: 5px 5px 0px 0px;
-
-				display: block;
-			    
-			    z-index: 100;
-			}
-
-			figcaption {
-				position: absolute;
-				top: 0px;
-				left: 0px;
-
-				text-align: left;
-				color: #FFF;
-
-				width: 100%;
-				height: 100%;
-
-				padding-top: 290px;
-				padding-left: 10px;
-
-				border-radius: 5px;
-
-				background-color: #2c3f52;
-
-				a {
-					text-align: center;
-				    padding: 5px 10px;
-				    border-radius: 2px;
-				    display: inline-block;
-				    // background: #ed4e6e;
-				    color: #fff;
-
-				    &:hover {
-				    	text-decoration: none;
-				    }
-				}
-
-				h3 a {
-					color: #FFF;
-					text-transform: uppercase;
-				}
-				
-				.stats {
-					text-align: center;
-
-					.data-stats {
-						width: 27%;
-
-						margin: 10px;
-
-						font-family: 'base';
-
-						display: inline-block;
-
-						.title {
-							color: rgba(255, 255, 255, 0.9);
-							font-size: 30px;
-							font-weight: 200;
-						}
-
-						.number {
-							color: rgba(255, 255, 255, 0.9);
-							margin-bottom: 12px;
-							font-size: 30px;
-							font-weight: 100;
-							font-family: 'Roboto';
-
-						}
-					}	
-									
-				}
-
-
-			}
-
-
-
-
-		}
-
-
-	}
 
 
 	#credibility {

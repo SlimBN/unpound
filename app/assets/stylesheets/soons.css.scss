@@ -1,0 +1,147 @@
+#soon {
+	width: 100%;
+	height: 100%;
+		
+	padding-top: 10px;
+
+	.social-pages {
+		width: 100%;
+
+		text-align: right;
+		
+		margin-bottom: 180px;
+		padding-right: 10px;
+
+	}
+
+	.description-box {
+		width: 100%;
+
+		padding-top: 40px;
+		padding-bottom: 40px;
+
+		background-color: #FFF;
+
+		text-align: center;
+
+		.logo {
+
+		}
+
+		.title {
+			font-family: "Roboto", sans-serif;
+			font-size: 88px;
+
+			strong {
+				font-family: "Roboto-R";
+			}
+		}
+
+		.description {
+			min-width: 400px;
+			max-width: 900px;
+
+			margin: 0 auto;
+
+			font-family: 'Arvo', serif;
+			font-size: 22px;
+		}
+
+	}
+
+	.form {
+		width: 650px;
+
+		margin: 0 auto;
+		margin-top: 40px;
+		padding: 3px;
+
+		border-radius: 3px;
+		border: 1px solid #666;
+
+		text-align: center;
+
+		background-color: rgba(255, 255, 255, 0.8);
+
+		input {
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		.soon-form {
+			border-radius: 3px 0 0 3px;
+
+			font-family: 'Arvo', serif;
+			font-size: 28px;
+
+			padding: 5px;
+			border: 0px;
+
+			box-shadow: inset 0 0 10px #000;
+		}
+
+		.bouton {
+			height: 50px;
+			font-family: "Roboto-R";
+			font-size: 18px;
+			background-color: #2badf3;
+			background-image: -webkit-linear-gradient(#2badf3, #2492db);
+			background-image: linear-gradient(#2badf3, #2492db);
+			border: 1px solid #106fa9;
+			color: #fff;
+			text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+			box-shadow: 0 1px 2px 0 rgba(0,0,0,0.18),inset 0 0 1px 1px rgba(255,255,255,0.09);
+			border-radius: 0 3px 3px 0;
+			text-align: center;
+			vertical-align: middle;
+			line-height: 1.4;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			white-space: nowrap;
+			cursor: pointer;
+// font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+
+		}
+	}
+
+	.success {
+		width: 650px;
+
+		margin: 0 auto;
+		margin-top: 40px;
+		padding: 3px;
+
+		border-radius: 3px;
+		border: 1px solid #666;
+
+		text-align: center;
+
+		background-color: rgba(255, 255, 255, 0.8);
+
+		.green-light {
+			height: 50px;
+			font-family: "Roboto-R";
+			font-size: 18px;
+			background-color: #91BD49;
+			background-image: -webkit-linear-gradient(#91BD49, #6DAE34);
+			background-image: linear-gradient(#91BD49, #6DAE34);
+			border: 1px solid #106fa9;
+			color: #fff;
+			text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+			box-shadow: 0 1px 2px 0 rgba(0,0,0,0.18),inset 0 0 1px 1px rgba(255,255,255,0.09);
+			border-radius: 3px;
+			text-align: center;
+			line-height: 50px;
+			vertical-align: middle;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			white-space: nowrap;
+			cursor: pointer;
+
+		}
+	}
+}

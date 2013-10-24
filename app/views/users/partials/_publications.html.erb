@@ -64,15 +64,17 @@
 				</div>
 			</div>
 
+			<% unless Article.find(publication.article_id).photo.blank? %>
 			<div class="cover">
 				<%= link_to image_tag(Article.find(publication.article_id).photo_url().to_s), Article.find(publication.article_id) %>
 			</div>
+			<% end %>
 
 
 			<div class="quote-content">
-				<%= truncate(strip_tags(Article.find(publication.article_id).content), length: 250) %> <%= link_to "Continuer à lire", Article.find(publication.article_id) %>
+				<%= truncate(strip_tags(Article.find(publication.article_id).content), length: 750) %> <%= link_to "Continuer à lire", Article.find(publication.article_id) %>
 			</div>
-
+<!-- 
 			<div class="toolbox">
 				<% if Credit.where("user_id = ? and article_id = ?", current_user.id, Article.find(publication.article_id).id).count < 100 %>
 				
@@ -108,7 +110,7 @@
 			<div class="facebook-comments">
 				<div class="fb-comments" data-href="http://0.0.0.0:8080/articles/<%= Article.find(publication.article_id).id %>" data-width="680"></div>
 			</div>
-
+ -->
 			
 		</div>
 
