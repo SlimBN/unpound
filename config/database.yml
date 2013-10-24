@@ -17,3 +17,14 @@ production:
   pool: 5
   username: slim
   password: motdepasse
+
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: dowritit_beta
+  host: localhost
+  pool: 5
+  username: slim
+  password: motdepasse
+
