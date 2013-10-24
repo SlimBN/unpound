@@ -3,6 +3,8 @@ class SoonsController < ApplicationController
   # GET /soons.json
   def index
     @soons = Soon.all
+    visited = Visit.new(:what => "prelaunch page")
+    visited.save
 
     respond_to do |format|
       format.html # index.html.erb
@@ -57,8 +59,9 @@ class SoonsController < ApplicationController
       if @soon.save
         format.js { render :action => '../soons/ajax/newsletter'}
       else
-        format.html { render action: "new" }
-        format.json { render json: @soon.errors, status: :unprocessable_entity }
+        format.js { render :action => '../soons/ajax/error'}
+        # format.html { render action: "new" }
+        # format.json { render json: @soon.errors, status: :unprocessable_entity }
       end
     end
   end

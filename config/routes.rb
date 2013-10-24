@@ -1,6 +1,9 @@
 Unbound::Application.routes.draw do
 
 
+  resources :visits
+
+
   match 'soons/watch' => 'soons#watch', :as => :watch_newsletter
   resources :soons
 
