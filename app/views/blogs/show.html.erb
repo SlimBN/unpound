@@ -22,7 +22,8 @@
             </div>
 
             <div class="cover">
-                <%= image_tag "http://blog-assets.pinterest.com/img/caro/2013080100.jpg" %>
+                <% chosen = ['eiffel', 'smoke', 'coffee', 'mac', 'glasses', 'lamp'].sample %>
+                <%= image_tag "blog/" + chosen + ".jpg" %>
             </div>
             
         </div>
@@ -55,11 +56,11 @@
 
                     <div class="share">
                         <a href="#" onclick="window.open(
-      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href)+'/<%= blog.id %>', 
       'facebook-share-dialog', 
       'width=626,height=436'); 
     return false;"><%= image_tag "32x32/facebook.png" %></a>
-                        <%= link_to (image_tag "32x32/twitter.png"), "" %>
+                        <a href="https://twitter.com/share" target="blank"><%= image_tag "32x32/twitter.png" %></a>
                     </div>
                 </div>
 
