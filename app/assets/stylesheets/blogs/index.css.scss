@@ -1,0 +1,186 @@
+#blog-index, #blog-show {
+	width: 100%;
+
+	background-color: #ddd;
+
+	padding-bottom: 40px;
+
+
+	.container {
+		width: 1000px;
+
+		margin: 0 auto;
+
+		.header {
+			width: 100%;
+
+			margin-bottom: 30px;
+
+			text-align: left;
+
+			background-color: #FFF;
+
+			.menu {
+
+				.logo {
+					width: 420px;
+
+					display: inline-block;
+					vertical-align: top;
+
+				}
+
+				.links {
+					width: 500px;
+
+					display: inline-block;
+					vertical-align: top;
+
+					text-align: right;
+
+					.link {
+						line-height: 99px;
+
+						display: inline-block;
+						vertical-align: middle;
+
+						font-family: "Base";
+						font-size: 30px;
+
+						padding-left: 10px;
+
+						a {
+							color: #000;
+
+							&:hover {
+								text-decoration: none;
+							}
+						}
+
+					}
+				}
+
+			}
+
+			.cover {
+				img {
+					width: 970px;
+					height: auto;
+				}
+				
+			}
+
+		}
+
+
+		.bloggings {
+			width: 100%;
+
+			margin: 0px;
+			padding: 0px;
+
+			.blog {
+				width: 100%;
+
+				margin-bottom: 50px;
+
+				.author {
+					width: 200px;
+
+					display: inline-block;
+					vertical-align: top;
+
+					text-align: right;
+
+					.avatar {
+						img {
+							width: 75px;
+							height: 75px;
+						}
+					}
+
+					.name {
+						font-family: "Base";
+						font-size: 30px;
+
+						a {
+							color: #000;
+
+							&:hover {
+								text-decoration: none;
+							}
+						}
+					}
+
+					.about {
+						width: 200px;
+						padding-left: 50px;
+
+						font-family: 'Kotta One', serif;
+						font-size: 16px;
+					}
+
+					.when {
+						margin-top: 20px;
+
+						font-family: 'Base';
+						font-size: 30px;
+
+					}
+
+					.date {
+						font-family: 'Kotta One', serif;
+					}
+
+					.share {
+						margin-top: 20px;
+					}
+				}
+
+				.ticket {
+					width: 750px;
+
+					margin-left: 15px;
+
+					background-color: #fff;
+
+					display: inline-block;
+					vertical-align: top;
+
+					text-align: left;
+
+					.title {
+						padding: 10px;
+
+						font-family: 'IM Fell English SC', serif;
+						font-size: 29px;
+
+						a {
+							background-color: #000;
+
+							&:hover {
+								text-decoration: none;
+							}
+						}
+
+					}
+
+					.shot {
+						img {
+							width: 750px;
+							height: auto;
+						}
+					}
+
+					.content {
+						padding: 10px;
+
+						font-family: 'Arvo', serif;
+						font-size: 18px;
+						line-height: 30px;
+					}
+				}
+			}
+		}
+	}
+}

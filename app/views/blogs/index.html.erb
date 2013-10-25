@@ -1,0 +1,97 @@
+<div id="blog-index">
+
+    <div class="container">
+         
+        <div class="header">
+
+            <div class="menu">
+                
+                <div class="logo">
+                    <%= image_tag "logo.png" %>
+                </div>
+
+                <div class="links">
+                    <div class="link">
+                        <%= link_to "Plateforme", root_path() %>
+                    </div>
+
+                    <div class="link">
+                        <%= link_to "Blogs", blogs_path() %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cover">
+                <% chosen = ['eiffel', 'smoke', 'coffee', 'mac', 'glasses', 'lamp'].sample %>
+                <%= image_tag "blog/" + chosen + ".jpg" %>
+            </div>
+            
+        </div>
+
+        <div class="bloggings">
+
+            <% Blog.order('created_at DESC').each do |blog| %>
+
+            <div class="blog">
+
+                <div class="author">
+                    <div class="avatar">
+                        <%= image_tag blog.user.avatar_url().to_s %>
+                    </div>
+
+                    <div class="name">
+                        <%= blog.user.username %>
+                    </div>
+
+                    <div class="about">
+                        <%= blog.user.about %>
+                    </div>
+
+                    <div class="when">
+                        Posté le
+                    </div>
+
+                    <div class="date">
+                        <%= blog.created_at.strftime("%d, %B %Y") %>
+                    </div>
+
+                    <div class="share">
+                        <a href="#" onclick="window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href)+'/<%= blog.id %>', 
+      'facebook-share-dialog', 
+      'width=626,height=436'); 
+    return false;"><%= image_tag "32x32/facebook.png" %></a>
+                        <%= link_to (image_tag "32x32/twitter.png"), "" %>
+                    </div>
+                </div>
+
+                <div class="ticket">
+                    <div class="title">
+                        <%= blog.title %>
+                    </div>
+
+                    <div class="shot">
+                        <%= image_tag blog.shot_url().to_s %>
+                    </div>
+
+                    <div class="content">
+                        <%= raw(blog.content) %>
+                    </div>
+
+                </div>
+
+                <div class="share">
+                    
+                </div>
+            </div>
+
+            <% end %>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+

@@ -1,5 +1,14 @@
 Unbound::Application.routes.draw do
 
+
+  match 'admin/blogs' => 'administrations#blogs', :as => :admin_blogs
+
+  #resources :administrations
+
+
+  resources :blogs
+
+
   root :to => 'soons#index'
 
 

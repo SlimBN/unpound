@@ -11,7 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131024154928) do
+ActiveRecord::Schema.define(:version => 20131025220536) do
+
+  create_table "administrations", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -44,6 +49,16 @@ ActiveRecord::Schema.define(:version => 20131024154928) do
 
   add_index "articles_tags", ["article_id"], :name => "index_articles_tags_on_article_id"
   add_index "articles_tags", ["tag_id"], :name => "index_articles_tags_on_tag_id"
+
+  create_table "blogs", :force => true do |t|
+    t.string   "title"
+    t.string   "shot"
+    t.string   "slug"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "credits", :force => true do |t|
     t.integer  "user_id"
