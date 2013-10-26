@@ -1,0 +1,32 @@
+#admin-blog-sidebar {
+	width: 30%;
+	min-width: 300px;
+
+	padding: 5px;
+
+	display: inline-block;
+	vertical-align: top;
+
+	.tickets-list {
+		border-radius: 5px;
+
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	}
+
+}
+
+#admin-blog-main {
+	width: 69%;
+	min-width: 400px;
+
+	display: inline-block;
+	vertical-align: top;
+
+	#admin-new-blog {
+		text-align: left;
+
+		.field {
+			margin: 5px;
+		}
+	}
+}

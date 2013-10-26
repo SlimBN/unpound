@@ -47,6 +47,14 @@
 
 			font-family: 'Arvo', serif;
 			font-size: 22px;
+
+			a {
+				font-family: 'Kotta One', serif;
+
+				&:hover {
+					text-decoration: none;
+				}
+			}
 		}
 
 	}

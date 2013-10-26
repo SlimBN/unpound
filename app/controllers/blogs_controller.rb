@@ -23,7 +23,7 @@ class BlogsController < ApplicationController
 
   # GET /blogs/new
   # GET /blogs/new.json
-  def new
+  def jdid
     @blog = Blog.new
 
     respond_to do |format|
@@ -33,7 +33,7 @@ class BlogsController < ApplicationController
   end
 
   # GET /blogs/1/edit
-  def edit
+  def baddal
     @blog = Blog.find(params[:id])
   end
 

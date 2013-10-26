@@ -1,43 +1,59 @@
-<% if user_signed_in? %>
-
-<% @blogs.each do |blog| %>
-  <tr>
-    <td><%= link_to blog.title, blog %></td>
-    <td><%= link_to 'Show', blog %></td>
-    <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-    <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<% if user_signed_in? and current_user.admin? %>
 
 
-<div id="admin-new-blog">
-	<%= form_for(Blog.new) do |f| %>
+<div id="admin-blog-sidebar">
 
-	  <div class="field">
-	    <%= f.label :title %><br />
-	    <%= f.text_field :title %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :shot %><br />
-	    <%= f.file_field :shot %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :slug %><br />
-	    <%= f.text_field :slug %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :content %><br />
-	    <%= f.text_area :content %>
-	  </div>
+	<div class="tickets-list">
+		<% @blogs.each do |blog| %>
+			<div class="blog"><%= link_to blog.title, blog %></td></div>
+		    <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
+		    <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
-	    <%= f.hidden_field :user_id, value: current_user.id %>
+		<% end %>
+	</div>
 
 
-	  <div class="actions">
-	    <%= f.submit %>
-	  </div>
-	<% end %>
 </div>
+
+<div id="admin-blog-main">
+
+
+
+
+	<div id="admin-new-blog">
+		<%= form_for(Blog.new) do |f| %>
+
+		  <div class="field">
+		    <%= f.label :title %><br />
+		    <%= f.text_field :title %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :shot %><br />
+		    <%= f.file_field :shot %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :slug %><br />
+		    <%= f.text_field :slug %>
+		  </div>
+
+		    <%= f.hidden_field :content %>
+			<%= f.hidden_field :user_id, value: current_user.id %>
+
+
+		  <div class="actions">
+		    <%= f.submit %>
+		  </div>
+		<% end %>
+		
+		<div contenteditable="true" class="content" id="textarea" onkeyUp="document.getElementById('blog_content').value = document.getElementById('textarea').innerHTML;">Ecris ton message ici</div>
+		
+	</div>
+
+
+
+</div>
+
+
 
 <% else %>
 	Barra el3ab b3id
