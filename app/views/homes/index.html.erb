@@ -94,7 +94,7 @@
           </div>
 
           <div class="data">
-              <%= link_to article.user.username, user_path(article.user.id) %>, <span class="icon-bookmark"></span> <%= time_ago_in_words(article.created_at) %>
+              <%= link_to article.user.username, user_path(article.user) %>, <span class="icon-bookmark"></span> <%= time_ago_in_words(article.created_at) %>
 
           </div>
 

@@ -74,44 +74,7 @@
 			<div class="quote-content">
 				<%= truncate(strip_tags(Article.find(publication.article_id).content), length: 750) %> <%= link_to "Continuer à lire", Article.find(publication.article_id) %>
 			</div>
-<!-- 
-			<div class="toolbox">
-				<% if Credit.where("user_id = ? and article_id = ?", current_user.id, Article.find(publication.article_id).id).count < 100 %>
-				
-              <%= form_for(Credit.new, url: vote_user_article_path(), remote: true) do |f| %>
-                <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.hidden_field :article_id, value: Article.find(publication.article_id).id %>
-                <%= f.hidden_field :verdict, value: true %>
-                <button type="submit" type="button" class="btn btn-default btn-lg vote-<%= Article.find(publication.article_id).id %>">
-                  <span class="glyphicon glyphicon-thumbs-up"></span> Credible
-                </button>
-              <% end %>
 
-              <%= form_for(Credit.new, url: vote_user_article_path(), remote: true) do |f| %>
-                <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.hidden_field :article_id, value: Article.find(publication.article_id).id %>
-                <%= f.hidden_field :verdict, value: false %>
-                <button type="submit" type="button" class="btn btn-default btn-lg vote-<%= Article.find(publication.article_id).id %>">
-                  <span class="glyphicon glyphicon-thumbs-down"></span> Je ne pense pas
-                </button>
-              <% end %>
-				<% end %>
-
-				<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default btn-lg">
-           			<span class="glyphicon glyphicon-plus"></span> Publier
-           		</button>
-
-				<button type="submit" type="button" class="btn btn-default btn-lg">
-	            	<span class="glyphicon glyphicon-share"></span> Partager
-	            </button>
-
-			</div>
-
-			<div class="facebook-comments">
-				<div class="fb-comments" data-href="http://0.0.0.0:8080/articles/<%= Article.find(publication.article_id).id %>" data-width="680"></div>
-			</div>
- -->
-			
 		</div>
 
 	<% end %>

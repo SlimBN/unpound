@@ -48,6 +48,9 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+    if @article.user != current_user
+      redirect_to @article
+    end
     
   end
 

@@ -1,14 +1,12 @@
 class UsersController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
   before_filter :find_user, only: [:show, :edit, :update, :destroy]
   # GET /users
   # GET /users.json
   def index
     @users = User.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
-    end
+    redirect_to homes_path()
   end
 
   # GET /users/1
@@ -36,6 +34,9 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    if @user != current_user
+      redirect_to @user
+    end
   end
 
   # POST /users

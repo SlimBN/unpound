@@ -8,9 +8,12 @@
 
 	</div>
 
-	<div class="credit-label">
-		Crédible
-	</div>
+	<% unless Credit.where('article_id = ?', @article.id).count < 1 %>
+		<div class="credit-label">
+			Crédible
+		</div>
+	<% end %>
+
 
 	<% if user_signed_in? and (Credit.where('article_id = ? AND user_id = ?', @article.id, current_user.id).count < 1) %>
 	<div class="vote_up">
