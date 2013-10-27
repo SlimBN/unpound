@@ -10,9 +10,11 @@
           
           <div class="userbox">
 
+            <% if @user.avatar.present? %>
             <div class="avatar">
               <%= image_tag @user.avatar_url.to_s %>
             </div>
+            <% end %>
 
             <div class="name">
               <%= link_to @user.username, user_path(@user) %>
@@ -26,7 +28,7 @@
 
           </div>
           
-          <% if user_signed_in? and (current_user != @user) %>
+          <% if user_signed_in? %>
           <div class="user-buttons">
           	<% if @user.id == current_user.id %>
             	<a href="<%= new_article_path() %>" class="new-article"><span class="icon-doc-add"></span> Nouvel Article</a> ou <a href="" class="new-folder">Nouveau Dossier</a>
@@ -36,10 +38,15 @@
           </div>
           <% end %>
 
-          
-            <script>
-              $(".left").backstretch("<%= @user.background_url().to_s %>");
-            </script>
+            <% if @user.avatar.present? %>
+              <script>
+                $(".left").backstretch("<%= @user.background_url().to_s %>");
+              </script>
+            <% else %>
+              <script>
+                $(".left").backstretch("http://dl.dropbox.com/u/515046/www/garfield-interior.jpg");
+              </script>
+            <% end %>
 
 
       </div>

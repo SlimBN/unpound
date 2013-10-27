@@ -102,17 +102,6 @@
       <% end %>
 
 
-      <div id="editor">
-        <p>This is a Paragraph</p>
-      </div>
-    
-        <script>
-            new Medium({
-                element: document.getElementById('editor')
-            });
-        </script>
-
-      
 
       <% Journal.order("created_at DESC").all.each do |journal| %>
         <div class="journal journal-<%= journal.id %>" style="display: none">
