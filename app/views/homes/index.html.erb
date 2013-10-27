@@ -6,7 +6,7 @@
         </div>
 
         <div class="logo">
-          <%= link_to (image_tag "newspaper.png"), root_path() %>
+          <%= link_to (image_tag "newspaper.png"), homes_path() %>
         </div>
 
         <% if user_signed_in? %>
@@ -24,7 +24,7 @@
             <hr>
 
             <div class="aboutme">
-              Formerly: Goldman Sachs. Founder at AdGrok (sold to Twitter). Product at Facebook. FBX creator. Presently: Absolute dictator of a 32-foot sailboat. @antoniogm
+              <%= current_user.about %>
             </div>
 
           </div>

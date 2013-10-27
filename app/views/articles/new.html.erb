@@ -4,7 +4,46 @@
 
 
 	<div class="form-container">
-		<%= render 'form' %>
+
+
+	<a onClick='$("#article_photo").trigger("click");'><%= image_tag "icons/add_picture.png" %></a>
+
+		<%= form_for(@article) do |f| %>
+		  <% if @article.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+		      <ul>
+		      <% @article.errors.full_messages.each do |msg| %>
+		        <li><%= msg %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+
+		  <div class="title">
+		    <%= f.text_field :title, placeholder: "Tapez votre title" %>
+		  </div>
+
+		  <div class="content">
+		    <%= f.text_area :content, placeholder: "Tapez votre article" %>
+		  </div>
+
+		    <%= f.hidden_field :lang_id %>
+		    <%= f.hidden_field :user_id, value: current_user.id %>
+
+		    <%= f.file_field :photo %>
+
+
+		  <div class="actions">
+		    <input name="commit" type="submit" value="Publier" />
+		    <input name="commit" type="reset" value="Remettre à zéro" />
+		  </div>
+
+
+
+		<% end %>
+
 
 	</div>
 

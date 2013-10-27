@@ -11,3 +11,20 @@
  *= require_self
  *= require_tree .
  */
+
+
+#plateforme_home {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+
+	background-color: #000;
+
+	width: 60px;
+	height: 60px;
+
+	line-height: 60px;
+
+	vertical-align: middle;
+
+}

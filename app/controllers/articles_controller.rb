@@ -90,8 +90,10 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
-    
+    @publication = Publication.where("user_id = ? and article_id = ?", @article.user_id, @article.id).last
+    @publication.destroy
     @article.destroy
+
 
     respond_to do |format|
       format.html { redirect_to articles_url }

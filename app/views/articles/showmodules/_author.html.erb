@@ -8,22 +8,25 @@
       <%= link_to @article.user.username, user_path(@article.user) %>
     </div>
 
+    <% if (user_signed_in? and (@article.user != current_user)) %>
+
     <div class="follow">
       <% if Follow.where('user_id = ? and followee_id = ?', current_user.id, @article.user.id).count < 1 %>
   
         <div class="follow">
-          <%= link_to "s'abonner", article_user_follow_path(@article.user.id), remote: true %>
+          <%= link_to "S'abonner", article_user_follow_path(@article.user.id), remote: true %>
         </div>
 
       <% else %>
 
         <div class="unfollow">
-          <%= link_to "se desabonner", article_user_unfollow_path(@article.user.id), remote: true %>
+          <%= link_to "Se désabonner", article_user_unfollow_path(@article.user.id), remote: true %>
         </div>
 
       <% end %>
       
     </div>
+    <% end %>
 
     <div class="about-user">
       <%= @article.user.about %>
@@ -36,5 +39,15 @@
     <div class="date">
       <%= @article.created_at.strftime("%d, %B %Y") %>
     </div>
+
+    <% if @article.updated_at.present? %>
+    <div class="published">
+      Mis à jour le
+    </div>
+
+    <div class="date">
+      <%= @article.updated_at.strftime("%d, %B %Y") %>
+    </div>
+    <% end %>
 
   </div>

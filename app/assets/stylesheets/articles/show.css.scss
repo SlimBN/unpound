@@ -12,8 +12,9 @@
  		font-size: 28px;
 
  		margin-top: 5px;
- 		margin-bottom: 5px;
+ 		margin-bottom: 25px;
  		padding-left: 45px;
+ 		padding-bottom: 10px;
 
  		text-align: left;
  	}
@@ -102,11 +103,53 @@
 			}
 		}
 
+		.follow {
+
+			.follow {
+				margin-bottom: 10px;
+
+				a {
+					color: #FFF;
+					font-family: "Roboto-R";
+					text-transform: uppercase;
+
+					background-color: #4C78DE;
+					padding: 10px;
+					border-radius: 3px;	
+
+					&:hover {
+						text-decoration: none;
+					}				
+				} 
+
+			}
+
+			.unfollow {
+				margin-bottom: 10px;
+
+				a {
+					color: #FFF;
+					font-family: "Roboto-R";
+					text-transform: uppercase;
+
+					background-color: #CD2D24;
+					padding: 10px;
+					border-radius: 3px;	
+
+					&:hover {
+						text-decoration: none;
+					}				
+				} 
+
+			}
+		}
+
 		.about-user {
 			width: 200px;
 
 			font-family: 'Kotta One', serif;
-			font-size: 22px;
+			font-size: 20px;
+			text-align: left;
 
 		}
 
