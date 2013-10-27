@@ -8,6 +8,21 @@ class Article < ActiveRecord::Base
 
   belongs_to :user
 
+  validates :slug, uniqueness: true, presence: true
+  validates :title, presence: true
+
+  before_validation :generate_slug
+
+  def to_param
+    slug
+  end
+
+
+  def generate_slug
+    self.slug ||= title.parameterize    
+  end
+
+
 # def trigger_view_event
 #   FNORD_METRIC.event(attributes.merge(_type: :view_article))    
 # end

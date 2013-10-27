@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  before_filter :find_blog, only: [:show, :edit, :update, :destroy]
   # GET /blogs
   # GET /blogs.json
   def index
@@ -13,7 +14,7 @@ class BlogsController < ApplicationController
   # GET /blogs/1
   # GET /blogs/1.json
   def show
-    @blog = Blog.find(params[:id])
+    @blog = Blog.find_by_slug!(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +35,7 @@ class BlogsController < ApplicationController
 
   # GET /blogs/1/edit
   def baddal
-    @blog = Blog.find(params[:id])
+
   end
 
   # POST /blogs
@@ -56,7 +57,7 @@ class BlogsController < ApplicationController
   # PUT /blogs/1
   # PUT /blogs/1.json
   def update
-    @blog = Blog.find(params[:id])
+
 
     respond_to do |format|
       if @blog.update_attributes(params[:blog])
@@ -72,12 +73,17 @@ class BlogsController < ApplicationController
   # DELETE /blogs/1
   # DELETE /blogs/1.json
   def destroy
-    @blog = Blog.find(params[:id])
+
     @blog.destroy
 
     respond_to do |format|
       format.html { redirect_to blogs_url }
       format.json { head :no_content }
     end
+  end
+
+private
+  def find_blog
+    @blog = Blog.find_by_slug!(params[:id])
   end
 end

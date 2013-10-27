@@ -7,6 +7,10 @@ Unbound::Application.routes.draw do
 
   #resources :administrations
 
+  #User follow from article
+  match 'article/user/follow/:id' => 'follows#article_user_follow', :as => :article_user_follow
+  match 'article/user/unfollow/:id' => 'follows#article_user_unfollow', :as => :article_user_unfollow
+
 
   resources :blogs
 
@@ -90,6 +94,10 @@ Unbound::Application.routes.draw do
   match ':id' => 'journals#show', :as => :see_journal
   match 'vote/article' => 'credits#issue_vote', :as => :vote_article
   match 'vote/user/article' => 'credits#user_article_vote', :as => :vote_user_article
+
+
+  match 'article/vote/up/:id' => 'credits#article_vote_up', :as => :article_vote_up
+  match 'article/vote/down/:id' => 'credits#article_vote_down', :as => :article_vote_down
 
 
 

@@ -1,14 +1,26 @@
 #article-show {
 	width: 1100px;
-	height: 100%;
 
 	margin: 0 auto;
 
 	padding-top: 50px;
+	padding-bottom: 50px;
 
 	text-align: center;
 
+ 	.title {
+ 		font-size: 28px;
+
+ 		margin-top: 5px;
+ 		margin-bottom: 5px;
+ 		padding-left: 45px;
+
+ 		text-align: left;
+ 	}
+
 	.article {
+		position: relative;
+
 		width: 700px;
 
 		display: inline-block;
@@ -23,20 +35,40 @@
  			}
  		}
 
- 		.title {
- 			font-size: 28px;
-
- 			margin-top: 5px;
- 			margin-bottom: 5px;
- 		}
-
  		.content {
  			padding: 0px;
  			margin: 0px;
+ 			margin-top: 10px;
 
 			font-family: 'Arvo', serif;
-			font-size: 18px;
-			font-weight: 100;
+			font-size: 22px;
+			line-height: 30px;
+
+ 		}
+
+ 		.interact {
+ 			position: absolute;
+ 			top: 0px;
+ 			left: -150px;
+
+ 			width: 150px;
+
+ 			padding-right: 10px;
+
+ 			text-align: right;
+
+ 			.credibility {
+ 				font-family: 'Kotta One', serif;
+ 				font-size: 50px;
+ 			}
+
+ 			.credit-label {
+ 				font-family: 'Kotta One', serif;
+ 				font-size: 30px;
+ 				line-height: 10px;
+
+ 				padding-right: 5px;
+ 			}
 
  		}
 
@@ -54,8 +86,6 @@
 			img {
 				width: 75px;
 				height: 75px;
-
-				border-radius: 50%;
 			}
 		}
 
@@ -64,13 +94,19 @@
 			font-family: "base";
 			white-space: 2px;
 			letter-spacing: 2px;
+
+			a {
+				&:hover {
+					text-decoration: none;
+				}
+			}
 		}
 
 		.about-user {
 			width: 200px;
 
-			font-family: 'Arvo', serif;
-			font-size: 18px;
+			font-family: 'Kotta One', serif;
+			font-size: 22px;
 
 		}
 
@@ -118,6 +154,40 @@
 		font-weight: 100;
 		font-size: 24px;
 		line-height: 32px;
+	}
+
+	.social-share {
+		width: 100%;
+
+		text-align: right;
+
+		img {
+			width: 50px;
+			height: auto;
+		}
+	}
+
+	.tags {
+		margin-top: 10px;
+
+		font-weight: bold;
+
+		a {
+			color: #57ad68;
+			font-weight: normal;
+			font-family: Verdana;
+			font-size: 14px;
+
+			margin: 5px;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+
+	.fb-comments {
+		margin-top: 20px;
 	}
 }
 

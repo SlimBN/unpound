@@ -1,0 +1,25 @@
+<div class="interact">
+
+	<div class="credibility">
+
+		<% unless Credit.where('article_id = ?', @article.id).count < 1 %>
+		<%= credibility = (Credit.where('verdict = ? AND article_id = ?', "true", @article.id).count * 100) / Credit.where('article_id = ?', @article.id).count %>%
+		<% end %>
+
+	</div>
+
+	<div class="credit-label">
+		Crédible
+	</div>
+
+	<% if user_signed_in? and (Credit.where('article_id = ? AND user_id = ?', @article.id, current_user.id).count < 1) %>
+	<div class="vote_up">
+		<%= link_to (image_tag "icons/side_up.png"), article_vote_up_path(@article), :remote => true %>
+	</div>
+
+	<div class="vote_down">
+		<%= link_to (image_tag "icons/side_down.png"), article_vote_down_path(@article), :remote => true %>
+		
+	</div>
+	<% end %>
+</div>

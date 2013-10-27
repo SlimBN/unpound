@@ -8,8 +8,25 @@
       <%= link_to @article.user.username, user_path(@article.user) %>
     </div>
 
+    <div class="follow">
+      <% if Follow.where('user_id = ? and followee_id = ?', current_user.id, @article.user.id).count < 1 %>
+  
+        <div class="follow">
+          <%= link_to "s'abonner", article_user_follow_path(@article.user.id), remote: true %>
+        </div>
+
+      <% else %>
+
+        <div class="unfollow">
+          <%= link_to "se desabonner", article_user_unfollow_path(@article.user.id), remote: true %>
+        </div>
+
+      <% end %>
+      
+    </div>
+
     <div class="about-user">
-      Software developer. Writer. Aspiring filmmaker. The son of two crazy Canadians who once had an epic adventure during a time when such journeys were unheard of.
+      <%= @article.user.about %>
     </div>
 
     <div class="published">
@@ -20,36 +37,4 @@
       <%= @article.created_at.strftime("%d, %B %Y") %>
     </div>
 
-    <figure>
-            <figcaption>
-                <h3></h3>
-
-                <div id="follow-unfollow">
-                  <% if ((user_signed_in?) and (current_user.id != @article.user.id)) %>
-
-                    <% is_following =  Follow.all(:conditions => ['user_id = ? AND followee_id = ?', current_user.id, @article.user.id]).count %>
-
-                    <% if is_following < 1 %>
-
-
-                    <%= form_for(Follow.new, :remote => true) do |f| %>
-                      <%= f.hidden_field :user_id, :value => current_user.id %>
-                      <%= f.hidden_field :followee_id, :value => @article.user.id %>
-
-                        <button id="follow-button" type="submit" type="button" class="btn btn-default btn-lg">
-                          <span class="glyphicon glyphicon-flag"></span> S'abonner a l'utilisateur
-                        </button>
-                    
-                    <% end %>
-
-                    <% else %>
-                    <%= link_to 'Destroy', Follow.all(:conditions => ['user_id = ? AND followee_id = ?', current_user.id, @article.user.id]), :class => "btn btn-default btn-lg", :id => "unfollow-button", remote: true, method: :delete %>
-                    <% end %>
-
-                  <% end %>                  
-                </div>
-
-
-            </figcaption>
-        </figure>
   </div>

@@ -97,6 +97,40 @@ class CreditsController < ApplicationController
     end
   end
 
+  def article_vote_up
+    @article = Article.find(params[:id])
+
+    @vote = Credit.new(:user_id => current_user.id, :article_id => @article.id, :verdict => "true")
+
+    respond_to do |format|
+      if @vote.save
+        @truecredits = Credit.where('verdict = ? AND article_id = ?', "true", @article.id).count
+        @totalcredits = Credit.where('article_id = ?', @article.id).count
+        format.js { render :action => '../credits/modules/article_vote_up'}
+      else
+        format.html { render action: "new" }
+        format.json { render json: @credit.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def article_vote_down
+    @article = Article.find(params[:id])
+
+    @vote = Credit.new(:user_id => current_user.id, :article_id => @article.id, :verdict => "false")
+
+    respond_to do |format|
+      if @vote.save
+        @truecredits = Credit.where('verdict = ? AND article_id = ?', "true", @article.id).count
+        @totalcredits = Credit.where('article_id = ?', @article.id).count
+        format.js { render :action => '../credits/modules/article_vote_up'}
+      else
+        format.html { render action: "new" }
+        format.json { render json: @credit.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
 
   # POST /credits

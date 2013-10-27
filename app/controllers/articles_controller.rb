@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :find_article, only: [:show, :edit, :update, :destroy]
   # GET /articles
   # GET /articles.json
   def index
@@ -14,7 +15,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    @article = Article.find(params[:id])
+    
 
     if user_signed_in?
 
@@ -47,7 +48,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
-    @article = Article.find(params[:id])
+    
   end
 
   # POST /articles
@@ -72,7 +73,7 @@ class ArticlesController < ApplicationController
   # PUT /articles/1
   # PUT /articles/1.json
   def update
-    @article = Article.find(params[:id])
+    
 
     respond_to do |format|
       if @article.update_attributes(params[:article])
@@ -89,7 +90,7 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
-    @article = Article.find(params[:id])
+    
     @article.destroy
 
     respond_to do |format|
@@ -97,4 +98,12 @@ class ArticlesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+private
+  def find_article
+    @article = Article.find_by_slug!(params[:id])
+  end
+
+
+
 end

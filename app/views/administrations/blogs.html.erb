@@ -31,10 +31,6 @@
 		    <%= f.label :shot %><br />
 		    <%= f.file_field :shot %>
 		  </div>
-		  <div class="field">
-		    <%= f.label :slug %><br />
-		    <%= f.text_field :slug %>
-		  </div>
 
 		    <%= f.hidden_field :content %>
 			<%= f.hidden_field :user_id, value: current_user.id %>

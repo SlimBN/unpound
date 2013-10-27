@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131026120329) do
+ActiveRecord::Schema.define(:version => 20131027071247) do
 
   create_table "administrations", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -200,10 +200,15 @@ ActiveRecord::Schema.define(:version => 20131026120329) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.boolean  "admin",                  :default => false
+    t.text     "slug"
+    t.text     "background"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["slug"], :name => "index_slug"
 
   create_table "visits", :force => true do |t|
     t.string   "what"

@@ -1,0 +1,2 @@
+$('.follow .follow').fadeOut();
+$('.follow').html('<div class="unfollow"><%= link_to "Se désabonner", article_user_unfollow_path(@article.user.id), remote: true %></div>');

@@ -19,7 +19,7 @@
     <td><%= publication.element %></td>
     <td><%= publication.created_at %></td>
     <% if publication.element == "article" %>
-    <td><%= Article.find(publication.article_id).title %></td>
+    <td><%= publication.article_id %></td>
     <% end %>
     <td><%= link_to 'Show', publication %></td>
     <td><%= link_to 'Edit', edit_publication_path(publication) %></td>

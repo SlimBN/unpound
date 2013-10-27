@@ -7,15 +7,31 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :about, :avatar, :country_id, :town, :username
+  attr_accessible :about, :avatar, :country_id, :town, :username, :slug, :background
+  attr_accessible :provider, :uid
 
   mount_uploader :avatar, AvatarUploader
+  mount_uploader :background, BackgroundUploader
 
   has_many :journals
   has_many :articlesandpage
   has_many :articles
   has_many :follows
   has_many :blogs
+
+  validates :slug, uniqueness: true, presence: true
+  validates :username, presence: true
+
+  before_validation :generate_slug
+
+  def to_param
+    slug
+  end
+
+
+  def generate_slug
+    self.slug ||= username.parameterize    
+  end
 
   # def trigger_view_event
   #   FNORD_METRIC.event(attributes.merge(_type: :view_user))

@@ -84,7 +84,7 @@
           </div>
 
           <div class="avatar">
-            <%= link_to (image_tag article.user.avatar_url().to_s), user_path(article.user.id) %>
+            <%= link_to (image_tag article.user.avatar_url().to_s), user_path(article.user) %>
           </div>
 
           <div class="preview">

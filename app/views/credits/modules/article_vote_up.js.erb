@@ -1,0 +1,6 @@
+var number1 = <%= @truecredits %>;
+var number2 = <%= @totalcredits %>;
+
+$('.vote_up').remove();
+$('.vote_down').remove();
+$('.credibility').html(Math.floor((number1 / number2) * 100) + ' %');

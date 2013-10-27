@@ -1,5 +1,9 @@
 <div id="article-show">
 
+    <div class="title">
+      <%= @article.title %>
+    </div>
+
     <div class="article">
       
       <!-- SOCIAL SHARING MODULE -->
@@ -7,23 +11,30 @@
       <!-- SOCIAL SHARING MODULE END -->
 
       
+      <!-- SOCIAL INTERACTING MODULE -->
+        <%= render "articles/showmodules/interact" %>
+      <!-- SOCIAL INTERACTING MODULE END -->
+
+      
       <div class="photo">
         <%= image_tag @article.photo_url().to_s %>
-      </div>
-
-      <div class="title">
-        <%= @article.title %>
       </div>
 
 
       <div class="content">
         <%= raw(@article.content) %>
       </div>
-    <!-- 
+
+
+      <!-- SOCIAL SHARING MODULE -->
+        <%= render "articles/showmodules/share" %>
+      <!-- SOCIAL SHARING MODULE END -->
+
+
       <!-- FB COMMENTS MODULE -->
-        <% render "articles/showmodules/fb_comments" %>
+        <%= render "articles/showmodules/fb_comments" %>
       <!-- FB COMMENTS MODULE END -->
-     -->
+
 
 
     </div>
@@ -37,42 +48,4 @@
     </div>
 
 </div>
-
-
-
-<div id="article-show-left-bar">
-<!-- 
-  <% if user_signed_in? %>
-  <!-- ADD TO MY JOURNAL MODULE -->
-    <% render "articles/showmodules/add_to_my_journal" %>
-  <!-- ADD TO MY JOURNAL MODULE END -->
-  <% end %>
-
-  <!-- CREDIBILITY MODULE -->
-    <% render "articles/showmodules/credibility" %>
-  <!-- CREDIBILITY MODULE END -->
-
-  <!-- LIST OF PUBLISHING JOURNALS MODULE -->
-    <% render "articles/showmodules/list_journals" %>
-  <!-- LIST OF PUBLISHING JOURNALS MODULE END -->
-
- -->
-</div>
-
-<div id="related-articles">
-  
-  <!-- RELATED ARTICLES MODULE -->
-    <% render "articles/showmodules/related_articles" %>
-  <!-- RELATED ARTICLES MODULE END -->
-
-</div>
-
-
-
-  
-  <% if user_signed_in? %>
-<!-- MODAL ADD TO JOURNAL MODULE -->
-  <% render "articles/showmodules/add_modal" %>
-<!-- MODAL ADD TO JOURNAL MODULE END -->
-  <% end %>
 

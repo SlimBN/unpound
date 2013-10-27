@@ -80,4 +80,27 @@ class FollowsController < ApplicationController
         format.js { render :action => '../follows/ajax/unfollow'}
     end
   end
+
+
+  def article_user_follow
+    @article = Article.find(params[:id])
+    @follow = Follow.new(:user_id => current_user.id, :followee_id => @article.user.id)
+    @follow.save
+
+    respond_to do |format|
+        format.js { render :action => '../follows/ajax/article_user_unfollow'}
+    end
+  end
+
+
+  def article_user_unfollow
+    @article = Article.find(params[:id])
+    @follow = Follow.where('user_id = ? and followee_id = ?', current_user.id, @article.user.id).last
+    @follow.destroy
+
+    respond_to do |format|
+        format.js { render :action => '../follows/ajax/article_user_follow'}
+    end
+    
+  end
 end
