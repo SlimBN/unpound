@@ -1,21 +1,171 @@
-<h2>Sign up</h2>
+  <div id="home-logged-of">
+    
+      <div class="left" style="display: none;">
+        <div class="overlay">
+            
+        </div>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+        <div class="logo">
+          <%= link_to (image_tag "newspaper.png"), homes_path() %>
+        </div>
 
-  <div><%= f.label :username %><br />
-  <%= f.text_field :username, :autofocus => true %></div>
+        <% if user_signed_in? %>
+          
+          <div class="userbox">
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+            <% if current_user.avatar.present? %>
+            <div class="avatar">
+              <%= image_tag current_user.avatar_url.to_s %>
+            </div>
+            <% end %>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+            <div class="name">
+              <%= link_to current_user.username, user_path(current_user) %>
+            </div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+            <hr>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+            <div class="aboutme">
+              <%= current_user.about %>
+            </div>
 
-<%= render "devise/shared/links" %>
+          </div>
+
+          <div class="user-buttons">
+            <a href="<%= new_article_path() %>" class="new-article"><span class="icon-doc-add"></span> Nouvel Article</a> ou <a href="" class="new-folder">Nouveau Dossier</a>
+          </div>
+
+          
+            <script>
+              $(".left").backstretch("http://dl.dropbox.com/u/515046/www/garfield-interior.jpg");
+            </script>
+
+
+        <% else %>
+
+          <div class="description">
+            <div class="title">
+              WePost
+            </div>
+
+            <div class="motto">
+              Là ou c'est rentable d'écrire, et édifiant de lire <span class="icon-emo-coffee"></span> &nbsp; ... 
+              <a href="">De quoi s'agit-il</a>
+            </div>
+
+            <hr>
+
+            <div class="register-connect">
+              <a href="" class="facebook"><span class="icon-facebook-circled"></span> Facebook</a>
+              <a href="" class="twitter"><span class="icon-twitter-circled"></span> Twitter</a></br></br>
+              Ou <a href="<%= register_path() %>" class="formulaire">S'enregistrer</a> à l'ancienne...
+            </div>
+          </div>
+          
+            <script>
+              $(".left").backstretch("http://dl.dropbox.com/u/515046/www/garfield-interior.jpg");
+            </script>
+        <% end %>
+
+      </div>
+
+    <div class="catalogue register" style='padding-top: 20px;'>
+      
+      <div class="header">
+        S'enrgistrer
+      </div>
+
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="label">Nom d'utilisateur</div>
+        <div class="input"><%= f.text_field :username, :autofocus => true %></div>
+
+        <div class="label">Addresse email</div>
+        <div class="input"><%= f.email_field :email, :autofocus => true %></div>
+
+        <div class="label">Mot de passe</div>
+        <div class="input"><%= f.password_field :password %></div>
+
+        <div class="label">Confirmez le mot de passe</div>
+        <div class="input"><%= f.password_field :password_confirmation %></div>
+
+        <div class="avatar">
+          <a onClick='$("#user_avatar").trigger("click");'><%= image_tag "icons/avatar.png" %></a>
+          <%= f.file_field :avatar %>
+          <div class="legend">
+            Avatar
+          </div>
+          
+        </div>
+
+        <div class="background">
+          <a onClick='$("#user_background").trigger("click");'><%= image_tag "icons/add_picture.png" %></a>
+          <%= f.file_field :background %>
+          <div class="legend">
+            Font de Navigation
+          </div>
+          
+        </div>
+
+        <%= f.text_area :about %>
+
+    
+        <div contenteditable="true" id="textarea" class="content about" id="textarea" onkeyUp="document.getElementById('user_about').value = document.getElementById('textarea').innerHTML;">Ecris ton message ici</div>
+
+
+
+
+    <section>
+      
+      <header contenteditable="true" class="header">
+        <h1>This is jQuery ZenPen<h1>
+      </header>
+
+      <article contenteditable="true" class="content">
+
+        <p>
+          A minimalist writing zone, where you can block out all distractions and get to what's important. The writing!
+        </p>
+
+        <p>
+          To get started, all you need to do is delete this text (seriously, just highlight it and hit delete), and fill the page with your own fantastic words.
+        </p>
+
+        <p>
+          You can use <b>bold</b>, <i>italics</i>, <b><i>both</i></b> and <a href="http://zenpen.io"> urls </a> just by highlighting the text and selecting them from the tiny options box that appears above it.
+        </p>
+
+        <blockquote>
+          Quotes are easy to add too!
+        </blockquote>
+
+        <p>
+          For <i>questions</i> and <b>open source info</b>, Click that little question mark at the bottom left of the screen.
+        </p>
+
+        <p>Happy Typing! ~ <b>Tim Holman (@twholman)</b></p>
+
+        <p>jQuery rewrite by @DeuxHuitHuit</p>
+      </article>
+
+    </section>
+
+
+
+
+
+        
+
+        <div><%= f.submit "Sign up" %></div>
+      <% end %> 
+
+
+    </div>
+  </div>
+
+
+
+
+
+

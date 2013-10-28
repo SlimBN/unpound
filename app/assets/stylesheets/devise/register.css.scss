@@ -1,0 +1,76 @@
+#home-logged-of {
+	.register {
+		width: 100%;
+
+		.header {
+			font-family: 'IM Fell English SC', serif;
+			font-size: 38px;
+		}
+
+		.label {
+ 			font-family: 'Kotta One', serif;
+ 			font-size: 20px;
+ 			color: #000;
+
+ 			padding-left: 0px;
+ 			padding-top: 20px;
+
+		}
+
+		.input {
+			margin-bottom: 20px;
+
+			input {
+				width: 400px;
+			}
+
+		}
+
+		.avatar {
+			display: inline-block;
+			vertical-align: top;
+
+			width: 300px;
+
+			text-align: center;
+
+			input {
+				display: none;
+			}
+
+			.legend {
+				font-family: 'Kotta One', serif;
+			}
+
+		}
+
+		.background {
+			display: inline-block;
+			vertical-align: top;
+
+			width: 300px;
+
+			text-align: center;
+
+			input {
+				display: none;
+			}
+
+			.legend {
+				font-family: 'Kotta One', serif;
+			}
+
+		}
+
+		.about {
+			margin-top: 20px;
+			margin-bottom: 20px;
+
+			width: 600px;
+			height: 400px;
+
+			outline: none;
+
+		}
+	}
+}
