@@ -93,10 +93,6 @@
             <%= strip_tags(truncate(article.content, length: 450)) %>
           </div>
 
-          <div class="data">
-              <%= link_to article.user.username, user_path(article.user) %>, <span class="icon-bookmark"></span> <%= time_ago_in_words(article.created_at) %>
-          </div>
-
           <div class="belt">
             <div class="favorite favorite-<%= article.id %>">
 
@@ -117,6 +113,10 @@
               <a href=""><span class="icon-twitter"></span></a>
               <a href=""><span class="icon-facebook-rect"></span></a>
             </div>
+          </div>
+
+          <div class="data">
+              <%= link_to article.user.username, user_path(article.user) %>, <span class="icon-bookmark"></span> <%= time_ago_in_words(article.created_at) %>
           </div>
 
 

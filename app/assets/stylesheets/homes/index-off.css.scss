@@ -378,6 +378,8 @@
 
 				padding-top: 15px;
 
+				margin-top: 15px;
+
 				.favorite {
 					display: inline-block;
 					vertical-align: top;
@@ -432,7 +434,9 @@
 			.data {
 				text-align: right;
 				color: #A4A4A2;
-				font-family: Times;
+				font-family: $italic;
+
+				margin-top: 10px;
 			}
 		}
 	}
