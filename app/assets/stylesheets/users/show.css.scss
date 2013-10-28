@@ -1,3 +1,5 @@
+@import "config";
+
 #user-cover-profile {
 	// position: absolute;
 	// top: 0px;
@@ -50,7 +52,7 @@
 			.name {
 				color: #000;
 				font-size: 90px;
-	   			font-family: 'IM Fell English SC', serif;
+	   			font-family: $heading;
 				text-shadow: 0 1px 0 rgba(255,255,255,0.7);
 				line-height: 35px;
 			}
@@ -121,7 +123,7 @@
 
 					padding-left: 10px;
 
-	   				font-family: 'IM Fell English SC', serif;
+	   				font-family: $heading;
 					font-size: 30px;
 					font-weight: 700;
 

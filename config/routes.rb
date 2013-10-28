@@ -7,6 +7,9 @@ Unbound::Application.routes.draw do
 
   #resources :administrations
 
+  #user favoritism
+  match 'article/favorite/toggle/:id' => 'favorites#article_favorite_toggle', :as => :article_favorite_toggle
+
   #User follow from article
   match 'article/user/follow/:id' => 'follows#article_user_follow', :as => :article_user_follow
   match 'article/user/unfollow/:id' => 'follows#article_user_unfollow', :as => :article_user_unfollow
@@ -23,6 +26,9 @@ Unbound::Application.routes.draw do
 
   match 'soons/watch' => 'soons#watch', :as => :watch_newsletter
   resources :soons
+
+
+  resources :favorites
 
 
   resources :publications

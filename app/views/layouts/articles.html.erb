@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta content="<% unless @article.nil? %><%= strip_tags(@article.content) %><% else %>Dowritit est une plateforme de partage d'informations, d'articles et d'actualités, de tout ce qui est peut être écrit ou lu, vous pouvez y créer votre propre journal ou votre portfolio d'article, professionel ou amateur.<% end %>">
 	<% unless @article.nil? %>
 		<title><%= @article.title %></title>
 	<% else %>
@@ -9,7 +10,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-
+<link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
   
 </head>

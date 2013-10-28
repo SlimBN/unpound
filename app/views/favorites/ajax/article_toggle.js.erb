@@ -1,0 +1,6 @@
+if (<%= @favorites %> < 1) {
+	$(".belt .favorite-<%= @article.id %> .toggle_link").html("<span class='icon-cancel'></span> Enlever de mes favoris");
+} else {
+	$(".belt .favorite-<%= @article.id %> .toggle_link").html("<span class='icon-star'></span> Ajouter à mes favoris");
+}
+

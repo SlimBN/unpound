@@ -1,6 +1,125 @@
-<h1>Editing user</h1>
+  <div id="home-logged-of">
+    
+      <div class="left">
+        <div class="overlay">
+            
+        </div>
 
-<%= render 'form' %>
+        <div class="logo">
+          <%= link_to (image_tag "newspaper.png"), homes_path() %>
+        </div>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+        <% if user_signed_in? %>
+          
+          <div class="userbox">
+
+            <% if current_user.avatar.present? %>
+            <div class="avatar">
+              <%= image_tag current_user.avatar_url.to_s %>
+            </div>
+            <% end %>
+
+            <div class="name">
+              <%= link_to current_user.username, user_path(current_user) %>
+            </div>
+
+            <hr>
+
+            <div class="aboutme">
+              <%= current_user.about %>
+            </div>
+
+          </div>
+
+          <div class="user-buttons">
+            <a href="<%= new_article_path() %>" class="new-article"><span class="icon-doc-add"></span> Nouvel Article</a> ou <a href="" class="new-folder">Nouveau Dossier</a>
+          </div>
+
+          
+            <script>
+              $(".left").backstretch("http://dl.dropbox.com/u/515046/www/garfield-interior.jpg");
+            </script>
+
+
+        <% else %>
+
+          <div class="description">
+            <div class="title">
+              WePost
+            </div>
+
+            <div class="motto">
+              Là ou c'est rentable d'écrire, et édifiant de lire <span class="icon-emo-coffee"></span> &nbsp; ... 
+              <a href="">De quoi s'agit-il</a>
+            </div>
+
+            <hr>
+
+            <div class="register-connect">
+              <a href="" class="facebook"><span class="icon-facebook-circled"></span> Facebook</a>
+              <a href="" class="twitter"><span class="icon-twitter-circled"></span> Twitter</a></br></br>
+              Ou <a href="<%= register_path() %>" class="formulaire">S'enregistrer</a> à l'ancienne...
+            </div>
+          </div>
+          
+            <script>
+              $(".left").backstretch("http://dl.dropbox.com/u/515046/www/garfield-interior.jpg");
+            </script>
+        <% end %>
+
+      </div>
+
+    <div class="catalogue register" style='padding-top: 20px;'>
+      
+      <div class="header">
+        S'enrgistrer
+      </div>
+
+      <%= form_for(@user) do |f| %>
+
+        <div class="label">Nom d'utilisateur</div>
+        <div class="input"><%= f.text_field :username, :autofocus => true %></div>
+
+        <div class="label">Addresse email</div>
+        <div class="input"><%= f.email_field :email, :autofocus => true %></div>
+
+        <div class="avatar">
+          <a onClick='$("#user_avatar").trigger("click");'><%= image_tag "icons/avatar.png" %></a>
+          <%= f.file_field :avatar %>
+          <div class="legend">
+            Avatar
+          </div>
+          
+        </div>
+
+        <div class="background">
+          <a onClick='$("#user_background").trigger("click");'><%= image_tag "icons/add_picture.png" %></a>
+          <%= f.file_field :background %>
+          <div class="legend">
+            Font de Navigation
+          </div>
+          
+        </div>
+
+        <%= f.hidden_field :about %>
+
+
+        <div class="about" data-placeholder="Parlez nous un peu de vous..." id="textarea" onkeyUp="document.getElementById('user_about').value = document.getElementById('textarea').innerHTML;"><%= raw(@user.about) %></div>
+
+
+	      <div class="actions">
+	        <input name="commit" type="submit" value="Mettre à jour" />
+	      </div>
+
+        <div><%= f.submit "Sign up" %></div>
+      <% end %> 
+
+
+    </div>
+  </div>
+
+
+
+
+
+

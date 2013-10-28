@@ -26,14 +26,17 @@
       </div>
 
       <div class="content">
-        <%= f.text_area :content, placeholder: "Tapez votre article" %>
+        <%= f.hidden_field :content %>
       </div>
 
         <%= f.hidden_field :lang_id %>
-        <%= f.hidden_field :user_id, value: @article.user_id %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
 
         <%= f.file_field :photo %>
 
+
+        <div class="new-content" data-placeholder="Parlez nous un peu de vous..." id="textarea" onkeyUp="document.getElementById('article_content').value = document.getElementById('textarea').innerHTML;" onmouseUp="document.getElementById('article_content').value = document.getElementById('textarea').innerHTML;"><%= raw(@article.content) %></div>
+    
 
       <div class="actions">
         <input name="commit" type="submit" value="Mettre à jour" />
@@ -43,6 +46,8 @@
 
     <% end %>
 
+      <script>var editor = new MediumEditor('.new-content', {firstHeader: ''}
+      );</script>
 
   </div>
 

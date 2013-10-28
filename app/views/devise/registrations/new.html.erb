@@ -1,6 +1,6 @@
   <div id="home-logged-of">
     
-      <div class="left" style="display: none;">
+      <div class="left">
         <div class="overlay">
             
         </div>
@@ -108,56 +108,16 @@
           
         </div>
 
-        <%= f.text_area :about %>
-
-    
-        <div contenteditable="true" id="textarea" class="content about" id="textarea" onkeyUp="document.getElementById('user_about').value = document.getElementById('textarea').innerHTML;">Ecris ton message ici</div>
+        <%= f.hidden_field :about %>
 
 
+        <div class="about" data-placeholder="Parlez nous un peu de vous..." id="textarea" onkeyUp="document.getElementById('user_about').value = document.getElementById('textarea').innerHTML;"></div>
 
-
-    <section>
+      <div class="actions">
+        <input name="commit" type="submit" value="S'enregistrer" />
+        <input name="commit" type="reset" value="Remettre à zéro" />
+      </div>
       
-      <header contenteditable="true" class="header">
-        <h1>This is jQuery ZenPen<h1>
-      </header>
-
-      <article contenteditable="true" class="content">
-
-        <p>
-          A minimalist writing zone, where you can block out all distractions and get to what's important. The writing!
-        </p>
-
-        <p>
-          To get started, all you need to do is delete this text (seriously, just highlight it and hit delete), and fill the page with your own fantastic words.
-        </p>
-
-        <p>
-          You can use <b>bold</b>, <i>italics</i>, <b><i>both</i></b> and <a href="http://zenpen.io"> urls </a> just by highlighting the text and selecting them from the tiny options box that appears above it.
-        </p>
-
-        <blockquote>
-          Quotes are easy to add too!
-        </blockquote>
-
-        <p>
-          For <i>questions</i> and <b>open source info</b>, Click that little question mark at the bottom left of the screen.
-        </p>
-
-        <p>Happy Typing! ~ <b>Tim Holman (@twholman)</b></p>
-
-        <p>jQuery rewrite by @DeuxHuitHuit</p>
-      </article>
-
-    </section>
-
-
-
-
-
-        
-
-        <div><%= f.submit "Sign up" %></div>
       <% end %> 
 
 

@@ -1,3 +1,5 @@
+@import "config";
+
 #new-article {
 
 	.send-new-article {
@@ -33,12 +35,12 @@
 		}
 
 		.title {
-			font-family: 'IM Fell English SC', serif;
+			font-family: $heading;
 			font-size: 50px;
 		}
 
 		.content textarea {
-			font-family: 'Arvo', serif;
+			font-family: $content;
 			font-size: 20px;
 
 			width: 700px;
@@ -64,6 +66,14 @@
 				color: #FFF;
 				font-family: "Roboto";
 			}
+		}
+
+
+		.new-content {
+			font-family: $content;
+			font-size: 20px;
+
+			width: 700px;
 		}
 
 	}

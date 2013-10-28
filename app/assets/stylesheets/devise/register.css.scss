@@ -1,14 +1,16 @@
+@import "config";
+
 #home-logged-of {
 	.register {
 		width: 100%;
 
 		.header {
-			font-family: 'IM Fell English SC', serif;
+			font-family: $heading;
 			font-size: 38px;
 		}
 
 		.label {
- 			font-family: 'Kotta One', serif;
+ 			font-family: $italic;
  			font-size: 20px;
  			color: #000;
 
@@ -39,7 +41,7 @@
 			}
 
 			.legend {
-				font-family: 'Kotta One', serif;
+				font-family: $italic;
 			}
 
 		}
@@ -57,7 +59,7 @@
 			}
 
 			.legend {
-				font-family: 'Kotta One', serif;
+				font-family: $italic;
 			}
 
 		}
@@ -71,6 +73,29 @@
 
 			outline: none;
 
+			font-family: $content;
+
 		}
+
+
+
+		.actions {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+
+			input {
+				background-color: rgba(68, 150, 80, 0.7);
+
+				padding: 10px;
+
+				border-radius: 3px;
+				border: 0px;
+
+				color: #FFF;
+				font-family: "Roboto";
+			}
+		}
+
 	}
 }

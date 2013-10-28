@@ -1,3 +1,5 @@
+@import "config";
+
 #article-show {
 	width: 1100px;
 
@@ -5,6 +7,8 @@
 
 	padding-top: 50px;
 	padding-bottom: 50px;
+
+	padding-left: 70px;
 
 	text-align: center;
 
@@ -41,7 +45,7 @@
  			margin: 0px;
  			margin-top: 10px;
 
-			font-family: 'Arvo', serif;
+			font-family: $content;
 			font-size: 22px;
 			line-height: 30px;
 
@@ -59,12 +63,12 @@
  			text-align: right;
 
  			.credibility {
- 				font-family: 'Kotta One', serif;
+ 				font-family: $italic;
  				font-size: 50px;
  			}
 
  			.credit-label {
- 				font-family: 'Kotta One', serif;
+ 				font-family: $italic;
  				font-size: 30px;
  				line-height: 10px;
 
@@ -92,7 +96,7 @@
 
 		.name {
 			font-size: 38px;
-			font-family: "base";
+			font-family: $subtitle;
 			white-space: 2px;
 			letter-spacing: 2px;
 
@@ -147,7 +151,7 @@
 		.about-user {
 			width: 200px;
 
-			font-family: 'Kotta One', serif;
+			font-family: $italic;
 			font-size: 20px;
 			text-align: left;
 
@@ -155,7 +159,7 @@
 
 		.published {
 			font-size: 24px;
-			font-family: "base";
+			font-family: $subtitle;
 			white-space: 0px;
 			letter-spacing: 0px;
 			font-weight: bold;
@@ -166,7 +170,7 @@
 		}
 
 		.date {
-			font-family: 'Kotta One', serif;
+			font-family: $italic;
 
 		}
 
@@ -178,7 +182,7 @@
 
 		font-size: 80px;
 		line-height: 60px;
-	   	font-family: 'IM Fell English SC', serif;
+	   	font-family: $heading;
 	}
 
 	.photo {
@@ -193,7 +197,7 @@
 		margin-bottom: 20px;
 		padding-left: 10px;
 
-		font-family: 'Roboto';
+		font-family: $content;
 		font-weight: 100;
 		font-size: 24px;
 		line-height: 32px;
@@ -274,7 +278,7 @@
 
 			font-weight: bold;
 			font-size: 40px;
-			font-family: "base";
+			font-family: $subtitle;
 			color: rgba(255, 255, 255, 0.6);
 
 			position: absolute;

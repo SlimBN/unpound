@@ -26,7 +26,7 @@
             <hr>
 
             <div class="aboutme">
-              <%= current_user.about %>
+              <%= raw(current_user.about) %>
             </div>
 
           </div>
@@ -84,19 +84,42 @@
           <div class="title">
             <%= link_to article.title, article_path(article) %>
           </div>
-
+<!-- 
           <div class="avatar">
-            <%= link_to (image_tag article.user.avatar_url().to_s), user_path(article.user) %>
+            <% link_to (image_tag article.user.avatar_url().to_s), user_path(article.user) %>
           </div>
-
+ -->
           <div class="preview">
             <%= strip_tags(truncate(article.content, length: 450)) %>
           </div>
 
           <div class="data">
               <%= link_to article.user.username, user_path(article.user) %>, <span class="icon-bookmark"></span> <%= time_ago_in_words(article.created_at) %>
-
           </div>
+
+          <div class="belt">
+            <div class="favorite favorite-<%= article.id %>">
+
+              <% if user_signed_in? and (Favorite.where("article_id = ? AND user_id = ?", article.id, current_user.id).count < 1) %>
+                <a href="<%= article_favorite_toggle_path(article.id) %>" class="toggle_link" data-remote="true"><span class='icon-star'></span> Ajouter à mes Favoris</a>
+              <% end %>
+
+              <% if user_signed_in? and (Favorite.where("article_id = ? AND user_id = ?", article.id, current_user.id).count > 0) %>
+                <a href="<%= article_favorite_toggle_path(article.id) %>" class="toggle_link" data-remote="true"><span class='icon-cancel'></span> Enlever de mes Favoris</a>
+              <% end %>
+
+              <% Favorite.where("article_id = ?", article.id).order('created_at DESC').last(5).each do |favore| %>
+                <%= link_to (image_tag favore.user.avatar_url().to_s), favore.user, :class => 'avatar_link' %>
+              <% end %>
+            </div>
+
+            <div class="interacts">
+              <a href=""><span class="icon-twitter"></span></a>
+              <a href=""><span class="icon-facebook-rect"></span></a>
+            </div>
+          </div>
+
+
 
         </div>
       <% end %>

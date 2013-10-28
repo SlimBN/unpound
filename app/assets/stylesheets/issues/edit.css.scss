@@ -1,3 +1,5 @@
+@import "config";
+
 #issue-form {
 
 	.cover {
@@ -30,7 +32,7 @@
 			left: 0px;
 			top: 0px;
 
-			font-family: 'base';
+			font-family: $subtitle;
 
 			max-width: 300px;
 			height: 400px;

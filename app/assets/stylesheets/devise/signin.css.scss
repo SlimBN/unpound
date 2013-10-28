@@ -1,3 +1,5 @@
+@import "config";
+
 #signin-box {
 	width: 500px;
 
@@ -13,7 +15,7 @@
 
 	text-align: left;
 	color: #000;
-	font-family: 'IM Fell English SC', serif;
+	font-family: $heading;
 	font-size: 35px;
 
 	.signin-form-box {

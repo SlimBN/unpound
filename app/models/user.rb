@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_many :articles
   has_many :follows
   has_many :blogs
+  has_many :favorites
 
   validates :slug, uniqueness: true, presence: true
   validates :username, presence: true
