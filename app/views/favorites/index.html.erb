@@ -1,29 +1,84 @@
-<h1>Listing favorites</h1>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Article</th>
-    <th>Board</th>
-    <th>Journal</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @favorites.each do |favorite| %>
-  <tr>
-    <td><%= favorite.user_id %></td>
-    <td><%= favorite.article_id %></td>
-    <td><%= favorite.board_id %></td>
-    <td><%= favorite.journal_id %></td>
-    <td><%= link_to 'Show', favorite %></td>
-    <td><%= link_to 'Edit', edit_favorite_path(favorite) %></td>
-    <td><%= link_to 'Destroy', favorite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<% if user_signed_in? %>
+<div id="toolbar">
+  <% link_to (image_tag "icons/star.png"), "" %>
+  <% link_to (image_tag "icons/write.png"), "" %>
+  <a href="<%= new_article_path() %>"><%= image_tag "icons/plume.png" %></a>
+  <a href="<%= edit_user_path(current_user) %>"> <%= image_tag "icons/gears.png" %></a>
+  <a href="<%= logout_path() %>"> <%= image_tag "icons/door.png" %></a>
+</div>
 <% end %>
-</table>
 
-<br />
+<div id="profile-show">
+  
 
-<%= link_to 'New Favorite', new_favorite_path %>
+  <%= render "users/widgets/lefty" %>
+
+
+
+  <div id="home-logged-of">
+
+
+    <div class="catalogue" style='padding-top: 70px;'>
+    
+    <% Favorite.where("user_id = ?", current_user.id).each do |favorite| %>
+        <div class="article article-<%= Article.find(favorite.article).id %>">
+          <div class="title">
+            <%= link_to Article.find(favorite.article).title, article_path(Article.find(favorite.article)) %>
+          </div>
+
+          <div class="preview">
+            <%= strip_tags(truncate(Article.find(favorite.article).content, length: 450)) %>
+          </div>
+
+          <div class="belt">
+            <div class="favorite favorite-<%= Article.find(favorite.article).id %>">
+
+              <% if user_signed_in? and (Favorite.where("article_id = ? AND user_id = ?", Article.find(favorite.article).id, current_user.id).count < 1) %>
+                <a href="<%= article_favorite_toggle_path(Article.find(favorite.article).id) %>" class="toggle_link" data-remote="true"><span class='icon-star'></span> Ajouter à mes Favoris</a>
+              <% end %>
+
+              <% if user_signed_in? and (Favorite.where("article_id = ? AND user_id = ?", Article.find(favorite.article).id, current_user.id).count > 0) %>
+                <a href="<%= article_favorite_toggle_path(Article.find(favorite.article).id) %>" class="toggle_link" data-remote="true"><span class='icon-cancel'></span> Enlever de mes Favoris</a>
+              <% end %>
+
+              <% Favorite.where("article_id = ?", Article.find(favorite.article).id).order('created_at DESC').last(5).each do |favore| %>
+                <%= link_to (image_tag favore.user.avatar_url().to_s), favore.user, :class => 'avatar_link' %>
+              <% end %>
+            </div>
+
+            <div class="interacts">
+              <a href=""><span class="icon-twitter"></span></a>
+              <a href=""><span class="icon-facebook-rect"></span></a>
+            </div>
+          </div>
+
+          <div class="data">
+            Rédigé par <%= link_to Article.find(favorite.article).user.username, user_path(Article.find(favorite.article).user) %>, <span class="icon-bookmark"></span> <%= time_ago_in_words(Article.find(favorite.article).created_at) %>
+            <% unless Article.find(favorite.article).user.nil? %>
+            </br><%= Article.find(favorite.article).user.about %>
+            <% end %>
+          </div>
+
+
+
+        </div>
+      <% end %>
+
+
+  </div>
+
+  </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+

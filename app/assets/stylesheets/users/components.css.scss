@@ -52,5 +52,91 @@
 			font-family: $content;
 			font-size: 18px;
 		}
+
+
+
+
+			.belt {
+				min-width: 800px;
+
+				border-bottom: 1px solid #ccc;
+
+				padding-bottom: 15px;
+
+				border-top: 1px solid #ccc;
+
+				padding-top: 15px;
+
+				margin-top: 15px;
+
+				.favorite {
+					width: 48%;
+
+					display: inline-block;
+					vertical-align: top;
+
+					.toggle_link {
+						background-color: #47A055;
+
+						padding: 10px;
+						margin-right: 10px;
+
+						border-radius: 3px;
+
+						color: #fff;
+						font-family: "Roboto";
+
+						&:hover {
+							text-decoration: none;
+						}
+					}
+
+					.avatar_link {
+						background-color: transparent;
+						padding: 0px;
+					}
+
+					img {
+						height: 36px;
+						width: 36px;
+
+						border-radius: 50%;
+					}
+				}
+
+				.interacts {
+					width: 48%;
+
+					text-align: right;
+
+					display: inline-block;
+					vertical-align: top;
+
+					// float: right;
+
+					font-size: 26px;
+
+					a {
+						color: #ccc;
+
+						&:hover {
+							color: #A4A4A2;
+						}
+					}
+				}
+			}
+
+			.data {
+				text-align: right;
+				color: #A4A4A2;
+				font-family: $italic;
+
+				margin-top: 10px;
+
+				a {
+					color: #000;
+					text-decoration: underline;
+				}
+			}
 	}
 }

@@ -160,6 +160,7 @@
 
 			}
 
+
 			.cover {
 				img {
 					width: 680px;
@@ -168,39 +169,6 @@
 				}
 			}
 
-			.toolbox {
-				width: 680px;
-
-				margin-top: 10px;
-
-				text-align: left;
-				.thumbup, .thumbdown, .add-to-my-journal, .share {
-					display: inline-block;
-					line-height: 30px;
-					vertical-align: middle;
-
-					a {
-						background-color: #FDFDFD;
-
-						padding: 10px;
-
-						border-radius: 3px;
-						border: 1px solid #eee;
-						box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-
-						color: rgba(0, 0, 0, 0.7);
-
-						&:hover {
-							text-decoration: none;
-						}
-					}
-				}
-
-				button, form {
-					display: inline-block;
-					vertical-align: top;
-				}
-			}
 
 			.facebook-comments {
 				margin-top: 10px;

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131028161623) do
+ActiveRecord::Schema.define(:version => 20131029203256) do
 
   create_table "administrations", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(:version => 20131028161623) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "tag_list"
+    t.integer  "country_id"
+    t.string   "town"
+    t.integer  "folder_id"
   end
 
   create_table "articles_and_pages", :force => true do |t|
@@ -75,6 +78,17 @@ ActiveRecord::Schema.define(:version => 20131028161623) do
     t.integer  "journal_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "folders", :force => true do |t|
+    t.string   "name"
+    t.string   "skin"
+    t.text     "description"
+    t.string   "kind"
+    t.integer  "user_id"
+    t.boolean  "hidden"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "follows", :force => true do |t|

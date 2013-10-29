@@ -75,6 +75,39 @@
 				<%= truncate(strip_tags(Article.find(publication.article_id).content), length: 750) %> <%= link_to "Continuer à lire", Article.find(publication.article_id) %>
 			</div>
 
+
+          <div class="belt">
+            <div class="favorite favorite-<%= publication.article_id %>">
+
+              <% if user_signed_in? and (Favorite.where("article_id = ? AND user_id = ?", publication.article_id, current_user.id).count < 1) %>
+                <a href="<%= article_favorite_toggle_path(publication.article_id) %>" class="toggle_link" data-remote="true"><span class='icon-star'></span> Ajouter à mes Favoris</a>
+              <% end %>
+
+              <% if user_signed_in? and (Favorite.where("article_id = ? AND user_id = ?", publication.article_id, current_user.id).count > 0) %>
+                <a href="<%= article_favorite_toggle_path(publication.article_id) %>" class="toggle_link" data-remote="true"><span class='icon-cancel'></span> Enlever de mes Favoris</a>
+              <% end %>
+
+              <% Favorite.where("article_id = ?", publication.article_id).order('created_at DESC').last(5).each do |favore| %>
+                <%= link_to (image_tag favore.user.avatar_url().to_s), favore.user, :class => 'avatar_link' %>
+              <% end %>
+            </div>
+
+            <div class="interacts">
+              <a href=""><span class="icon-twitter"></span></a>
+              <a href=""><span class="icon-facebook-rect"></span></a>
+            </div>
+          </div>
+
+          <div class="data">
+            Rédigé par <%= link_to publication.user.username, user_path(publication.user) %>, <span class="icon-bookmark"></span> <%= time_ago_in_words(publication.created_at) %>
+            <% unless publication.user.nil? %>
+            </br><%= publication.user.about %>
+            <% end %>
+          </div>
+
+
+
+
 		</div>
 
 	<% end %>

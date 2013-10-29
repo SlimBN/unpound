@@ -3,6 +3,7 @@ class Article < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
 
   has_many :articlesandpage
+  has_many :favorites
 
   has_and_belongs_to_many :tags
 

@@ -1,6 +1,9 @@
 Unbound::Application.routes.draw do
 
 
+  resources :folders
+
+
   match 'admin/blogs' => 'administrations#blogs', :as => :admin_blogs
 
   match '', to: "blogs#index", constraints: {subdomain: 'blog'}

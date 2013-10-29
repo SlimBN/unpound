@@ -370,6 +370,8 @@
 			}
 
 			.belt {
+				min-width: 800px;
+
 				border-bottom: 1px solid #ccc;
 
 				padding-bottom: 15px;
@@ -381,6 +383,8 @@
 				margin-top: 15px;
 
 				.favorite {
+					width: 48%;
+
 					display: inline-block;
 					vertical-align: top;
 
@@ -414,10 +418,14 @@
 				}
 
 				.interacts {
+					width: 48%;
+
+					text-align: right;
+
 					display: inline-block;
 					vertical-align: top;
 
-					float: right;
+					// float: right;
 
 					font-size: 26px;
 
@@ -437,6 +445,11 @@
 				font-family: $italic;
 
 				margin-top: 10px;
+
+				a {
+					color: #000;
+					text-decoration: underline;
+				}
 			}
 		}
 	}

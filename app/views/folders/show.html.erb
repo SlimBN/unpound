@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @folder.name %>
+</p>
+
+<p>
+  <b>Skin:</b>
+  <%= @folder.skin %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @folder.description %>
+</p>
+
+<p>
+  <b>Kind:</b>
+  <%= @folder.kind %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @folder.user_id %>
+</p>
+
+<p>
+  <b>Hidden:</b>
+  <%= @folder.hidden %>
+</p>
+
+
+<%= link_to 'Edit', edit_folder_path(@folder) %> |
+<%= link_to 'Back', folders_path %>

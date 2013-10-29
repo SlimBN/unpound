@@ -45,7 +45,7 @@
 
           <div class="description">
             <div class="title">
-              WePost
+              DoWritit
             </div>
 
             <div class="motto">
@@ -116,7 +116,10 @@
           </div>
 
           <div class="data">
-              <%= link_to article.user.username, user_path(article.user) %>, <span class="icon-bookmark"></span> <%= time_ago_in_words(article.created_at) %>
+            Rédigé par <%= link_to article.user.username, user_path(article.user) %>, <span class="icon-bookmark"></span> <%= time_ago_in_words(article.created_at) %>
+            <% unless article.user.nil? %>
+            </br><%= article.user.about %>
+            <% end %>
           </div>
 
 
