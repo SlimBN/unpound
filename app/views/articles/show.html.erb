@@ -31,10 +31,11 @@
         <%= render "articles/showmodules/interact" %>
       <!-- SOCIAL INTERACTING MODULE END -->
 
-      
+      <% unless @article.photo.nil? %>
       <div class="photo">
         <%= image_tag @article.photo_url().to_s %>
       </div>
+      <% end %>
 
 
       <div class="content">
