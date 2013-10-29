@@ -35,7 +35,7 @@ class Article < ActiveRecord::Base
       t.articles << p
       t.save
 
-      p.content = p.content.gsub("#" + tag) {"<a href='"+tag_path(tag)+"'>#"+tag+"</a>"}
+      p.content = p.content.gsub("#" + tag) {"<a href='" + Rails.application.routes.url_helpers.tag_path(tag) + "'>#"+tag+"</a>"}
       p.save
     end
   end
