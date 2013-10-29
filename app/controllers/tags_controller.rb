@@ -1,8 +1,9 @@
 class TagsController < ApplicationController
+  before_filter :find_tag, only: [:show]
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @tags = Tag.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,11 +14,20 @@ class TagsController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    @tag = Article.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @article }
     end
   end
+
+
+
+
+private
+  def find_tag
+    @tag =Tag.find_by_content!(params[:id])
+  end
+
+
+
 end
