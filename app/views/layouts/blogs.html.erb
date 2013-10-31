@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="<% unless @blog.nil? %><%= strip_tags(@blog.content) %><% else %>Dowritit est une plateforme de partage d'informations, d'articles et d'actualités, de tout ce qui est peut être écrit ou lu, vous pouvez y créer votre propre journal ou votre portfolio d'article, professionel ou amateur.<% end %>">
+	<% unless @blog.nil? %>
+		<title><%= @blog.title %></title>
+	<% else %>
+  		<title>Dowritit &bull; Le blog</title>
+  	<% end %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+<link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  
+</head>
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1&appId=153439174806312";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+<%= yield %>
+
+<script type="text/javascript" data-pin-hover="true" src="//assets.pinterest.com/js/pinit.js"></script>
+
+</body>
+</html>

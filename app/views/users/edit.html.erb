@@ -83,6 +83,9 @@
         <div class="label">Addresse email</div>
         <div class="input"><%= f.email_field :email, :autofocus => true %></div>
 
+        <div class="label">Diminutif et nom de profil</div>
+        <div class="input"><%= f.text_field :nickname, :autofocus => true %></div>
+
         <div class="avatar">
           <a onClick='$("#user_avatar").trigger("click");'><%= image_tag "icons/avatar.png" %></a>
           <%= f.file_field :avatar %>

@@ -21,7 +21,7 @@ Unbound::Application.routes.draw do
   resources :blogs
 
 
-  root :to => 'soons#index'
+  root :to => 'homes#index'
 
 
   resources :visits

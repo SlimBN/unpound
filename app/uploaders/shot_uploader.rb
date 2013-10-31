@@ -4,7 +4,11 @@ class ShotUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
+
+  # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
+   include Sprockets::Helpers::RailsHelper
+   include Sprockets::Helpers::IsolatedHelper
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -16,13 +20,25 @@ class ShotUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  def auto_orient
+    manipulate! do |img|
+      img.auto_orient
+      img = yield(img) if block_given?
+      img
+    end
+  end
+
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
-  #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
+  #   # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
+
+  # Process files as they are uploaded:
+  # process :scale => [200, 300]
+  process :auto_orient
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
@@ -35,6 +51,11 @@ class ShotUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process :scale => [50, 50]
   # end
+
+
+  version :blog do
+    process :resize_to_fit => [750, 750]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

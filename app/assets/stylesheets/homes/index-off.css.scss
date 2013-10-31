@@ -16,6 +16,8 @@
 		left: 0px;
 		top: 0px;
 
+		z-index: 1000;
+
 		width: 400px;
 		height: 100%;
 
@@ -273,6 +275,7 @@
 		margin-left: 400px;
 		padding-left: 20px;
 		padding-right: 50px;
+		padding-bottom: 30px;
 
 		display: inline-block;
 		vertical-align: top;
