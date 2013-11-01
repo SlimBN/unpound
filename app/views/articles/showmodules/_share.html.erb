@@ -1,15 +1,15 @@
 <div class="social-share">
-	<a href="#" onclick="window.open(
+	<a href="#" title="<%= t 'share_facebook' %>" onclick="window.open(
       'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
       'facebook-share-dialog', 
       'width=626,height=436'); 
     return false;"><%= image_tag "icons/grey_fb.png" %></a>
-	<a href="https://twitter.com/share" target="blank"><%= image_tag "icons/grey_tw.png" %></a>
+	<a href="https://twitter.com/share" title="<%= t 'share_twitter' %>" target="blank"><%= image_tag "icons/grey_tw.png" %></a>
 </div>
 
 <% if @article.tag_list.count > 0 %>
 <div class="tags">
-	Les termes à souligner :
+	<%= t "keywords" %> :
 	<% @article.tag_list.each do |tag| %>
 		<%= link_to tag, tag_path(tag) %>
 	<% end %>

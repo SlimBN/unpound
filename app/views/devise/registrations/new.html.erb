@@ -1,5 +1,4 @@
   <div id="home-logged-of">
-    
       <div class="left">
         <div class="overlay">
             
@@ -26,13 +25,13 @@
             <hr>
 
             <div class="aboutme">
-              <%= current_user.about %>
+              <%= raw(current_user.about) %>
             </div>
 
           </div>
 
           <div class="user-buttons">
-            <a href="<%= new_article_path() %>" class="new-article"><span class="icon-doc-add"></span> Nouvel Article</a> ou <a href="" class="new-folder">Nouveau Dossier</a>
+            <a href="<%= new_article_path() %>" class="new-article"><span class="icon-doc-add"></span> <%= t "homes.new_article" %></a> <%= t "or" %> <a href="" class="new-folder"><%= t "new_folder" %></a>
           </div>
 
           
@@ -49,8 +48,8 @@
             </div>
 
             <div class="motto">
-              Là ou c'est rentable d'écrire, et édifiant de lire <span class="icon-emo-coffee"></span> &nbsp; ... 
-              <a href="">De quoi s'agit-il</a>
+             <%= t "motto" %> <span class="icon-emo-coffee"></span> &nbsp; ... 
+              <a href=""><%= t "whats_about" %>?</a>
             </div>
 
             <hr>
@@ -58,7 +57,7 @@
             <div class="register-connect">
               <a href="" class="facebook"><span class="icon-facebook-circled"></span> Facebook</a>
               <a href="" class="twitter"><span class="icon-twitter-circled"></span> Twitter</a></br></br>
-              Ou <a href="<%= register_path() %>" class="formulaire">S'enregistrer</a> à l'ancienne...
+              <a href="<%= login_path() %>" class="formulaire"><%= t "sign_in" %></a> <%= t "or" %> <a href="<%= register_path() %>" class="formulaire"><%= t "register" %></a> <%= t "old_way" %>
             </div>
           </div>
           
@@ -72,29 +71,29 @@
     <div class="catalogue register" style='padding-top: 20px;'>
       
       <div class="header">
-        S'enrgistrer
+        <%= t "register" %>
       </div>
 
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
 
-        <div class="label">Nom d'utilisateur</div>
+        <div class="label"><%= t "username" %></div>
         <div class="input"><%= f.text_field :username, :autofocus => true %></div>
 
-        <div class="label">Addresse email</div>
+        <div class="label"><%= t "valide_email" %></div>
         <div class="input"><%= f.email_field :email, :autofocus => true %></div>
 
-        <div class="label">Mot de passe</div>
+        <div class="label"><%= t "password" %></div>
         <div class="input"><%= f.password_field :password %></div>
 
-        <div class="label">Confirmez le mot de passe</div>
+        <div class="label"><%= t "password_confirmation" %></div>
         <div class="input"><%= f.password_field :password_confirmation %></div>
 
         <div class="avatar">
           <a onClick='$("#user_avatar").trigger("click");'><%= image_tag "icons/avatar.png" %></a>
           <%= f.file_field :avatar %>
           <div class="legend">
-            Avatar
+            <%= t "avatar" %>
           </div>
           
         </div>
@@ -103,7 +102,7 @@
           <a onClick='$("#user_background").trigger("click");'><%= image_tag "icons/add_picture.png" %></a>
           <%= f.file_field :background %>
           <div class="legend">
-            Font de Navigation
+            <%= t "user_background" %>
           </div>
           
         </div>
@@ -111,11 +110,11 @@
         <%= f.hidden_field :about %>
 
 
-        <div class="about" data-placeholder="Parlez nous un peu de vous..." id="textarea" onkeyUp="document.getElementById('user_about').value = document.getElementById('textarea').innerHTML;"></div>
+        <div class="about" data-placeholder="<%= t 'little_about' %>..." id="textarea" onkeyUp="document.getElementById('user_about').value = document.getElementById('textarea').innerHTML;"></div>
 
       <div class="actions">
-        <input name="commit" type="submit" value="S'enregistrer" />
-        <input name="commit" type="reset" value="Remettre à zéro" />
+        <input name="commit" type="submit" value="<%= t 'register' %>" />
+        <input name="commit" type="reset" value="<%= t 'connect' %>" />
       </div>
       
       <% end %> 

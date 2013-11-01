@@ -12,7 +12,7 @@
 
             <% if @user.avatar.present? %>
             <div class="avatar">
-              <%= image_tag @user.avatar_url.to_s %>
+              <%= image_tag @user.avatar_url(:profile).to_s %>
             </div>
             <% end %>
 
@@ -31,9 +31,9 @@
           <% if user_signed_in? %>
           <div class="user-buttons">
           	<% if @user.id == current_user.id %>
-            	<a href="<%= new_article_path() %>" class="new-article"><span class="icon-doc-add"></span> Nouvel Article</a> ou <a href="" class="new-folder">Nouveau Dossier</a>
+            	<a href="<%= new_article_path() %>" class="new-article"><span class="icon-doc-add"></span> <%= t "new_article" %></a>
           	<% else %>
-            	<a href="<%= new_article_path() %>" class="follow-user"><span class="icon-doc-add"></span> S'abonner à <%= @user.username %></a>
+            	<a href="<%= new_article_path() %>" class="follow-user"><span class="icon-doc-add"></span> <%= t 'follow' %> <%= @user.username %></a>
             <% end %>
           </div>
           <% end %>

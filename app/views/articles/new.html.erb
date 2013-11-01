@@ -22,7 +22,7 @@
 		  <% end %>
 
 		  <div class="title">
-		    <%= f.text_field :title, placeholder: "Tapez votre title" %>
+		    <%= f.text_field :title, placeholder: t('tap_your_title') %>
 		  </div>
 
 		  <div class="content">
@@ -35,12 +35,12 @@
 		    <%= f.file_field :photo %>
 
 
-        <div class="new-content" data-placeholder="Parlez nous un peu de vous..." id="textarea" onkeyUp="document.getElementById('article_content').value = document.getElementById('textarea').innerHTML;" onmouseUp="document.getElementById('article_content').value = document.getElementById('textarea').innerHTML;"></div>
+        <div class="new-content" data-placeholder="<%= t 'here_goes_the_magic' %>" id="textarea" onkeyUp="document.getElementById('article_content').value = document.getElementById('textarea').innerHTML;" onmouseUp="document.getElementById('article_content').value = document.getElementById('textarea').innerHTML;"></div>
 		
 		
 		<div class="actions">
-		    <input name="commit" type="submit" value="Publier" />
-		    <input name="commit" type="reset" value="Remettre à zéro" />
+		    <input name="commit" type="submit" value="<%= t 'publish' %>" />
+		    <input name="commit" type="reset" value="<%= t 'reset' %>" />
 		</div>
 
 

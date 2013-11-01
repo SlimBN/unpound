@@ -1,8 +1,8 @@
 
 <% if user_signed_in? %>
 <div id="toolbar">
-  <% link_to (image_tag "icons/star.png"), "" %>
   <% link_to (image_tag "icons/write.png"), "" %>
+  <%= link_to (image_tag "icons/star.png"), favorites_path() %>
   <a href="<%= new_article_path() %>"><%= image_tag "icons/plume.png" %></a>
   <a href="<%= edit_user_path(current_user) %>"> <%= image_tag "icons/gears.png" %></a>
   <a href="<%= logout_path() %>"> <%= image_tag "icons/door.png" %></a>

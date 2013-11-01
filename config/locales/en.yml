@@ -2,4 +2,46 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  new_article: "New Article"
+  new_folder: "New Folder"
+  redacted_by: "Redacted by"
+  add_to_favorite: "Add To Favorites"
+  remove_from_favorite: "Remove From Favorites"
+  connect: "Sign In"
+  disconnect: "Sign Out"
+  register: "Sign Up"
+  settings: "Settings"
+  share_facebook: "Share With Facebook"
+  share_twitter: "Share With Twitter"
+  or: "ou"
+  old_way: "the old way..."
+  motto: "Where your writings are meant to be valued"
+  whats_about: "What is that about"
+  published: "Published"
+  updated: "Updated"
+  posted: "Posted"
+  keywords: "The keywords here"
+  credible: "Credible"
+  platform: "Plateforme"
+  blogs: "Blogs"
+
+  your_email: "Your Email Address"
+  your_password: "Your Password"
+  your_password_confirmation: "Your Password Confirmation"
+
+  little_about: "Let us know a little bit more about you"
+
+  password: "Password"
+  valide_email: "Valid Email Address"
+  username: "Username"
+  password_confirmation: "Password Confirmation"
+  avatar: "Avatar"
+  user_background: "User Background"
+
+  tap_your_title: "Tap your title"
+  here_goes_the_magic: "Here goes the magic of your words ..."
+  publish: "Publish"
+  reset: "Reset"
+
+  follow: "Follow"
+  read_more: "Read more..."

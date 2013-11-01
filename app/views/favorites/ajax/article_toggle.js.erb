@@ -1,6 +1,6 @@
 if (<%= @favorites %> < 1) {
-	$(".belt .favorite-<%= @article.id %> .toggle_link").html("<span class='icon-cancel'></span> Enlever de mes favoris");
+	$(".belt .favorite-<%= @article.id %> .toggle_link").html("<span class='icon-cancel'></span> <%= t('remove_from_favorite') %>");
 } else {
-	$(".belt .favorite-<%= @article.id %> .toggle_link").html("<span class='icon-star'></span> Ajouter à mes favoris");
+	$(".belt .favorite-<%= @article.id %> .toggle_link").html("<span class='icon-star'></span> <%= t('add_to_favorite') %>");
 }
 

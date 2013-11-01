@@ -1,3 +1,95 @@
+
+<% if user_signed_in? %>
+<div id="toolbar">
+  <% link_to (image_tag "icons/write.png"), "" %>
+  <% link_to (image_tag "icons/star.png"), favorites_path() %>
+  <a href="<%= new_article_path() %>"><%= image_tag "icons/plume.png" %></a>
+  <a href="<%= edit_user_path(current_user) %>"> <%= image_tag "icons/gears.png" %></a>
+  <a href="<%= logout_path() %>"> <%= image_tag "icons/door.png" %></a>
+</div>
+<% end %>
+
+<div id="profile-show">
+  
+
+  <%= render "users/widgets/lefty" %>
+
+
+
+  <div id="home-logged-of">
+
+
+    <div class="catalogue" style='padding-top: 70px;'>
+    
+    <% @tag.articles.uniq.each do |article| %>
+        <div class="article article-<%= article.id %>">
+          <div class="title">
+            <%= link_to article.title, article_path(article) %>
+          </div>
+
+          <div class="preview">
+            <%= strip_tags(truncate(article.content, length: 450)) %>
+          </div>
+
+          <div class="belt">
+            <div class="favorite favorite-<%= article.id %>">
+
+              <% if user_signed_in? and (Favorite.where("article_id = ? AND user_id = ?", article.id, current_user.id).count < 1) %>
+                <a href="<%= article_favorite_toggle_path(article.id) %>" class="toggle_link" data-remote="true"><span class='icon-star'></span> <%= t 'add_to_favorite' %></a>
+              <% end %>
+
+              <% if user_signed_in? and (Favorite.where("article_id = ? AND user_id = ?", article.id, current_user.id).count > 0) %>
+                <a href="<%= article_favorite_toggle_path(article.id) %>" class="toggle_link" data-remote="true"><span class='icon-cancel'></span> <%= t 'remove_from_favorite' %></a>
+              <% end %>
+
+              <% Favorite.where("article_id = ?", article.id).order('created_at DESC').last(5).each do |favore| %>
+                <%= link_to (image_tag favore.user.avatar_url().to_s), favore.user, :class => 'avatar_link' %>
+              <% end %>
+            </div>
+
+
+            <div class="interacts">
+              <a href="https://twitter.com/share" title="<%= t 'share_twitter' %>" target="blank"><span class="icon-twitter"></span></a>
+              <a href="#" title="<%= t 'share_facebook' %>" onclick="window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
+      'facebook-share-dialog', 
+      'width=626,height=436'); 
+    return false;"><span class="icon-facebook-rect"></span></a>
+            </div>
+          </div>
+
+          <div class="data">
+            <%= t "redacted_by" %> <%= link_to article.user.username, user_path(article.user) %>, <span class="icon-bookmark"></span> <%= time_ago_in_words(article.created_at) %>
+            <% unless article.user.nil? %>
+            </br><%= article.user.about %>
+            <% end %>
+          </div>
+
+
+
+        </div>
+      <% end %>
+    
+    </br>
+
+  </div>
+
+  </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
 <% @tag.articles.uniq.each do |article| %>
 	<%= link_to article.title, article %></br>
 <% end %>

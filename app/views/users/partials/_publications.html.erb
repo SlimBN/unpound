@@ -20,7 +20,7 @@
 			</div>
 
 			<div class="description">
-				<%= truncate(Journal.find(publication.journal_id).description, length: 250) %> <%= link_to "Continuer à lire", Journal.find(publication.journal_id) %>
+				<%= truncate(Journal.find(publication.journal_id).description, length: 250) %> <%= link_to t('read_more'), Journal.find(publication.journal_id) %>
 
 			</div>
 			
@@ -66,13 +66,13 @@
 
 			<% unless Article.find(publication.article_id).photo.blank? %>
 			<div class="cover">
-				<%= link_to image_tag(Article.find(publication.article_id).photo_url().to_s), Article.find(publication.article_id) %>
+				<%= link_to image_tag(Article.find(publication.article_id).photo_url(:catalogue).to_s), Article.find(publication.article_id) %>
 			</div>
 			<% end %>
 
 
 			<div class="quote-content">
-				<%= truncate(strip_tags(Article.find(publication.article_id).content), length: 750) %> <%= link_to "Continuer à lire", Article.find(publication.article_id) %>
+				<%= truncate(strip_tags(Article.find(publication.article_id).content), length: 750) %> <%= link_to t('read_more'), Article.find(publication.article_id) %>
 			</div>
 
 
@@ -80,11 +80,11 @@
             <div class="favorite favorite-<%= publication.article_id %>">
 
               <% if user_signed_in? and (Favorite.where("article_id = ? AND user_id = ?", publication.article_id, current_user.id).count < 1) %>
-                <a href="<%= article_favorite_toggle_path(publication.article_id) %>" class="toggle_link" data-remote="true"><span class='icon-star'></span> Ajouter à mes Favoris</a>
+                <a href="<%= article_favorite_toggle_path(publication.article_id) %>" class="toggle_link" data-remote="true"><span class='icon-star'></span> <%= t "add_to_favorite" %></a>
               <% end %>
 
               <% if user_signed_in? and (Favorite.where("article_id = ? AND user_id = ?", publication.article_id, current_user.id).count > 0) %>
-                <a href="<%= article_favorite_toggle_path(publication.article_id) %>" class="toggle_link" data-remote="true"><span class='icon-cancel'></span> Enlever de mes Favoris</a>
+                <a href="<%= article_favorite_toggle_path(publication.article_id) %>" class="toggle_link" data-remote="true"><span class='icon-cancel'></span> <%= t "remove_from_favorite" %></a>
               <% end %>
 
               <% Favorite.where("article_id = ?", publication.article_id).order('created_at DESC').last(5).each do |favore| %>
@@ -92,14 +92,19 @@
               <% end %>
             </div>
 
+
             <div class="interacts">
-              <a href=""><span class="icon-twitter"></span></a>
-              <a href=""><span class="icon-facebook-rect"></span></a>
+              <a href="https://twitter.com/share" title="<%= t 'share_twitter' %>" target="blank"><span class="icon-twitter"></span></a>
+              <a href="#" title="<%= t 'share_facebook' %>" onclick="window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
+      'facebook-share-dialog', 
+      'width=626,height=436'); 
+    return false;"><span class="icon-facebook-rect"></span></a>
             </div>
           </div>
 
           <div class="data">
-            Rédigé par <%= link_to publication.user.username, user_path(publication.user) %>, <span class="icon-bookmark"></span> <%= time_ago_in_words(publication.created_at) %>
+            <%= t "redacted_by" %> <%= link_to publication.user.username, user_path(publication.user) %>, <span class="icon-bookmark"></span> <%= time_ago_in_words(publication.created_at) %>
             <% unless publication.user.nil? %>
             </br><%= publication.user.about %>
             <% end %>

@@ -54,7 +54,11 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
 
   version :show do
-    process :resize_to_fit => [10000, 680]
+    process :resize_to_fit => [690, 1000]
+  end
+
+  version :catalogue do
+    process :resize_to_fill => [930, 400]
   end
 
 

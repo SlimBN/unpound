@@ -34,10 +34,10 @@
 		text-align: left;
  		
  		.photo {
- 			img {
- 				width: 680px;
- 				height: auto;
- 			}
+ 			// img {
+ 			// 	width: 680px;
+ 			// 	height: auto;
+ 			// }
  		}
 
  		.content {
@@ -185,12 +185,7 @@
 	   	font-family: $heading;
 	}
 
-	.photo {
-		img {
-			width: 870px;
-			height: auto;
-		}
-	}
+
 
 	.content {
 		margin-top: 15px;

@@ -10,7 +10,7 @@
 
 	<% unless Credit.where('article_id = ?', @article.id).count < 1 %>
 		<div class="credit-label">
-			Crédible
+			<%= t "credible" %>
 		</div>
 	<% end %>
 

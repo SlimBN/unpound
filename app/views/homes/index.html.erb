@@ -15,7 +15,7 @@
 
             <% if current_user.avatar.present? %>
             <div class="avatar">
-              <%= image_tag current_user.avatar_url.to_s %>
+              <%= image_tag current_user.avatar_url(:profile).to_s %>
             </div>
             <% end %>
 
@@ -32,7 +32,7 @@
           </div>
 
           <div class="user-buttons">
-            <a href="<%= new_article_path() %>" class="new-article"><span class="icon-doc-add"></span> Nouvel Article</a> ou <a href="" class="new-folder">Nouveau Dossier</a>
+            <a href="<%= new_article_path() %>" class="new-article"><span class="icon-doc-add"></span> <%= t "homes.new_article" %></a>
           </div>
 
           
@@ -49,8 +49,8 @@
             </div>
 
             <div class="motto">
-              Là ou c'est rentable d'écrire, et édifiant de lire <span class="icon-emo-coffee"></span> &nbsp; ... 
-              <a href="">De quoi s'agit-il</a>
+             <%= t "motto" %> <span class="icon-emo-coffee"></span> &nbsp; ... 
+              <a href=""><%= t "whats_about" %>?</a>
             </div>
 
             <hr>
@@ -58,7 +58,7 @@
             <div class="register-connect">
               <a href="" class="facebook"><span class="icon-facebook-circled"></span> Facebook</a>
               <a href="" class="twitter"><span class="icon-twitter-circled"></span> Twitter</a></br></br>
-              Ou <a href="<%= register_path() %>" class="formulaire">S'enregistrer</a> à l'ancienne...
+              <a href="<%= login_path() %>" class="formulaire"><%= t "sign_in" %></a> <%= t "or" %> <a href="<%= register_path() %>" class="formulaire"><%= t "register" %></a> <%= t "old_way" %>
             </div>
           </div>
           
@@ -97,11 +97,11 @@
             <div class="favorite favorite-<%= article.id %>">
 
               <% if user_signed_in? and (Favorite.where("article_id = ? AND user_id = ?", article.id, current_user.id).count < 1) %>
-                <a href="<%= article_favorite_toggle_path(article.id) %>" class="toggle_link" data-remote="true"><span class='icon-star'></span> Ajouter à mes Favoris</a>
+                <a href="<%= article_favorite_toggle_path(article.id) %>" class="toggle_link" data-remote="true"><span class='icon-star'></span> <%= t "add_to_favorite" %></a>
               <% end %>
 
               <% if user_signed_in? and (Favorite.where("article_id = ? AND user_id = ?", article.id, current_user.id).count > 0) %>
-                <a href="<%= article_favorite_toggle_path(article.id) %>" class="toggle_link" data-remote="true"><span class='icon-cancel'></span> Enlever de mes Favoris</a>
+                <a href="<%= article_favorite_toggle_path(article.id) %>" class="toggle_link" data-remote="true"><span class='icon-cancel'></span> <%= t "remove_from_favorites" %></a>
               <% end %>
 
               <% Favorite.where("article_id = ?", article.id).order('created_at DESC').last(5).each do |favore| %>
@@ -109,14 +109,19 @@
               <% end %>
             </div>
 
+
             <div class="interacts">
-              <a href=""><span class="icon-twitter"></span></a>
-              <a href=""><span class="icon-facebook-rect"></span></a>
+              <a href="https://twitter.com/share" title="<%= t 'share_twitter' %>" target="blank"><span class="icon-twitter"></span></a>
+              <a href="#" title="<%= t 'share_facebook' %>" onclick="window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
+      'facebook-share-dialog', 
+      'width=626,height=436'); 
+    return false;"><span class="icon-facebook-rect"></span></a>
             </div>
           </div>
 
           <div class="data">
-            Rédigé par <%= link_to article.user.username, user_path(article.user) %>, <span class="icon-bookmark"></span> <%= time_ago_in_words(article.created_at) %>
+            <%= t "redacted_by" %> <%= link_to article.user.username, user_path(article.user) %>, <span class="icon-bookmark"></span> <%= time_ago_in_words(article.created_at) %>
             <% unless article.user.nil? %>
             </br><%= article.user.about %>
             <% end %>
