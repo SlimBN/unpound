@@ -32,7 +32,7 @@
           </div>
 
           <div class="user-buttons">
-            <a href="<%= new_article_path() %>" class="new-article"><span class="icon-doc-add"></span> Nouvel Article</a> ou <a href="" class="new-folder">Nouveau Dossier</a>
+            <a href="<%= new_article_path() %>" class="new-article"><span class="icon-doc-add"></span> <%= t 'new_article' %></a>
           </div>
 
           
@@ -45,12 +45,12 @@
 
           <div class="description">
             <div class="title">
-              DoWritit
+              Dowritit
             </div>
 
             <div class="motto">
-              Là ou c'est rentable d'écrire, et édifiant de lire <span class="icon-emo-coffee"></span> &nbsp; ... 
-              <a href="">De quoi s'agit-il</a>
+              <%= t 'motto' %> <span class="icon-emo-coffee"></span> &nbsp; ... 
+              <a href=""><%= t 'whats_about' %></a>
             </div>
 
             <hr>
@@ -72,25 +72,22 @@
     <div class="catalogue register" style='padding-top: 20px;'>
       
       <div class="header">
-        S'enrgistrer
+        <%= t 'register' %>
       </div>
 
       <%= form_for(@user) do |f| %>
 
-        <div class="label">Nom d'utilisateur</div>
+        <div class="label"><%= t 'username' %></div>
         <div class="input"><%= f.text_field :username, :autofocus => true %></div>
 
-        <div class="label">Addresse email</div>
+        <div class="label"><%= t 'valide_email' %></div>
         <div class="input"><%= f.email_field :email, :autofocus => true %></div>
-
-        <div class="label">Diminutif et nom de profil</div>
-        <div class="input"><%= f.text_field :nickname, :autofocus => true %></div>
 
         <div class="avatar">
           <a onClick='$("#user_avatar").trigger("click");'><%= image_tag "icons/avatar.png" %></a>
           <%= f.file_field :avatar %>
           <div class="legend">
-            Avatar
+            <%= t "avatar" %>
           </div>
           
         </div>
@@ -99,7 +96,7 @@
           <a onClick='$("#user_background").trigger("click");'><%= image_tag "icons/add_picture.png" %></a>
           <%= f.file_field :background %>
           <div class="legend">
-            Font de Navigation
+            <%= t "user_background" %>
           </div>
           
         </div>
@@ -107,14 +104,14 @@
         <%= f.hidden_field :about %>
 
 
-        <div class="about" data-placeholder="Parlez nous un peu de vous..." id="textarea" onkeyUp="document.getElementById('user_about').value = document.getElementById('textarea').innerHTML;"><%= raw(@user.about) %></div>
+        <div class="about" data-placeholder="<%= t 'little_about' %>..." id="textarea" onkeyUp="document.getElementById('user_about').value = document.getElementById('textarea').innerHTML;"><%= raw(@user.about) %></div>
 
 
 	      <div class="actions">
-	        <input name="commit" type="submit" value="Mettre à jour" />
+	        <input name="commit" type="submit" value="<%= t('update') %>" />
 	      </div>
 
-        <div><%= f.submit "Sign up" %></div>
+        <div><%= f.submit "Sign up", style: "display: none;" %></div>
       <% end %> 
 
 

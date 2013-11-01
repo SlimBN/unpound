@@ -1,5 +1,9 @@
 Unbound::Application.routes.draw do
 
+  scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
+    # resources :articles
+    # root to: 'homes#index'
+
 
   resources :folders
 
@@ -113,6 +117,11 @@ Unbound::Application.routes.draw do
   #tabs gestion
   match 'home/articles' => 'homes#home_tab_articles', :as => :home_tab_articles
   match 'home/journals' => 'homes#home_tab_journals', :as => :home_tab_journals
+
+end
+
+match '*path', to: redirect("/#{I18n.default_locale}/%{path}")
+match '', to: redirect("/#{I18n.default_locale}/")
 
   # Keep in mind you can assign values other than :controller and :action
 

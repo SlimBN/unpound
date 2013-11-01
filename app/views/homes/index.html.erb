@@ -1,4 +1,7 @@
   <div id="home-logged-of">
+
+    <%= link_to_unless_current "English", locale: "en" %>
+    <%= link_to_unless_current "Francais", locale: "fr" %>
     
       <div class="left">
         <div class="overlay">
@@ -32,7 +35,7 @@
           </div>
 
           <div class="user-buttons">
-            <a href="<%= new_article_path() %>" class="new-article"><span class="icon-doc-add"></span> <%= t "homes.new_article" %></a>
+            <a href="<%= new_article_path() %>" class="new-article"><span class="icon-doc-add"></span> <%= t "new_article" %></a>
           </div>
 
           
