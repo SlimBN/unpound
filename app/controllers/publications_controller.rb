@@ -3,6 +3,7 @@ class PublicationsController < ApplicationController
   # GET /publications.json
   def index
     @publications = Publication.all
+    @user = current_user
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +15,7 @@ class PublicationsController < ApplicationController
   # GET /publications/1.json
   def show
     @publication = Publication.find(params[:id])
+    @user = @publication.user
 
     respond_to do |format|
       format.html # show.html.erb

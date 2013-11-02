@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    @user = current_user
 
     redirect_to homes_path()
   end
@@ -12,8 +13,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    #@user.trigger_view_event
-    
+    #@user.trigger_view_event    
 
     respond_to do |format|
       format.html # show.html.erb

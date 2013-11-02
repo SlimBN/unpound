@@ -16,6 +16,8 @@ gem 'mini_magick'
 
 # Used for authentication
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 gem 'sextant'
 

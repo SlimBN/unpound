@@ -3,74 +3,8 @@
     <%= link_to_unless_current "English", locale: "en" %>
     <%= link_to_unless_current "Francais", locale: "fr" %>
     
-      <div class="left">
-        <div class="overlay">
-            
-        </div>
 
-        <div class="logo">
-          <%= link_to (image_tag "newspaper.png"), homes_path() %>
-        </div>
-
-        <% if user_signed_in? %>
-          
-          <div class="userbox">
-
-            <% if current_user.avatar.present? %>
-            <div class="avatar">
-              <%= image_tag current_user.avatar_url(:profile).to_s %>
-            </div>
-            <% end %>
-
-            <div class="name">
-              <%= link_to current_user.username, user_path(current_user) %>
-            </div>
-
-            <hr>
-
-            <div class="aboutme">
-              <%= raw(current_user.about) %>
-            </div>
-
-          </div>
-
-          <div class="user-buttons">
-            <a href="<%= new_article_path() %>" class="new-article"><span class="icon-doc-add"></span> <%= t "new_article" %></a>
-          </div>
-
-          
-            <script>
-              $(".left").backstretch("http://dl.dropbox.com/u/515046/www/garfield-interior.jpg");
-            </script>
-
-
-        <% else %>
-
-          <div class="description">
-            <div class="title">
-              DoWritit
-            </div>
-
-            <div class="motto">
-             <%= t "motto" %> <span class="icon-emo-coffee"></span> &nbsp; ... 
-              <a href=""><%= t "whats_about" %>?</a>
-            </div>
-
-            <hr>
-
-            <div class="register-connect">
-              <a href="" class="facebook"><span class="icon-facebook-circled"></span> Facebook</a>
-              <a href="" class="twitter"><span class="icon-twitter-circled"></span> Twitter</a></br></br>
-              <a href="<%= login_path() %>" class="formulaire"><%= t "sign_in" %></a> <%= t "or" %> <a href="<%= register_path() %>" class="formulaire"><%= t "register" %></a> <%= t "old_way" %>
-            </div>
-          </div>
-          
-            <script>
-              $(".left").backstretch("http://dl.dropbox.com/u/515046/www/garfield-interior.jpg");
-            </script>
-        <% end %>
-
-      </div>
+    <%= render "users/widgets/profile_lefty" %>
 
     <div class="catalogue" style='padding-top: 70px;'>
       

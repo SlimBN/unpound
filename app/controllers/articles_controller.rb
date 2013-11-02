@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all
+    @user = current_user
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +16,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    
+    @user = @article.user
 
     if user_signed_in?
 
@@ -39,6 +40,7 @@ class ArticlesController < ApplicationController
   # GET /articles/new.json
   def new
     @article = Article.new
+    @user = current_user
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,6 +50,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+    @user = current_user
     if @article.user != current_user
       redirect_to @article
     end

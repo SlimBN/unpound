@@ -7,6 +7,9 @@
         <div class="logo">
           <%= link_to (image_tag "newspaper.png"), root_path() %>
         </div>
+
+        <% if user_signed_in? %>
+
           
           <div class="userbox">
 
@@ -27,16 +30,14 @@
             </div>
 
           </div>
-          
-          <% if user_signed_in? %>
+
           <div class="user-buttons">
-          	<% if @user.id == current_user.id %>
-            	<a href="<%= new_article_path() %>" class="new-article"><span class="icon-doc-add"></span> <%= t "new_article" %></a>
-          	<% else %>
-            	<a href="<%= new_article_path() %>" class="follow-user"><span class="icon-doc-add"></span> <%= t 'follow' %> <%= @user.username %></a>
+            <% if @user.id == current_user.id %>
+              <a href="<%= new_article_path() %>" class="new-article"><span class="icon-doc-add"></span> <%= t "new_article" %></a>
+            <% else %>
+              <a href="<%= new_article_path() %>" class="follow-user"><span class="icon-doc-add"></span> <%= t 'follow' %> <%= @user.username %></a>
             <% end %>
           </div>
-          <% end %>
 
             <% if @user.avatar.present? %>
               <script>
@@ -47,6 +48,34 @@
                 $(".left").backstretch("http://dl.dropbox.com/u/515046/www/garfield-interior.jpg");
               </script>
             <% end %>
+
+
+
+        <% else %>
+
+          <div class="description">
+            <div class="title">
+              DoWritit
+            </div>
+
+            <div class="motto">
+             <%= t "motto" %> <span class="icon-emo-coffee"></span> &nbsp; ... 
+              <a href=""><%= t "whats_about" %>?</a>
+            </div>
+
+            <hr>
+
+            <div class="register-connect">
+              <a href="" class="facebook"><span class="icon-facebook-circled"></span> Facebook</a>
+              <a href="" class="twitter"><span class="icon-twitter-circled"></span> Twitter</a></br></br>
+              <a href="<%= login_path() %>" class="formulaire"><%= t "sign_in" %></a> <%= t "or" %> <a href="<%= register_path() %>" class="formulaire"><%= t "register" %></a> <%= t "old_way" %>
+            </div>
+          </div>
+          
+            <script>
+              $(".left").backstretch("http://dl.dropbox.com/u/515046/www/garfield-interior.jpg");
+            </script>
+        <% end %>
 
 
       </div>

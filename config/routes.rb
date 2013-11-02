@@ -119,8 +119,8 @@ Unbound::Application.routes.draw do
   match 'home/journals' => 'homes#home_tab_journals', :as => :home_tab_journals
 
 end
-
-match '*path', to: redirect("/#{I18n.default_locale}/%{path}")
+match '*path', to: redirect {|params| "/#{I18n.default_locale}/#{CGI::unescape(params[:path])}" }
+# match '*path', to: redirect("/#{I18n.default_locale}/%{path}")
 match '', to: redirect("/#{I18n.default_locale}/")
 
   # Keep in mind you can assign values other than :controller and :action
