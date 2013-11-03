@@ -19,7 +19,9 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
-gem 'sextant'
+group :development do
+	gem 'sextant'
+end
 
 
 # Gems used only for assets and not required
