@@ -50,9 +50,9 @@
           </div>
 
           <div class="data">
-            <%= t "redacted_by" %> <%= link_to publication.user.username, user_path(publication.user) %>, <span class="icon-bookmark"></span> <%= time_ago_in_words(publication.created_at) %>
-            <% unless publication.user.nil? %>
-            </br><%= publication.user.about %>
+            <%= t "redacted_by" %> <%= link_to article.user.username, user_path(article.user) %>, <span class="icon-bookmark"></span> <%= time_ago_in_words(article.created_at) %>
+            <% unless article.user.nil? %>
+            </br><%= article.user.about %>
             <% end %>
           </div>
 
