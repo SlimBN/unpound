@@ -117,11 +117,13 @@ scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
   match 'home/articles' => 'homes#home_tab_articles', :as => :home_tab_articles
   match 'home/journals' => 'homes#home_tab_journals', :as => :home_tab_journals
 
+  #match '*path', to: redirect {|params| "/#{I18n.default_locale}/#{CGI::unescape(params[:path])}" }
+  # match '*path', to: redirect("/#{I18n.default_locale}/%{path}")
+  match '*path', to: redirect {|params| "/#{I18n.default_locale}/#{params[:path]}"}, constraints: lambda { |req| !req.path.starts_with? "/#{I18n.default_locale}/" }
 end
-match '*path', to: redirect {|params| "/#{I18n.default_locale}/#{CGI::unescape(params[:path])}" }
-# match '*path', to: redirect("/#{I18n.default_locale}/%{path}")
-match '', to: redirect("/#{I18n.default_locale}/")
 
+  #match '', to: redirect("/#{I18n.default_locale}/")
+  match '', to: redirect("/#{I18n.default_locale}")
 
 get "/404", :to => "errors#not_found"
 get "/422", :to => "errors#unacceptable"
