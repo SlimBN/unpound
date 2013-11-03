@@ -157,6 +157,23 @@
 
 		}
 
+		.other {
+			width: 200px;
+
+			font-family: $italic;
+			font-size: 16px;
+			text-align: left;
+
+			a {
+				color: #000;
+
+				&:hover {
+					text-decoration: none;
+				}
+			}
+
+		}
+
 		.published {
 			font-size: 24px;
 			font-family: $subtitle;

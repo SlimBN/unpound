@@ -38,6 +38,7 @@ fr:
   update: "Mettre à jour"
   follow: "S'abonner à"
   read_more: "Continuer à lire..."
+  other_user_articles: "Par le même auteur"
 
   date:
     abbr_day_names:

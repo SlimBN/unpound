@@ -1,0 +1,11 @@
+<div class="author">
+	
+	<div class="published"><%= t 'other_user_articles' %></div>
+
+	<% Article.where('user_id = ? AND id != ?', @user.id, @article.id).last(5).each do |article| %>
+	<div class="other">
+		&bull; <%= link_to article.title, article %>
+	</div>
+	<% end %>
+
+</div>
