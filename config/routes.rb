@@ -1,9 +1,5 @@
 Unbound::Application.routes.draw do
 
-get "/404", :to => "errors#not_found"
-get "/422", :to => "errors#unacceptable"
-get "/500", :to => "errors#internal_error"
-
 scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
     # resources :articles
     # root to: 'homes#index'
@@ -126,6 +122,10 @@ match '*path', to: redirect {|params| "/#{I18n.default_locale}/#{CGI::unescape(p
 # match '*path', to: redirect("/#{I18n.default_locale}/%{path}")
 match '', to: redirect("/#{I18n.default_locale}/")
 
+
+get "/404", :to => "errors#not_found"
+get "/422", :to => "errors#unacceptable"
+get "/500", :to => "errors#internal_error"
 
 
   # Keep in mind you can assign values other than :controller and :action
