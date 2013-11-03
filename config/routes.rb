@@ -55,8 +55,8 @@ scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
 
 
 # Manipulation de Journaux
-  match 'journals/abonnements' => 'journals#abonnements', :as => :abonnements
-  match 'journal/issue/:id' => 'issues#show', :as => :numero
+  # match 'journals/abonnements' => 'journals#abonnements', :as => :abonnements
+  # match 'journal/issue/:id' => 'issues#show', :as => :numero
 
   resources :follows
 
@@ -107,7 +107,7 @@ scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
   match 'author/:id' => 'users#show'
 
 
-  match ':id' => 'journals#show', :as => :see_journal
+  # match ':id' => 'journals#show', :as => :see_journal
   match 'vote/article' => 'credits#issue_vote', :as => :vote_article
   match 'vote/user/article' => 'credits#user_article_vote', :as => :vote_user_article
 
