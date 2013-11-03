@@ -74,8 +74,8 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.save
         @article.process_tags(@article)
-        @publication = Publication.new(:user_id => current_user.id, :article_id => @article.id, :element => "article")
-        @publication.save
+        # @publication = Publication.new(:user_id => current_user.id, :article_id => @article.id, :element => "article")
+        # @publication.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render json: @article, status: :created, location: @article }
       else
