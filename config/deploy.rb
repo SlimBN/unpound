@@ -74,14 +74,14 @@ namespace :uploads do
     run "ln -nfs #{shared_path}/uploads #{release_path}/public/uploads"
   end
 
-  desc <<-EOD
-    [internal] Computes uploads directory paths
-    and registers them in Capistrano environment.
-  EOD
-  task :register_dirs do
-    set :uploads_dirs,    %w(uploads uploads/partners)
-    set :shared_children, fetch(:shared_children) + fetch(:uploads_dirs)
-  end
+  # desc <<-EOD
+  #   [internal] Computes uploads directory paths
+  #   and registers them in Capistrano environment.
+  # EOD
+  # task :register_dirs do
+  #   set :uploads_dirs,    %w(uploads uploads/partners)
+  #   set :shared_children, fetch(:shared_children) + fetch(:uploads_dirs)
+  # end
 
   after       "deploy:finalize_update", "uploads:symlink"
   on :start,  "uploads:register_dirs"
