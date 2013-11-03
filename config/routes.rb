@@ -89,6 +89,7 @@ Unbound::Application.routes.draw do
   resources :journals
 
 
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -120,6 +121,12 @@ end
 match '*path', to: redirect {|params| "/#{I18n.default_locale}/#{CGI::unescape(params[:path])}" }
 # match '*path', to: redirect("/#{I18n.default_locale}/%{path}")
 match '', to: redirect("/#{I18n.default_locale}/")
+
+get "/404", :to => "errors#not_found"
+get "/422", :to => "errors#unacceptable"
+get "/500", :to => "errors#internal_error"
+
+
 
   # Keep in mind you can assign values other than :controller and :action
 
