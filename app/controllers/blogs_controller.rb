@@ -5,6 +5,14 @@ class BlogsController < ApplicationController
   def index
     @blogs = Blog.all
 
+    if user_signed_in?
+      visited = Visit.new(ip_address: request.remote_ip, :what => "blogs", :user_id => current_user.id)
+      visited.save
+    else
+      visited = Visit.new(ip_address: request.remote_ip, :what => "blogs")
+      visited.save
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @blogs }
@@ -15,6 +23,16 @@ class BlogsController < ApplicationController
   # GET /blogs/1.json
   def show
     @blog = Blog.find_by_slug!(params[:id])
+
+
+    if user_signed_in?
+      visited = Visit.new(ip_address: request.remote_ip, :what => "blog_show", :user_id => current_user.id)
+      visited.save
+    else
+      visited = Visit.new(ip_address: request.remote_ip, :what => "blog_show")
+      visited.save
+    end
+
 
     respond_to do |format|
       format.html # show.html.erb

@@ -9,6 +9,9 @@ Unbound::Application.routes.draw do
 
 
   match 'admin/blogs' => 'administrations#blogs', :as => :admin_blogs
+  match 'admin/articles' => 'administrations#articles', :as => :admin_articles
+  match 'admin/users' => 'administrations#users', :as => :admin_users
+  match 'admin/publications' => 'administrations#publications', :as => :admin_publications
 
   match '', to: "blogs#index", constraints: {subdomain: 'blog'}
 

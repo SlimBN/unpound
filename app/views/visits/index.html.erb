@@ -10,9 +10,10 @@
     <th></th>
   </tr>
 
-<% @visits.each do |visit| %>
+<% Visit.order("created_at DESC").each do |visit| %>
   <tr>
     <td><%= visit.what %></td>
+    <td><%= visit.ip_address %></td>
     <td><%= visit.created_at %></td>
     <td><%= link_to 'Destroy', visit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

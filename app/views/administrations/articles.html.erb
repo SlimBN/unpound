@@ -1,0 +1,25 @@
+<%= @articles.count %>
+
+<% if user_signed_in? and current_user.admin? %>
+
+	<div class="tickets-list" style="text-align: left;">
+		<% @articles.each do |article| %>
+		<ul>
+			<li>Title: <%= article.title %></li>
+			<li>User: <%= article.user.username %></li>
+			<li>Favorited: <%= Favorite.where("article_id = ?", article.id).count %></li>
+			<li>Read: <%= Read.where("article_id = ?", article.id).count %> </li>
+			<li>Created: <%= article.created_at %> </li>
+			<li>Updated: <%= article.updated_at %></li>
+			<li>Edit: <%= link_to 'Edit', edit_article_path(article) %></li>
+			<li>Destroy: <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+		</ul>
+		<% end %>
+	</div>
+
+
+
+
+<% else %>
+	Barra el3ab b3id
+<% end %>

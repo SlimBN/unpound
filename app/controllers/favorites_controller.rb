@@ -6,6 +6,7 @@ class FavoritesController < ApplicationController
     @favorites = Favorite.all
     @user = current_user
 
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @favorites }

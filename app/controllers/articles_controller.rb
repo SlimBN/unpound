@@ -19,6 +19,15 @@ class ArticlesController < ApplicationController
     @user = @article.user
 
     if user_signed_in?
+      visited = Visit.new(ip_address: request.remote_ip, :what => "article_show", :user_id => current_user.id)
+      visited.save
+    else
+      visited = Visit.new(ip_address: request.remote_ip, :what => "article_show")
+      visited.save
+    end
+
+
+    if user_signed_in?
 
       is_read =  Read.all(:conditions => ['user_id = ? AND article_id = ?', current_user.id, @article.id]).count
 

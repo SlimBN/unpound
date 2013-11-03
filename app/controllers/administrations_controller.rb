@@ -10,10 +10,11 @@ class AdministrationsController < ApplicationController
     end
   end
 
+
   # GET /administrations/1
   # GET /administrations/1.json
-  def show
-    @administration = Administration.find(params[:id])
+  def blogs
+    @blogs = Blog.all
 
     respond_to do |format|
       format.html # show.html.erb
@@ -21,10 +22,37 @@ class AdministrationsController < ApplicationController
     end
   end
 
+
   # GET /administrations/1
   # GET /administrations/1.json
-  def blogs
-    @blogs = Blog.all
+  def articles
+    @articles = Article.all
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @administration }
+    end
+  end
+
+
+
+  # GET /administrations/1
+  # GET /administrations/1.json
+  def users
+    @users = User.all
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @administration }
+    end
+  end
+
+
+
+  # GET /administrations/1
+  # GET /administrations/1.json
+  def publications
+    @publications = Publication.all
 
     respond_to do |format|
       format.html # show.html.erb

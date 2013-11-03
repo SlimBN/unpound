@@ -1,0 +1,24 @@
+<%= @publications.count %>
+
+<% if user_signed_in? and current_user.admin? %>
+
+	<div class="tickets-list" style="text-align: left;">
+		<% @publications.each do |publication| %>
+		<ul>
+			<li>Title: <%= publication.id %></li>
+			<li>User: <%= publication.user.username %></li>
+			<li>Read: <%= Read.where("publication_id = ?", publication.id).count %> </li>
+			<li>Created: <%= publication.created_at %> </li>
+			<li>Updated: <%= publication.updated_at %></li>
+			<li>Edit: <%= link_to 'Edit', edit_publication_path(publication) %></li>
+			<li>Destroy: <%= link_to 'Destroy', publication, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+		</ul>
+		<% end %>
+	</div>
+
+
+
+
+<% else %>
+	Barra el3ab b3id
+<% end %>

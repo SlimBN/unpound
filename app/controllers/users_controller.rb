@@ -7,6 +7,15 @@ class UsersController < ApplicationController
     @users = User.all
     @user = current_user
 
+    if user_signed_in?
+      visited = Visit.new(:what => "users", ip_address: request.remote_ip, :user_id => current_user.id)
+      visited.save
+    else
+      visited = Visit.new(:what => "users", ip_address: request.remote_ip)
+      visited.save
+    end
+
+
     redirect_to homes_path()
   end
 
@@ -14,6 +23,15 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     #@user.trigger_view_event    
+
+    if user_signed_in?
+      visited = Visit.new(:what => "user_show", ip_address: request.remote_ip, :user_id => current_user.id)
+      visited.save
+    else
+      visited = Visit.new(:what => "user_show", ip_address: request.remote_ip)
+      visited.save
+    end
+
 
     respond_to do |format|
       format.html # show.html.erb

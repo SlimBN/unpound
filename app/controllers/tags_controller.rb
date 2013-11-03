@@ -6,6 +6,16 @@ class TagsController < ApplicationController
     @tags = Tag.all
     @user = current_user
 
+
+    if user_signed_in?
+      visited = Visit.new(ip_address: request.remote_ip, :what => "tags", :user_id => current_user.id)
+      visited.save
+    else
+      visited = Visit.new(ip_address: request.remote_ip, :what => "tags")
+      visited.save
+    end
+
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @articles }
@@ -16,6 +26,15 @@ class TagsController < ApplicationController
   # GET /articles/1.json
   def show
     @user = current_user
+
+    if user_signed_in?
+      visited = Visit.new(ip_address: request.remote_ip, :what => "tag_show", :user_id => current_user.id)
+      visited.save
+    else
+      visited = Visit.new(ip_address: request.remote_ip, :what => "tag_show")
+      visited.save
+    end
+
     
     respond_to do |format|
       format.html # show.html.erb
