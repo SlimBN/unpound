@@ -1,18 +1,6 @@
 class ArticlesController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :authenticate_user!, :except => [:show]
   before_filter :find_article, only: [:show, :edit, :update, :destroy]
-  # GET /articles
-  # GET /articles.json
-  def index
-    @articles = Article.all
-    @user = current_user
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @articles }
-    end
-  end
-
   # GET /articles/1
   # GET /articles/1.json
   def show
@@ -103,14 +91,13 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
-    @publication = Publication.where("user_id = ? and article_id = ?", @article.user_id, @article.id).last
-    @publication.destroy
+    # @publication = Publication.where("user_id = ? and article_id = ?", @article.user_id, @article.id).last
+    # @publication.destroy
     @article.destroy
 
 
     respond_to do |format|
-      format.html { redirect_to articles_url }
-      format.json { head :no_content }
+      format.html { redirect_to homes_url }
     end
   end
 

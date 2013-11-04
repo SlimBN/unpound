@@ -12,7 +12,7 @@
 			<li>Created: <%= article.created_at %> </li>
 			<li>Updated: <%= article.updated_at %></li>
 			<li>Edit: <%= link_to 'Edit', edit_article_path(article) %></li>
-			<li>Destroy: <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+			<li>Destroy: <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %><%= button_to "delete", article, :method=>:delete, :class=>:destroy %></li>
 		</ul>
 		<% end %>
 	</div>
